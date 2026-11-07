@@ -1,0 +1,11 @@
+# Agente SIE · dependencias OPCIONALES. La demo por línea de comandos (modo reglas) funciona sin
+# instalar nada: solo necesita Python 3.11 o superior.
+#
+#   streamlit  → interfaz de la demo (python -m sie ui)          · licencia Apache-2.0
+#   anthropic  → modo llm con la Claude API (AGENT_MODE=llm)      · licencia MIT
+#   pytest     → pruebas automáticas (python -m pytest)           · licencia MIT
+#
+# Versiones probadas con Python 3.11.0 en Windows 11 (07/11/2026).
+streamlit==1.67.0
+anthropic==2.6.0
+pytest==9.2.0
