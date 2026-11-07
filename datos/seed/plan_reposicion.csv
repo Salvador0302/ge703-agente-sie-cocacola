@@ -1,0 +1,2 @@
+id_reposicion,id_producto,id_almacen_origen,id_almacen_destino,cantidad,fecha_plan_original,fecha_reprogramada,id_ot_causa,estado,sintetico
+REP-2026-041,PRD-001,ALM-002,ALM-001,240,2026-10-06,2026-10-12,OT-2026-0107,Reprogramada,1

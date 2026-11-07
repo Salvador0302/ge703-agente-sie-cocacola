@@ -1,0 +1,9 @@
+﻿id_entrega,id_pedido,id_direccion_entrega,id_almacen,fecha_despacho,fecha_entrega,estado_entrega,prueba_entrega,receptor,observacion
+ENT-001,PED-001,DIR-002,ALM-001,2026-10-07,2026-10-07,Confirmada,POD-001,Encargado de recepción (ficticio),Entrega completa
+ENT-002,PED-002,DIR-004,ALM-001,2026-10-09,2026-10-09,Confirmada,POD-002,Encargado de recepción (ficticio),380 entregados; 220 pendientes de reposición
+ENT-003,PED-003,DIR-006,ALM-001,2026-10-03,2026-10-03,Confirmada,POD-003,Encargado de recepción (ficticio),Entrega completa
+ENT-004,PED-004,DIR-008,ALM-001,2026-10-03,2026-10-03,Confirmada,POD-004,Encargado de recepción (ficticio),Entrega completa
+ENT-005,PED-005,DIR-010,ALM-001,2026-10-10,2026-10-10,Confirmada,POD-005,Encargado de recepción (ficticio),Entrega completa
+ENT-006,PED-006,DIR-012,ALM-001,2026-10-04,2026-10-04,Confirmada,POD-006,Encargado de recepción (ficticio),Entrega completa
+ENT-007,PED-007,DIR-014,ALM-001,2026-10-05,2026-10-05,Confirmada,POD-007,Encargado de recepción (ficticio),Entrega completa
+ENT-008,PED-008,DIR-016,ALM-001,2026-10-08,2026-10-08,Confirmada,POD-008,Encargado de recepción (ficticio),Entrega completa

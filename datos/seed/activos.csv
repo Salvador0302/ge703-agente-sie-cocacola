@@ -1,0 +1,5 @@
+id_activo,nombre,tipo,id_almacen,criticidad,enfoque_mantenimiento,capacidad_paq_dia,id_producto_principal,sintetico
+ACT-LLN-01,Línea de llenado PET 500 ml (sintético),Línea de llenado,ALM-002,A,Preventivo planificado y predictivo por vibraciones,60,PRD-001,1
+ACT-SOP-01,Sopladora de preformas PET (sintético),Sopladora,ALM-002,A,Preventivo planificado,,,1
+ACT-CAM-01,Camión de reparto de la ruta R-03 (sintético),Vehículo de reparto,ALM-001,B,Preventivo por kilometraje,,,1
+ACT-MON-01,Montacargas del CD Lima Norte (sintético),Montacargas,ALM-001,B,Preventivo y correctivo,,,1

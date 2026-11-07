@@ -1,0 +1,13 @@
+﻿id_solicitud,intento,tipo_mensaje,id_cotizacion,id_cliente,sistema_origen,fecha_envio,cantidad_solicitada,cantidad_atp_confirmada,fecha_promesa_propuesta,acepta_entrega_parcial,codigo_respuesta,estado_solicitud,id_pedido,responsable,siguiente_paso,canal_origen
+SOL-003,1,Solicitud inicial,COT-003-V01,CLI-003,SAP Sales Cloud,2026-10-02,65,65,2026-10-03,No,OK-ACEPTADO,Aceptada,PED-003,Preventista 1,Seguimiento de entrega,TUALI
+SOL-004,1,Solicitud inicial,COT-004-V01,CLI-004,SAP Sales Cloud,2026-10-02,45,45,2026-10-03,No,OK-ACEPTADO,Aceptada,PED-004,Preventista 3,Seguimiento de entrega,Preventa
+SOL-006,1,Solicitud inicial,COT-006-V01,CLI-006,SAP Sales Cloud,2026-10-03,41,41,2026-10-04,No,OK-ACEPTADO,Aceptada,PED-006,Preventista 1,Seguimiento de entrega,Preventa
+SOL-007,1,Solicitud inicial,COT-007-V01,CLI-007,SAP Sales Cloud,2026-10-04,60,60,2026-10-05,No,OK-ACEPTADO,Aceptada,PED-007,Preventista 2,Seguimiento de entrega,Teléfono
+SOL-001,1,Solicitud inicial,COT-001-V01,CLI-001,SAP Sales Cloud,2026-10-05,25,25,2026-10-07,No,OK-ACEPTADO,Aceptada,PED-001,Preventista 1,Seguimiento de entrega,TUALI
+SOL-008,1,Solicitud inicial,COT-008-V01,CLI-008,SAP Sales Cloud,2026-10-06,30,30,2026-10-08,No,OK-ACEPTADO,Aceptada,PED-008,Preventista 1,Seguimiento de entrega,Preventa
+SOL-002,1,Solicitud inicial,COT-002-V02,CLI-002,SAP Sales Cloud,2026-10-07,600,380,2026-10-12,Si,ATP-PARCIAL,Promesa alternativa,,Planeamiento CD → Preventista 2,Confirmar con el cliente 380 el 09/10 y 220 el 12/10,Teléfono
+SOL-002,2,Confirmación promesa,COT-002-V02,CLI-002,SAP Sales Cloud,2026-10-08,600,380,2026-10-12,Si,OK-PROMESA-ALT,Aceptada,PED-002,Preventista 2,Seguimiento de la reposición de 220 paquetes,Teléfono
+SOL-005,1,Solicitud inicial,COT-005-V01,CLI-005,SAP Sales Cloud,2026-10-08,70,70,2026-10-10,No,PRECIO-NO-VIG,Rechazada,,Analista de precios RGM,Cargar la condición de precio de PRE-MAY-007 en ECC y reenviar,Preventa
+SOL-011,1,Solicitud inicial,COT-011-V01,CLI-011,SAP Sales Cloud,2026-10-09,400,400,2026-10-11,No,CRED-BLOQ,Rechazada,,Créditos y cobranzas,Regularizar deuda o garantía; el preventista informa al cliente,Teléfono
+SOL-005,2,Reintento,COT-005-V01,CLI-005,SAP Sales Cloud,2026-10-09,70,70,2026-10-10,No,OK-ACEPTADO,Aceptada,PED-005,Preventista 3,Seguimiento de entrega,Preventa
+SOL-009,1,Solicitud inicial,COT-009-V01,CLI-009,SAP Sales Cloud,2026-10-10,280,280,2026-10-12,No,OK-ACEPTADO,Aceptada,PED-009,Preventista 2,Seguimiento de entrega,Teléfono

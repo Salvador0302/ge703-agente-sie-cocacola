@@ -1,0 +1,3 @@
+﻿id_almacen,nombre_almacen,ubicacion,tipo_almacen,estado_almacen
+ALM-001,CD Lima Norte (supuesto),Centro de distribución que atiende rutas de Lima Norte (supuesto didáctico),Centro de distribución,Activo
+ALM-002,Almacén de planta Lima (supuesto),Planta embotelladora que repone al CD (supuesto didáctico),Planta,Activo

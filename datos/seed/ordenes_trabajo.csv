@@ -1,0 +1,2 @@
+id_ot,id_activo,tipo,planificada,inicio,fin,horas_parada,responsable,estado,sintetico
+OT-2026-0107,ACT-LLN-01,Preventivo mayor: overhaul de la llenadora,Si,2026-10-03T06:00,2026-10-07T06:00,96,Jefe de mantenimiento de planta (supuesto),Cerrada,1

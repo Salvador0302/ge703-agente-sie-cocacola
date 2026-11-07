@@ -1,0 +1,15 @@
+﻿id_oportunidad,id_cliente,id_contacto,necesidad,origen,etapa,probabilidad,valor_estimado,moneda,fecha_apertura,fecha_cierre_estimada,fecha_cierre_real,responsable,motivo_perdida,id_campana,id_lead
+OPP-001,CLI-001,CON-001,Activación de bodega nueva y primer pedido con pack de lanzamiento,Campaña TUALI,Ganada,1,560,PEN,2026-10-03,2026-10-06,2026-10-05,Preventista 1,,CAMP-001,LEAD-001
+OPP-002,CLI-002,CON-002,600 paquetes de Inca Kola 500 ml para campaña Fin de Año,Promoción RGM,Ganada,1,11300,PEN,2026-10-01,2026-10-10,2026-10-08,Preventista 2,,CAMP-002,
+OPP-003,CLI-003,CON-004,Primer pedido por TUALI con promoción Fin de Año (antes pedía solo por teléfono),Campaña Pásate a TUALI,Ganada,1,1450,PEN,2026-09-30,2026-10-02,2026-10-01,Preventista 1,,CAMP-004,LEAD-013
+OPP-004,CLI-004,CON-005,Reposición semanal de gaseosas y agua,Visita preventa,Ganada,1,940,PEN,2026-10-01,2026-10-03,2026-10-02,Preventista 3,,,
+OPP-005,CLI-005,CON-006,Incorporar Powerade al surtido del minimarket,Visita preventa,Ganada,1,1190,PEN,2026-10-06,2026-10-10,2026-10-09,Preventista 3,,,
+OPP-006,CLI-006,CON-008,Primer pedido de bodega captada en ruta,Visita preventa,Ganada,1,840,PEN,2026-10-02,2026-10-04,2026-10-03,Preventista 1,,CAMP-003,LEAD-009
+OPP-007,CLI-007,CON-009,Reposición con promoción Inca Kola,Promoción RGM,Ganada,1,1210,PEN,2026-10-02,2026-10-04,2026-10-04,Preventista 2,,CAMP-002,
+OPP-008,CLI-008,CON-010,Activación de bodega nueva captada en ruta,Visita preventa,Ganada,1,630,PEN,2026-10-04,2026-10-07,2026-10-06,Preventista 1,,CAMP-003,LEAD-004
+OPP-009,CLI-009,CON-011,Abastecimiento de Coca-Cola para fin de mes,Visita preventa,Ganada,1,6150,PEN,2026-10-08,2026-10-10,2026-10-10,Preventista 2,,,
+OPP-010,CLI-010,CON-013,Ampliar surtido con Frugos y San Luis,Visita preventa,Propuesta,0.6,520,PEN,2026-10-09,2026-10-14,,Preventista 3,,,LEAD-010
+OPP-011,CLI-011,CON-014,Abastecimiento campaña Fin de Año,Promoción RGM,Propuesta,0.4,8160,PEN,2026-10-07,2026-10-14,,Preventista 2,,CAMP-002,
+OPP-012,CLI-012,CON-016,Activación de bodega nueva (alta pendiente),Campaña TUALI,Calificada,0.5,500,PEN,2026-10-10,2026-10-17,,Preventista 1,,CAMP-001,LEAD-008
+OPP-013,CLI-003,CON-004,Pedido adicional para evento del barrio,Referido,Perdida,0,700,PEN,2026-10-02,2026-10-06,2026-10-06,Preventista 1,El cliente postergó el evento (supuesto),,
+OPP-014,CLI-009,CON-011,Pedido de aguas para temporada de verano,Visita preventa,Calificada,0.5,3800,PEN,2026-10-10,2026-10-31,,Preventista 2,,,
