@@ -28,7 +28,7 @@ def armar_zip():
 
 def test_readme():
     texto = (RAIZ / "README.md").read_text(encoding="utf-8")
-    requerir("Barrionuevo" in texto, "Bloque D (David): README con propósito, alcance, integrantes y reproducción.")
+    requerir(GUIA.exists(), "Bloque D: el README se completa con el enlace a entrega/GUIA_DESPLIEGUE.md.")
     for nombre in INTEGRANTES:
         assert nombre in texto, nombre
     for fragmento in ("python -m sie demo normal", "python -m sie demo excepcion", "sintétic", "GUIA_DESPLIEGUE.md"):
