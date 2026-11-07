@@ -1,10 +1,11 @@
-"""Pruebas de aceptación · BLOQUE D (David Urbano): UI, documentación de entrega y ZIP.
+"""Pruebas de aceptación · BLOQUE D: UI, documentación de entrega y ZIP.
 
 Terminado = este archivo con 0 pendientes y 0 fallas: `python -m pytest pruebas/aceptacion/test_bloque_d.py`.
 La verificación del ZIP ejecuta la demo, así que requiere B y C terminados.
 """
 
 import importlib.util
+import re
 import zipfile
 
 import pytest
@@ -15,6 +16,8 @@ GUIA = RAIZ / "entrega" / "GUIA_DESPLIEGUE.md"
 SECCIONES_GUIA = ["Requisitos previos", "Instalación", "Configuración", "Ejecución de la demo",
                   "Resultados esperados", "Diagnóstico y recuperación", "Dependencias y licencias",
                   "Accesos seguros", "Ficha del agente"]
+#: Forma de una API key real (el prefijo se arma por partes para que este archivo no se marque a sí mismo).
+API_KEY = re.compile(("sk-" + "ant-") + r"[A-Za-z0-9_\-]{20,}")
 INTEGRANTES = ["Barrionuevo Gutierrez, Salvador Jhou", "Cornejo Palomino, José Julián",
                "Leandro Ochoa, Gianmarco", "Urbano Lara, David Alexis"]
 
@@ -36,7 +39,7 @@ def test_readme():
 
 
 def test_guia_de_despliegue_completa():
-    requerir(GUIA.exists(), "Bloque D (David): entrega/GUIA_DESPLIEGUE.md.")
+    requerir(GUIA.exists(), "Bloque D: entrega/GUIA_DESPLIEGUE.md.")
     texto = GUIA.read_text(encoding="utf-8")
     titulos = [linea.lstrip("#").strip() for linea in texto.splitlines() if linea.startswith("#")]
     for seccion in SECCIONES_GUIA:
@@ -47,7 +50,7 @@ def test_guia_de_despliegue_completa():
 
 def test_fuentes_licencias_y_declaracion_de_ia():
     carpeta = RAIZ / "fuentes"
-    requerir((carpeta / "DECLARACION_IA.md").exists(), "Bloque D (David): carpeta fuentes/.")
+    requerir((carpeta / "DECLARACION_IA.md").exists(), "Bloque D: carpeta fuentes/.")
     for nombre in ("BIBLIOGRAFIA.md", "LICENCIAS.md", "DECLARACION_IA.md"):
         assert (carpeta / nombre).exists(), nombre
     ia = (carpeta / "DECLARACION_IA.md").read_text(encoding="utf-8").lower()
@@ -70,7 +73,7 @@ def test_zip_nombre_contenido_y_exclusiones(tmp_path):
             assert not n.endswith((".db", ".pyc", ".zip")), n
             assert len(n) <= 150, n
             if n.endswith((".py", ".md", ".csv", ".txt", ".json", ".toml", ".example")):
-                assert b"sk-ant-" not in z.read(n), n
+                assert not API_KEY.search(z.read(n).decode("utf-8", "replace")), n
 
 
 def test_zip_verificado_desde_una_carpeta_limpia(tmp_path):
@@ -79,13 +82,27 @@ def test_zip_verificado_desde_una_carpeta_limpia(tmp_path):
     assert modulo.verificar(ruta, ejecutar_demo=True) == []
 
 
-def test_ui_streamlit_carga_sin_errores():
+def test_ui_streamlit_recorre_los_dos_casos(tmp_path, monkeypatch):
     pytest.importorskip("streamlit")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(RAIZ / "producto" / "sie" / "ui" / "app.py"), default_timeout=60)
+    monkeypatch.setenv("SIE_DB", str(tmp_path / "sie.db"))  # la UI usa sie_ui.db junto a esta ruta
+    monkeypatch.setenv("SIE_LOGS", str(tmp_path / "logs"))
+    app = AppTest.from_file(str(RAIZ / "producto" / "sie" / "ui" / "app.py"), default_timeout=90)
     app.run()
     errores = [str(e.value) for e in app.exception]
-    requerir(not any("Bloque D" in e for e in errores), "Bloque D (David): interfaz Streamlit.")
+    requerir(not any("Bloque D" in e for e in errores), "Bloque D: interfaz Streamlit.")
     assert errores == []
-    assert any("Agente SIE" in t.value for t in app.title) or any("Agente SIE" in m.value for m in app.markdown)
+    assert any("Agente SIE" in t.value for t in app.title)
+
+    app.button(key="ejecutar_normal").click().run()
+    assert not app.exception
+    assert any("4 de 4 verificaciones conformes" in s.value for s in app.success)
+
+    app.button(key="ejecutar_excepcion").click().run()
+    assert not app.exception
+    assert any("ATP-PARCIAL" in w.value for w in app.warning)
+    assert "OT-2026-0107" in [m.value for m in app.metric]
+    app.button(key="acepta_excepcion").click().run()
+    assert not app.exception
+    assert any("8 de 8 verificaciones conformes" in s.value for s in app.success)
