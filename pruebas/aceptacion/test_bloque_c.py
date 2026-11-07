@@ -1,8 +1,8 @@
-"""Pruebas de aceptación · BLOQUE C (José Cornejo): agente comercial, escalamiento y bitácora.
+"""Pruebas de aceptación · BLOQUE C: agente comercial, escalamiento y bitácora.
 
 Terminado = este archivo con 0 pendientes y 0 fallas: `python -m pytest pruebas/aceptacion/test_bloque_c.py`.
 Son pruebas de integración: necesitan el bloque B (seed y ERP simulado). Mientras B no esté, quedan
-pendientes; el brief explica cómo avanzar en paralelo.
+pendientes.
 """
 
 import json

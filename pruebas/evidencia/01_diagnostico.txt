@@ -1,0 +1,16 @@
+# python -m sie diagnostico · 07/11/2026 11:56
+Diagnóstico del Agente SIE 4.0.0 · raíz <raíz del proyecto>
+  [OK] Python 3.11 o superior: 3.11.0 en <python 3.11 del entorno virtual>
+  [OK] Datos de prueba (datos/seed): 24 archivos CSV
+  [OK] Escritura en datos/: <raíz del proyecto>\datos
+  [OK] Escritura en logs/: <raíz del proyecto>\logs
+  [OK] SQLite: 3.38.4
+  [OK] Datos y ERP simulado (bloque B): listo
+  [OK] Caso normal de punta a punta (bloque C): listo
+  [OK] Opcional: streamlit: instalado
+  [OK] Opcional: anthropic: instalado
+  [OK] Opcional: pytest: instalado
+  [OK] Modo del agente: reglas (pedido: reglas); API key no configurada
+
+Todo listo para la demo.
+# código de salida: 0

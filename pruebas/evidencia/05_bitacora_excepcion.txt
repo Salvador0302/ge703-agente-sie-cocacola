@@ -1,0 +1,34 @@
+# python -m sie bitacora --run RUN-20261107-115653-e45f
+
+run RUN-20261107-115653-e45f · fecha de negocio 07/10/2026
+  2026-11-07T11:56:53-05:00  orquestador  enrutar                  pedido → comercial
+  2026-11-07T11:56:53-05:00  comercial    interpretar              cliente CLI-002 · cotización no indicada · cantidad 600
+  2026-11-07T11:56:53-05:00  comercial    R2 cotización solicitable V · COT-002-V02 Aceptada, vigente hasta 2026-10-15, 600 paquetes [R2]
+  2026-11-07T11:56:53-05:00  comercial    pre-chequeo ATP (I3)     PRD-001: 380 disponibles para 600 (no vinculante)
+  2026-11-07T11:56:53-05:00  comercial    enviar EV-02             SOL-002 intento 1 · 600 paquetes · canal Teléfono [ADR-003]
+  2026-11-07T11:56:53-05:00  erp          recibir EV-02            Solicitud inicial · canal Teléfono
+  2026-11-07T11:56:53-05:00  erp          C1 cliente               V · Cliente CLI-002 activo y sincronizado (ERPCLI-002) [C1]
+  2026-11-07T11:56:53-05:00  erp          C2 crédito               V · Total S/ 13287.74 dentro del límite S/ 20000.00 [C2]
+  2026-11-07T11:56:53-05:00  erp          C3 precio vigente        V · Precios vigentes a la fecha de envío [C3]
+  2026-11-07T11:56:53-05:00  erp          C4 descuento             V · Descuento 8 % aprobado por Supervisor de ventas el 2026-10-07 [C4]
+  2026-11-07T11:56:53-05:00  erp          C5 ATP                   F · ATP 380 de 600 de PRD-001 (C5) [C5] → ATP-PARCIAL
+  2026-11-07T11:56:53-05:00  erp          causa del faltante       OT-2026-0107: 96 h de parada en ACT-LLN-01 · −240 paq · ATP 380 (sin la parada 620) [R6]
+  2026-11-07T11:56:53-05:00  erp          responder EV-04          ATP-PARCIAL · sin pedido · responsable Planeamiento CD → Preventista 2 → ATP-PARCIAL
+  2026-11-07T11:56:53-05:00  comercial    recibir respuesta        ATP-PARCIAL · sin pedido → ATP-PARCIAL
+  2026-11-07T11:56:53-05:00  comercial    escalar                  ESC-SOL-002-1 · SOL-002 intento 1 → ATP-PARCIAL
+  2026-11-07T11:56:53-05:00  comercial    resultado                ESPERA_HUMANO · ATP-PARCIAL · sin pedido → ATP-PARCIAL
+  2026-11-07T11:56:53-05:00  orquestador  enrutar                  decision_humana → comercial
+  2026-11-07T11:56:53-05:00  comercial    registrar decisión humana Preventista 2: el cliente acepta la promesa · evidencia ACEP-SOL-002-2 [ADR-005]
+  2026-11-07T11:56:53-05:00  comercial    enviar EV-05             SOL-002 intento 2 · tramos 380 el 2026-10-09 + 220 el 2026-10-12 [ADR-003]
+  2026-11-07T11:56:53-05:00  erp          recibir EV-05            Confirmación promesa · canal Teléfono
+  2026-11-07T11:56:53-05:00  erp          C1 cliente               V · Cliente CLI-002 activo y sincronizado (ERPCLI-002) [C1]
+  2026-11-07T11:56:53-05:00  erp          C2 crédito               V · Total S/ 13287.74 dentro del límite S/ 20000.00 [C2]
+  2026-11-07T11:56:53-05:00  erp          C3 precio vigente        V · Precios vigentes a la fecha de envío [C3]
+  2026-11-07T11:56:53-05:00  erp          C4 descuento             V · Descuento 8 % aprobado por Supervisor de ventas el 2026-10-07 [C4]
+  2026-11-07T11:56:53-05:00  erp          C5 ATP                   F · ATP 380 de 600 de PRD-001 (C5) [C5] → OK-PROMESA-ALT
+  2026-11-07T11:56:53-05:00  erp          causa del faltante       OT-2026-0107: 96 h de parada en ACT-LLN-01 · −240 paq · ATP 380 (sin la parada 620) [R6]
+  2026-11-07T11:56:53-05:00  erp          crear pedido             PED-002 · S/ 13287.74 · promesa 2026-10-09 · revisión 2026-10-12
+  2026-11-07T11:56:53-05:00  erp          responder EV-03          OK-PROMESA-ALT · PED-002 · responsable Preventista 2 → OK-PROMESA-ALT
+  2026-11-07T11:56:53-05:00  comercial    recibir respuesta        OK-PROMESA-ALT · PED-002 → OK-PROMESA-ALT
+  2026-11-07T11:56:53-05:00  comercial    registrar en CRM         OPP-002 Ganada [R9]
+  2026-11-07T11:56:53-05:00  comercial    resultado                COMPLETADO · OK-PROMESA-ALT · PED-002 → OK-PROMESA-ALT

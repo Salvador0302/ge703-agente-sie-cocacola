@@ -7,7 +7,7 @@ Sistema de agentes de IA, uno por proceso y coordinados por un orquestador, que 
 | Curso | GE703 Sistemas Integrados Empresariales · UNI / FIIS · 2026-2 |
 | Grupo | G2 |
 | Empresa | Coca-Cola, a través de Arca Continental Lindley (ACL), Perú · canal tradicional (bodegas que piden por TUALI, preventa o teléfono) |
-| Integrantes | Barrionuevo Gutierrez, Salvador Jhou (líder y arquitecto) · Cornejo Palomino, José Julián · Leandro Ochoa, Gianmarco · Urbano Lara, David Alexis |
+| Integrantes | Barrionuevo Gutierrez, Salvador Jhou (líder y arquitecto) · Cornejo Palomino, José Julián · Leandro Ochoa, Gianmarco · Urbano Lara, David Alexis · aportes de cada uno en [`arquitectura/ROLES_EQUIPO.md`](arquitectura/ROLES_EQUIPO.md) |
 | Incremento actual | PC3: agente comercial · entrega 13/11/2026, exposición 14/11/2026 |
 
 ## Qué resuelve
@@ -44,14 +44,12 @@ flowchart LR
     O -.-> FO["Agente de finanzas operativas"]
     O -.-> CEO["Agente CEO (por confirmar)"]
     classDef hecho fill:#d1fae5,stroke:#047857,color:#064e3b
-    classDef curso fill:#fef3c7,stroke:#b45309,color:#78350f
     classDef previsto fill:#f3f4f6,stroke:#9ca3af,color:#4b5563,stroke-dasharray:4 3
-    class O,L hecho
-    class A,C,I8,E,DB,H,B curso
+    class O,A,C,I8,E,DB,H,B,L hecho
     class CS,LG,FO,CEO previsto
 ```
 
-Verde: implementado y probado · ámbar: en construcción (interfaces y pruebas de aceptación listas) · gris punteado: previsto para incrementos siguientes.
+Verde: implementado y probado (el modo LLM, con una simulación de la API) · gris punteado: previsto para incrementos siguientes. Detalle: [`arquitectura/VISTAS.md`](arquitectura/VISTAS.md) y decisiones en [`arquitectura/adr/`](arquitectura/adr/).
 
 ## Caso de excepción: de la parada de mantenimiento a la promesa al cliente
 
@@ -82,14 +80,14 @@ sequenceDiagram
     ERP-->>AG: EV-03 · OK-PROMESA-ALT · PED-002 · 380 el 09/10 + 220 el 12/10
 ```
 
-El caso normal sigue el mismo camino sin escalamiento: Bodega Don Lucho (CLI-003) acepta en TUALI la cotización COT-003-V01 → SOL-003 → `OK-ACEPTADO` → PED-003.
+El caso normal sigue el mismo camino sin escalamiento: Bodega Don Lucho (CLI-003) acepta en TUALI la cotización COT-003-V01 → SOL-003 → `OK-ACEPTADO` → PED-003. Cadena completa e indicadores para el informe: [`procesos/PARADA_ATP.md`](procesos/PARADA_ATP.md).
 
 ## Hoja de ruta
 
 ```mermaid
 flowchart LR
     E0["EP · 24/10/2026<br/>Contrato I8 y decisión del comité<br/>Hecho"]
-    E1["PC3 · 14/11/2026<br/>Agente comercial<br/>En construcción"]
+    E1["PC3 · 14/11/2026<br/>Agente comercial<br/>Implementado, por entregar"]
     E2["Semanas 12 y 13<br/>Cadena de suministro y logística<br/>Previsto"]
     E3["PC4 · 05/12/2026<br/>Finanzas operativas<br/>Previsto"]
     E4["Examen final<br/>Integración de ventas a finanzas operativas<br/>Previsto"]
@@ -102,23 +100,25 @@ flowchart LR
     class E2,E3,E4 previsto
 ```
 
-Todos los incrementos usan los mismos datos: los pedidos PED-002 y PED-003 que crea el agente en la PC3 son los que la PC4 llevará a entrega, factura, cobro y conciliación.
+Todos los incrementos usan los mismos datos: los pedidos PED-002 y PED-003 que crea el agente en la PC3 son idénticos a los del EP, de modo que la PC4 los llevará a entrega, factura, cobro y conciliación.
 
 ## Estado del avance al 07/11/2026
 
 | Componente | Estado | Evidencia |
 |---|---|---|
-| Contrato I8 v1.2 tipado | Hecho | `producto/sie/contrato.py` · 8 pruebas pasan (reproduce los 12 mensajes del EP y el catálogo de 9 códigos) · `arquitectura/contrato_i8/CONTRATO_I8.md` |
-| Orquestador | Hecho | `producto/sie/orquestador.py` · 8 pruebas pasan · ADR-006 |
-| Configuración | Hecho | `producto/sie/config.py` · 6 pruebas pasan · ADR-002 |
-| CLI y diagnóstico | Hecho; la demo completa espera los componentes en construcción | `producto/sie/cli.py` · 8 pruebas pasan |
-| Modo LLM (Claude API) | Hecho, probado con una simulación de la API (sin API key) | `producto/sie/llm/` · 14 pruebas pasan · ADR-001 |
-| Datos y ERP simulado | En curso: interfaz y 22 pruebas de aceptación definidas | `producto/sie/erp/`, `producto/sie/db/` · ADR-004 |
-| Agente comercial y bitácora | En curso: interfaz y 13 pruebas de aceptación definidas | `producto/sie/agentes/comercial/` · ADR-003, ADR-005 |
-| Interfaz (Streamlit) | Pendiente: 1 prueba de aceptación definida | `producto/sie/ui/app.py` |
-| Paquete de entrega (guía y ZIP) | Pendiente: 5 pruebas de aceptación definidas | `entrega/` |
+| Contrato I8 v1.2 tipado | Hecho | `producto/sie/contrato.py` · 8 pruebas (reproduce los 12 mensajes del EP y el catálogo de 9 códigos) |
+| Orquestador | Hecho | `producto/sie/orquestador.py` · 8 pruebas · ADR-006 |
+| Configuración | Hecho | `producto/sie/config.py` · 6 pruebas · ADR-002 |
+| CLI y diagnóstico | Hecho | `producto/sie/cli.py` · 8 pruebas · demo normal 4 de 4 conformes, excepción 8 de 8 |
+| Datos y ERP simulado | Hecho | `producto/sie/erp/`, `producto/sie/db/` · 22 pruebas (los 12 intentos del EP y sus 9 pedidos al céntimo) · ADR-004 |
+| Agente comercial y bitácora | Hecho | `producto/sie/agentes/comercial/` · 13 pruebas · ADR-003, ADR-005 · ficha en `agentes/comercial/FICHA.md` |
+| Modo LLM (Claude API) | Hecho, probado con una simulación de la API | `producto/sie/llm/` · 16 pruebas · ADR-001. Pendiente: prueba con la API real (sin API key) |
+| Interfaz (Streamlit) | Hecho | `producto/sie/ui/app.py` · recorrido completo de los dos casos sin errores |
+| Paquete de entrega (guía y ZIP) | Hecho | [`entrega/GUIA_DESPLIEGUE.md`](entrega/GUIA_DESPLIEGUE.md) · ZIP verificado desde una copia extraída · 5 pruebas |
+| Resultados esperados calculados a mano | Pendiente | `pruebas/CASOS.csv` · Gianmarco Leandro |
+| Informe de la PC3 | En curso | `docs/informe_pc3/` · José Cornejo |
 
-Total: 44 pruebas pasan y 41 pruebas de aceptación esperan los componentes en curso. Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
+Total: 85 pruebas automáticas pasan. Evidencia de las demos: [`pruebas/evidencia/`](pruebas/evidencia/) y [`pruebas/ESPERADO_VS_OBSERVADO.md`](pruebas/ESPERADO_VS_OBSERVADO.md). Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
 
 ## Principios de diseño
 
@@ -127,35 +127,34 @@ Total: 44 pruebas pasan y 41 pruebas de aceptación esperan los componentes en c
 - **Se ejecuta sin dependencias ni API key.** La demo usa solo Python 3.11 y SQLite; Streamlit, la Claude API y pytest son opcionales (ADR-002).
 - **Todo queda en la bitácora, con escalamiento humano.** Cada paso se guarda con regla, código, IDs, fecha de negocio y, si se escala, a quién, por qué y hasta cuándo (ADR-005).
 
-## Cómo probar hoy
+## Cómo probarlo
 
-Requisito: Python 3.11 o superior. Desde la carpeta del proyecto:
+Requisito: Python 3.11 o superior; no hace falta instalar nada más. Guía completa, con resultados esperados y recuperación ante fallos: [`entrega/GUIA_DESPLIEGUE.md`](entrega/GUIA_DESPLIEGUE.md).
 
 ```powershell
 cd producto
-python -m sie diagnostico        # verifica Python, permisos y datos, y dice qué componentes ya funcionan
-python -m sie agentes            # agentes previstos y su estado
-python -m sie --help             # comandos disponibles
-cd ..
-pip install -r requirements.txt  # opcional: pytest, Streamlit y el SDK de la Claude API
-python -m pytest pruebas/unitarias  # 44 pruebas del núcleo
+python -m sie diagnostico         # verifica el entorno
+python -m sie demo normal         # Don Lucho por TUALI → OK-ACEPTADO → PED-003
+python -m sie demo excepcion      # Los Olivos por teléfono → ATP-PARCIAL → decisión de Preventista 2 → PED-002
+python -m sie bitacora --run <run>  # bitácora del caso
+python -m sie ui                  # interfaz web (requiere pip install -r requirements.txt)
 ```
 
-Cuando la demo esté completa, `python -m sie demo normal` mostrará la traza C1–C5, `OK-ACEPTADO` y PED-003. `python -m sie demo excepcion` mostrará `ATP-PARCIAL` con la causa OT-2026-0107, pedirá la decisión de Preventista 2 y terminará en `OK-PROMESA-ALT` con PED-002. Ambas cierran con una tabla de resultado esperado frente a observado.
+Cada demo termina con una tabla de resultado esperado frente a observado. Pruebas automáticas, desde la carpeta raíz: `pip install -r requirements.txt` y `python -m pytest pruebas`.
 
 ## Estructura del repositorio
 
 | Carpeta | Contenido |
 |---|---|
-| `arquitectura/` | Plan del incremento, vistas, interfaces, versiones, decisiones (ADR) y contrato I8 v1.2 |
-| `procesos/` | Reglas, tabla de decisiones, eventos y controles del agente comercial (en construcción) |
-| `datos/` | Diccionario de datos, fuentes, datos de prueba (`seed/`) y tratamiento de datos sensibles (en construcción) |
+| `arquitectura/` | Plan del incremento, roles del equipo, vistas, interfaces, versiones, decisiones (ADR) y contrato I8 v1.2 |
+| `procesos/` | Modelo del proceso, reglas y tabla de decisiones, eventos, controles y la cadena parada → ATP → promesa |
+| `datos/` | Diccionario de datos, fuentes, datos de prueba (`seed/`) y tratamiento de datos sensibles |
 | `producto/` | Código del Agente SIE (paquete `sie`): orquestador, agentes, reglas, ERP y CRM simulados, CLI e interfaz |
-| `pruebas/` | Pruebas automáticas, casos, resultados esperados frente a observados e incidencias |
-| `fuentes/` | Bibliografía, licencias y declaración de uso de IA (en construcción) |
-| `agentes/` | Ficha de cada agente: propósito, entradas, salidas, reglas, permisos, escalamiento y bitácora (en construcción) |
-| `entrega/` | Guía de despliegue y script que arma el ZIP de entrega (en construcción) |
-| `docs/antecedentes/` | Material del examen parcial y de las instrucciones de la PC3 y la PC4 (solo lectura) |
+| `pruebas/` | Pruebas automáticas, evidencia de las demos, esperado frente a observado, incidencias y criterios de aceptación |
+| `fuentes/` | Bibliografía, licencias y declaración de uso de IA |
+| `agentes/` | Ficha de cada agente: propósito, entradas, salidas, reglas, permisos, escalamiento y bitácora |
+| `entrega/` | Guía de despliegue y script que arma y verifica el ZIP de entrega |
+| `docs/` | Antecedentes del EP, la PC3 y la PC4 (solo lectura) y el esqueleto del informe de la PC3 |
 
 ## Datos
 
@@ -170,4 +169,4 @@ Todos los datos son **sintéticos** o vienen del modelo del examen parcial, que 
 
 ## Licencia
 
-Código bajo licencia MIT (`LICENSE`). El material del curso en `docs/antecedentes/` pertenece a la UNI FIIS (GE703) y se incluye solo para revisión académica.
+Código bajo licencia MIT (`LICENSE`). El material del curso en `docs/antecedentes/` pertenece a la UNI FIIS (GE703) y se incluye solo para revisión académica. Uso de IA declarado en [`fuentes/DECLARACION_IA.md`](fuentes/DECLARACION_IA.md).
