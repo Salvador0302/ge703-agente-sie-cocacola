@@ -66,11 +66,11 @@ def _titulo(texto: str) -> None:
 def _imprimir_traza(entradas: list[EntradaBitacora]) -> None:
     print("Traza (bitácora):")
     for e in entradas:
-        regla = f" [{e.regla}]" if e.regla else ""
-        codigo = f" → {e.codigo}" if e.codigo else ""
-        print(f"  {e.agente:<12} {e.paso:<24} {e.resultado}{regla}{codigo}")
+        regla = f" [{e.regla}]" if e.regla and e.regla not in e.paso else ""
+        codigo = f" → {e.codigo}" if e.codigo and e.codigo not in e.resultado else ""
+        print(f"  {e.agente:<12} {e.paso:<26} {e.resultado}{regla}{codigo}")
         if e.escalado_a:
-            print(f"  {'':<12} {'':<24} escala a {e.escalado_a} · límite {_dmy(e.fecha_limite)} · {e.motivo or ''}")
+            print(f"  {'':<12} {'':<26} escala a {e.escalado_a} · límite {_dmy(e.fecha_limite)} · {e.motivo or ''}")
 
 
 def _imprimir_resultado(r: ResultadoAgente) -> None:
