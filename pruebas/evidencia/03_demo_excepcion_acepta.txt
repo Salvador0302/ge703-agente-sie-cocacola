@@ -1,0 +1,60 @@
+# python -m sie demo excepcion --acepta · 07/11/2026 11:56
+
+── Excepción prioritaria · Comercial Los Olivos pide por teléfono 600 paquetes; el ATP es 380 · 07/10/2026 · modo reglas
+Entrada (Teléfono): "Llamada de Comercial Los Olivos: pide 600 paquetes de Inca Kola 500 ml de la promoción Fin de Año."
+Traza (bitácora):
+  orquestador  enrutar                    pedido → comercial
+  comercial    interpretar                cliente CLI-002 · cotización no indicada · cantidad 600
+  comercial    R2 cotización solicitable  V · COT-002-V02 Aceptada, vigente hasta 2026-10-15, 600 paquetes
+  comercial    pre-chequeo ATP (I3)       PRD-001: 380 disponibles para 600 (no vinculante)
+  comercial    enviar EV-02               SOL-002 intento 1 · 600 paquetes · canal Teléfono [ADR-003]
+  erp          recibir EV-02              Solicitud inicial · canal Teléfono
+  erp          C1 cliente                 V · Cliente CLI-002 activo y sincronizado (ERPCLI-002)
+  erp          C2 crédito                 V · Total S/ 13287.74 dentro del límite S/ 20000.00
+  erp          C3 precio vigente          V · Precios vigentes a la fecha de envío
+  erp          C4 descuento               V · Descuento 8 % aprobado por Supervisor de ventas el 2026-10-07
+  erp          C5 ATP                     F · ATP 380 de 600 de PRD-001 (C5) → ATP-PARCIAL
+  erp          causa del faltante         OT-2026-0107: 96 h de parada en ACT-LLN-01 · −240 paq · ATP 380 (sin la parada 620) [R6]
+  erp          responder EV-04            ATP-PARCIAL · sin pedido · responsable Planeamiento CD → Preventista 2
+  comercial    recibir respuesta          ATP-PARCIAL · sin pedido
+  comercial    escalar                    ESC-SOL-002-1 · SOL-002 intento 1 → ATP-PARCIAL
+                                          escala a Preventista 2 · límite 08/10/2026 · ATP 380 de 600 de PRD-001 (C5) · causa OT-2026-0107
+  comercial    resultado                  ESPERA_HUMANO · ATP-PARCIAL · sin pedido
+Resultado: ESPERA_HUMANO · ATP-PARCIAL · id_cliente=CLI-002 · id_cotizacion=COT-002-V02 · id_solicitud=SOL-002 · intento=1 · id_ot=OT-2026-0107
+Explicación: El ERP no confirma los 600 paquetes de SOL-002 intento 1: hay 380 disponibles (ATP-PARCIAL). La causa es la parada OT-2026-0107 de ACT-LLN-01 (96 h, 240 paquetes menos); sin ella habría 620. Propone 380 paquetes el 09/10/2026 y 220 paquetes el 12/10/2026. Preventista 2 debe confirmar con el cliente antes del 08/10/2026; sin esa aceptación no se crea el pedido.
+Escalamiento ESC-SOL-002-1: Preventista 2 · Pendiente · límite 08/10/2026
+  Causa: ATP 380 de 600 de PRD-001 (C5) · causa OT-2026-0107
+
+── Decisión humana · Preventista 2 · 08/10/2026
+Traza (bitácora):
+  orquestador  enrutar                    decision_humana → comercial
+  comercial    registrar decisión humana  Preventista 2: el cliente acepta la promesa · evidencia ACEP-SOL-002-2 [ADR-005]
+  comercial    enviar EV-05               SOL-002 intento 2 · tramos 380 el 2026-10-09 + 220 el 2026-10-12 [ADR-003]
+  erp          recibir EV-05              Confirmación promesa · canal Teléfono
+  erp          C1 cliente                 V · Cliente CLI-002 activo y sincronizado (ERPCLI-002)
+  erp          C2 crédito                 V · Total S/ 13287.74 dentro del límite S/ 20000.00
+  erp          C3 precio vigente          V · Precios vigentes a la fecha de envío
+  erp          C4 descuento               V · Descuento 8 % aprobado por Supervisor de ventas el 2026-10-07
+  erp          C5 ATP                     F · ATP 380 de 600 de PRD-001 (C5) → OK-PROMESA-ALT
+  erp          causa del faltante         OT-2026-0107: 96 h de parada en ACT-LLN-01 · −240 paq · ATP 380 (sin la parada 620) [R6]
+  erp          crear pedido               PED-002 · S/ 13287.74 · promesa 2026-10-09 · revisión 2026-10-12
+  erp          responder EV-03            OK-PROMESA-ALT · PED-002 · responsable Preventista 2
+  comercial    recibir respuesta          OK-PROMESA-ALT · PED-002
+  comercial    registrar en CRM           OPP-002 Ganada [R9]
+  comercial    resultado                  COMPLETADO · OK-PROMESA-ALT · PED-002
+Resultado: COMPLETADO · OK-PROMESA-ALT · id_cliente=CLI-002 · id_cotizacion=COT-002-V02 · id_solicitud=SOL-002 · intento=2 · id_pedido=PED-002
+Explicación: Con la aceptación del cliente, el ERP creó el pedido PED-002 con entrega parcial (OK-PROMESA-ALT): 380 paquetes el 09/10/2026 y 220 paquetes el 12/10/2026. Siguiente paso: Seguimiento de la reposición de 220 paquetes (Preventista 2).
+
+── Esperado frente a observado
+  Intento 1: código              esperado: ATP-PARCIAL                            observado: ATP-PARCIAL                            Conforme
+  Intento 1: cotización enviada  esperado: COT-002-V02                            observado: COT-002-V02                            Conforme
+  Intento 1: pedido creado       esperado: ninguno                                observado: ninguno                                Conforme
+  Intento 1: promesa propuesta   esperado: 380 el 2026-10-09 + 220 el 2026-10-12  observado: 380 el 2026-10-09 + 220 el 2026-10-12  Conforme
+  Intento 1: causa del faltante  esperado: OT-2026-0107                           observado: OT-2026-0107                           Conforme
+  Escala a                       esperado: Preventista 2                          observado: Preventista 2                          Conforme
+  Intento 2: código              esperado: OK-PROMESA-ALT                         observado: OK-PROMESA-ALT                         Conforme
+  Intento 2: pedido creado       esperado: PED-002                                observado: PED-002                                Conforme
+
+8 de 8 verificaciones conformes · run RUN-20261107-115653-e45f
+Bitácora: <raíz del proyecto>\logs\bitacora.jsonl  ·  python -m sie bitacora --run RUN-20261107-115653-e45f
+# código de salida: 0

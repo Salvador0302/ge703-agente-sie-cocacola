@@ -1,0 +1,35 @@
+# python -m sie demo normal · 07/11/2026 11:56
+
+── Caso normal · Bodega Don Lucho acepta su cotización en TUALI · 02/10/2026 · modo reglas
+Entrada (TUALI): "Bodega Don Lucho aceptó en la app TUALI su cotización de 65 paquetes con 5 % de descuento."
+Traza (bitácora):
+  orquestador  enrutar                    pedido → comercial
+  comercial    interpretar                cliente CLI-003 · cotización no indicada · cantidad 65
+  comercial    R2 cotización solicitable  V · COT-003-V01 Aceptada, vigente hasta 2026-10-08, 65 paquetes
+  comercial    pre-chequeo ATP (I3)       PRD-001: 492 disponibles para 30 (no vinculante)
+  comercial    pre-chequeo ATP (I3)       PRD-003: 1200 disponibles para 20 (no vinculante)
+  comercial    pre-chequeo ATP (I3)       PRD-006: 1200 disponibles para 15 (no vinculante)
+  comercial    enviar EV-02               SOL-003 intento 1 · 65 paquetes · canal TUALI [ADR-003]
+  erp          recibir EV-02              Solicitud inicial · canal TUALI
+  erp          C1 cliente                 V · Cliente CLI-003 activo y sincronizado (ERPCLI-003)
+  erp          C2 crédito                 V · Venta al contado
+  erp          C3 precio vigente          V · Precios vigentes a la fecha de envío
+  erp          C4 descuento               V · Descuento 5 % dentro del límite del preventista (5 %)
+  erp          C5 ATP                     V · ATP suficiente en todas las líneas
+  erp          crear pedido               PED-003 · S/ 1589.02 · promesa 2026-10-03
+  erp          responder EV-03            OK-ACEPTADO · PED-003 · responsable Preventista 1
+  comercial    recibir respuesta          OK-ACEPTADO · PED-003
+  comercial    registrar en CRM           OPP-003 Ganada · CLI-003: No usa → Híbrido [R9]
+  comercial    resultado                  COMPLETADO · OK-ACEPTADO · PED-003
+Resultado: COMPLETADO · OK-ACEPTADO · id_cliente=CLI-003 · id_cotizacion=COT-003-V01 · id_solicitud=SOL-003 · intento=1 · id_pedido=PED-003
+Explicación: El ERP aceptó SOL-003 intento 1 (OK-ACEPTADO) y creó el pedido PED-003 con entrega prometida el 03/10/2026. Siguiente paso: Seguimiento de entrega (Preventista 1).
+
+── Esperado frente a observado
+  Código de respuesta  esperado: OK-ACEPTADO                            observado: OK-ACEPTADO                            Conforme
+  Solicitud e intento  esperado: SOL-003 · 1                            observado: SOL-003 · 1                            Conforme
+  Pedido creado        esperado: PED-003                                observado: PED-003                                Conforme
+  Escalamiento         esperado: ninguno                                observado: ninguno                                Conforme
+
+4 de 4 verificaciones conformes · run RUN-20261107-115650-862c
+Bitácora: <raíz del proyecto>\logs\bitacora.jsonl  ·  python -m sie bitacora --run RUN-20261107-115650-862c
+# código de salida: 0
