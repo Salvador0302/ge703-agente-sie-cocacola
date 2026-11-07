@@ -1,0 +1,10 @@
+﻿Código,Significado,Quién corrige,Siguiente paso,¿Reintento?,Caso en el modelo
+OK-ACEPTADO,Pedido creado tal como se solicitó,—,Seguimiento de entrega,No aplica,"SOL-001-1, SOL-003-1 … SOL-009-1"
+OK-PROMESA-ALT,Pedido creado con entrega parcial aceptada por el cliente,—,Seguimiento de la reposición,No aplica,SOL-002-2
+ATP-PARCIAL,Stock insuficiente: el ERP propone cantidad y fecha alternativas,Preventista con el cliente,"Confirmar promesa (EV-05), reducir cantidad o cancelar","Sí, como Confirmación promesa",SOL-002-1
+PRECIO-NO-VIG,Alguna línea usa un precio sin vigencia en el ERP a la fecha de envío,Analista de precios RGM,Cargar la condición en ECC (I10) y reenviar,"Sí, mismo id_solicitud",SOL-005-1
+DESC-SIN-APROB,Descuento sobre 5% sin aprobación registrada,Supervisor de ventas,Aprobar o emitir nueva versión de cotización,"Sí, con nueva versión",(control preventivo: COT-002-V01 no se envió)
+CRED-BLOQ,Crédito bloqueado o total mayor al límite disponible,Créditos y cobranzas,"Liberar, pedir garantía o pasar a contado","Sí, tras la decisión",SOL-011-1
+CLI-NO-VALIDO,"Cliente inexistente, inactivo o no sincronizado",Analista de datos maestros,Completar el alta (EV-01),Sí,(CLI-012 pendiente de alta: aún sin solicitud)
+DATO-OBLIG,Falta un dato obligatorio del mensaje,Preventista,Completar y reenviar,Sí,—
+DUPLICADO,La solicitud o cotización ya tiene pedido,Soporte de integración,Devolver el id_pedido existente; no se crea otro,No,"(control de idempotencia, verificado en el validador)"

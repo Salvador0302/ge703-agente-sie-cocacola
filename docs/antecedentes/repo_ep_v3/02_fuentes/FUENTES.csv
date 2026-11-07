@@ -1,0 +1,36 @@
+﻿ID,Tipo,Emisor / fuente,URL o ubicación,Uso,Entrega,Fecha
+F01,Oficial,Arca Continental Lindley,https://www.arcacontinentallindley.pe/nosotros/,"Empresa, 6 plantas, +4,500 colaboradores, +370,000 clientes. PC2: rol de ACL en Perú. EP: reverificado (la página también llama ""puntos de venta"" a los 370 mil)",PC1 · PC2 · EP,19/09/2026; 23/10/2026
+F02,Oficial,Arca Continental Lindley,https://www.arcacontinentallindley.pe/blog/coca-cola-peru-y-arca-continental-lindley-reafirman-su-confianza-en-el-peru-con-inversion-de-us1000-millones/,"Inversión anunciada de US$1,000 millones",PC1,19/09/2026
+F03,Oficial,Arca Continental Lindley,https://www.arcacontinentallindley.pe/blog/200-mil-bodegueros-incorporan-herramientas-digitales-para-gestionar-pedidos-y-reposicion/,"TUALI y 200 mil bodegueros. PC2: funciones de TUALI (pedidos, promociones, portafolio). EP: 200 mil bodegueros = casi 4 de cada 10 bodegas del país (base ~535 mil, Asociación de Bodegueros del Perú, citada por ACL); TUALI lanzado en noviembre de 2025",PC1 · PC2 · EP,19/09/2026; 23/10/2026
+F04,Oficial,SAP Help,https://help.sap.com/docs/SAP_S4HANA_CLOUD,"Arquitectura, integración y producto SAP S/4HANA",PC1,12/09/2026
+F05,Oficial,SAP Community,https://community.sap.com/t5/technology-blog-posts-by-sap/rise-with-sap-tenancy-models-with-sap-cloud-services/ba-p/13524848,Modelos de tenancy/despliegue,PC1,12/09/2026
+F06,Oficial,Microsoft Learn,https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/organization-administration/architecture-overview,Arquitectura Dynamics 365 Finance & Operations,PC1,12/09/2026
+F07,Oficial,Microsoft Learn,https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-tools/application-stack-server-architecture,Application stack / server architecture,PC1,12/09/2026
+F08,Oficial,Microsoft Learn,https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/data-entities/integration-overview,Patrones de integración,PC1,12/09/2026
+F09,Oficial,StarSoft,https://www.starsoft.com.pe/producto-gold-edition.php,"Gold Edition, módulos y capacidades",PC1,12/09/2026
+F10,Oficial,StarSoft,https://www.starsoft.com.pe/descargas/FOLLETO_STARSOFT_GOLD_2020.pdf,Estructura Gold Edition,PC1,12/09/2026
+F11,Oficial,Odoo Documentation,https://www.odoo.com/documentation/19.0/developer/reference/external_api.html,API externa JSON-2,PC1,25/09/2026
+F12,Oficial,Odoo Documentation,https://www.odoo.com/documentation/19.0/developer/reference/backend/security.html,Seguridad / access rights / record rules,PC1,25/09/2026
+F13,Oficial,Odoo Documentation,https://www.odoo.com/documentation/19.0/,"Documentación general, despliegue y desarrollo",PC1,25/09/2026
+F14,Oficial,Arca Continental,https://arcacontal.com/media/409738/arca_continental_-_evoluci_n_digital_tuali.pdf,"Comunicado “Evolución digital Tuali” (18/10/2024): 60% del volumen del canal tradicional por plataforma digital en 2023, a nivel de todo Arca Continental (no solo Perú)",PC2,11/10/2026
+F15,Oficial,SAP Learning,https://learning.sap.com/learning-journeys/discover-sap-sales-cloud/determining-the-sales-order-process-flow-from-sap-sales-cloud-to-sap-s4hana_a869a9b5-3b95-4282-9104-6d3a601e9b32,Flujo de pedido de SAP Sales Cloud a SAP S/4HANA; IDs y estados devueltos al CRM,PC2 · EP,11/10/2026
+F16,Oficial,SAP Support,https://support.sap.com/en/release-upgrade-maintenance/maintenance-information/maintenance-strategy/s4hana-business-suite7.html,Mantenimiento principal de Business Suite 7 hasta fines de 2027; extendido opcional 2028–2030,PC1 · PC2 · EP,25/09/2026; 23/10/2026
+F17,Oficial,Congreso de la República del Perú,https://losandes.pe/wp-content/uploads/7-Ley-29733-Proteccion-de-datos-personales.pdf,"Ley 29733, Ley de Protección de Datos Personales: consentimiento y finalidad (texto publicado por la Universidad Peruana Los Andes)",PC2 · EP,11/10/2026
+C01,Curso,"UNI FIIS · GE703 — Semana 6 · CRM, marketing y ventas (presentación)",01_evidencias/06_S6_Presentacion_CRM_Marketing_Ventas.pdf,"Frontera CRM–ERP (lám. 9), cotización y aprobación (lám. 11 y 14), excepciones y promesa alternativa (lám. 18), agentes (lám. 21), caso Andina (lám. 26)",PC2 · EP,10/10/2026
+C02,Curso,UNI FIIS · GE703 — Semana 6 · Modelo maestro CRM–ERP (Andina),01_evidencias/05_S6_Modelo_Maestro_Andina_referencia.xlsx,"Estructura de tablas, diccionario y calibración del contrato",PC2,10/10/2026
+C03,Curso,UNI FIIS · GE703 — Semana 6 · Plantilla de contrato CRM–ERP,01_evidencias/04_S6_Plantilla_Contrato_CRM_ERP_original.pdf,Estructura del contrato completado,PC2,10/10/2026
+C04,Curso,UNI FIIS · GE703 — PC2 · Instrucciones y rúbrica,01_evidencias/01_PC2_Instrucciones_y_Rubrica.pdf,Alcance y criterios de la entrega,PC2,11/10/2026
+C05,Curso,UNI FIIS · GE703 — Proyecto acumulativo y rúbricas,Material del curso (aula virtual),Estructura sugerida del repositorio,PC2,11/10/2026
+C06,Curso,UNI FIIS · GE703 — Examen Parcial · Instrucciones y rúbrica (comité de decisión ERP),01_evidencias/01_EP_Instrucciones_y_Rubrica_Comite.pdf,"Alcance, momentos, evidencias obligatorias y rúbrica individual",EP,23/10/2026
+C07,Curso,UNI FIIS · GE703 — Semana 5 · Macroprocesos ERP (presentación),01_evidencias/07_S5_Presentacion_Macroprocesos.pdf,"O2C, P2P, eventos, datos y controles",EP,23/10/2026
+S01,Secundaria,"Padilla Panduro, Z. C. — informe de experiencia profesional, Universidad Nacional Federico Villarreal",,Evidencia pública de Portal de Información ACL en SAP y planeamiento en SAP APO,PC1,19/09/2026
+S02,Secundaria,Perfiles públicos de consultores vinculados al proyecto ACL Perú,,Paisaje histórico BAAN/WMS/SAP e interfaces,PC1,19/09/2026
+S03,Secundaria,"SNP Group (2024), meta-estudio de migración a SAP S/4HANA",,Riesgos y desafíos de migración,PC1,19/09/2026
+S04,Secundaria,Matriz comparativa ERP v0.1 del equipo,,Criterios y hallazgos de Semana 2,PC1,12/09/2026
+S05,Secundaria,Estrategia de implementación ERP v0.1 del equipo,,"Ruta, gobierno, riesgos y backlog",PC1,19/09/2026
+S06,Secundaria,PC1 G2 — Justificación de arquitectura ERP base (v1.0),,"Decisiones que se mantienen, criterio C1, hipótesis H1, interfaces I1–I7, backlog",PC2,11/10/2026
+S07,Secundaria,Avance del grupo 2 — Semana 5 (macroprocesos),,Canal tradicional por preventa; macroprocesos de ACL,PC2,03/10/2026
+S08,Secundaria,SAP PRESS (Rheinwerk) — “5 SAP Cloud for Customer features to use after integrating with SAP ERP” — https://blog.sap-press.com/5-sap-cloud-for-customer-features-to-use-after-integrating-with-sap-erp,,"Precio externo, ATP y crédito consultados al ERP desde el CRM",PC2,11/10/2026
+S09,Secundaria,Corresponsables — “Arca Continental impulsa la digitalización de las bodegas peruanas con TUALI” (06/12/2025) — https://www.corresponsables.com/per/actualidad/arca-continental-impulsa-la-digitalizacion-de-las-bodegas-peruanas-con-tuali-una-app-con-ia-generativa/,,"TUALI en Perú: registro con número de cliente, pedidos y promociones",PC2,11/10/2026
+S10,Secundaria,LP Derecho — Reglamento de la Ley 29733 (DS 016-2024-JUS) — https://lpderecho.pe/reglamento-ley-proteccion-datos-personales-decreto-supremo-016-2024-jus/,,Marco reglamentario vigente del consentimiento,PC2,11/10/2026
+S11,Secundaria,PC2 G2 v2.1 — entrega del 17/10/2026 (problema TUALI vs. teléfono; Don Lucho; mayorista híbrido),Repositorio del G2 en Drive,Problema precisado y escenario que el EP continúa,EP,23/10/2026

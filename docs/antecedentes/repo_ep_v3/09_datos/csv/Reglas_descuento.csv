@@ -1,0 +1,5 @@
+﻿id_regla_descuento,id_lista_precio,descuento_desde,descuento_hasta,autoridad,requiere_aprobacion,vigente_desde,vigente_hasta
+REG-BOD-STD,LP-BOD-2026,0,0.05,Preventista,FALSE,2026-10-01,2026-12-31
+REG-BOD-EXC,LP-BOD-2026,0.0501,0.12,Supervisor de ventas,TRUE,2026-10-01,2026-12-31
+REG-MAY-STD,LP-MAY-2026,0,0.05,Preventista,FALSE,2026-10-01,2026-12-31
+REG-MAY-EXC,LP-MAY-2026,0.0501,0.12,Supervisor de ventas,TRUE,2026-10-01,2026-12-31

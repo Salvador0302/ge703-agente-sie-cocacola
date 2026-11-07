@@ -1,0 +1,56 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "evento": "EV-02 Solicitar creación de pedido",
+  "id_solicitud": "SOL-003",
+  "intento": 1,
+  "tipo_mensaje": "Solicitud inicial",
+  "canal_origen": "TUALI",
+  "capturado_por": "Cliente en app TUALI (cotización aceptada en la app)",
+  "sistema_origen": "SAP Sales Cloud",
+  "fecha_envio": "2026-10-02",
+  "id_cotizacion": "COT-003-V01",
+  "version_cotizacion": 1,
+  "id_oportunidad": "OPP-003",
+  "id_cliente": "CLI-003",
+  "codigo_cliente_erp": "ERPCLI-003",
+  "id_direccion_entrega": "DIR-006",
+  "moneda": "PEN",
+  "condicion_pago_dias": 0,
+  "estado_descuento": "No requerido",
+  "aprobador": null,
+  "fecha_aprobacion": null,
+  "acepta_entrega_parcial": false,
+  "lineas": [
+    {
+      "numero_linea": 1,
+      "id_producto": "PRD-001",
+      "cantidad": 30,
+      "unidad": "CJ",
+      "id_precio": "PRE-BOD-001",
+      "precio_unitario": 21.5,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-BOD-STD"
+    },
+    {
+      "numero_linea": 2,
+      "id_producto": "PRD-003",
+      "cantidad": 20,
+      "unidad": "CJ",
+      "id_precio": "PRE-BOD-003",
+      "precio_unitario": 24.0,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-BOD-STD"
+    },
+    {
+      "numero_linea": 3,
+      "id_producto": "PRD-006",
+      "cantidad": 15,
+      "unidad": "CJ",
+      "id_precio": "PRE-BOD-006",
+      "precio_unitario": 19.5,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-BOD-STD"
+    }
+  ],
+  "importe_total_cotizado": 1589.02
+}

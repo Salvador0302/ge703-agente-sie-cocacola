@@ -1,0 +1,10 @@
+﻿ID,Regla,Descripción,Fuente o supuesto,Caso en el modelo
+R1,Calificación de lead,"Un lead se califica solo si está en una ruta del CD, tiene RUC válido, no duplica un cliente y tiene consentimiento. Si no, se descarta con motivo",SUPUESTO — equipo; consentimiento: Ley 29733 (F17),"LEAD-001, LEAD-002, LEAD-003, LEAD-007, LEAD-013"
+R2,Cotización solicitable,Solo una versión Aceptada y vigente puede generar una solicitud; una versión rechazada nunca se envía,"SUPUESTO — equipo, a partir de C01 lám. 11 y 14",COT-002-V01 (no enviada) / COT-002-V02
+R3,Descuento,Hasta 5%: preventista. Más de 5% y hasta 12%: Supervisor de ventas. Más de 12%: fuera de política,SUPUESTO — equipo; validar con ACL (B15),Reglas_descuento; COT-002 (8% aprobado); COT-003-V01 (5% sin aprobación)
+R4,Precio,Solo se usan precios de lista vigentes en ECC; las promociones de RGM se cargan como condiciones (I10),SUPUESTO — equipo,SOL-005 (PRECIO-NO-VIG)
+R5,Crédito,Bodega nueva: contado. Mayorista: límite y plazo aprobados. Crédito bloqueado o excedido: rechazo,SUPUESTO — equipo; validar con ACL (B16),SOL-011 (CRED-BLOQ)
+R6,Disponibilidad,"Si el ATP no cubre la cantidad, el ERP propone cantidad y fecha; el pedido parcial exige aceptación del cliente",HECHO — C01 lám. 18,SOL-002 (ATP-PARCIAL → OK-PROMESA-ALT)
+R7,Idempotencia,Cada solicitud tiene un id único; un reintento conserva el id y aumenta el intento; nunca se crean dos pedidos para una misma cotización,SUPUESTO — equipo,"SOL-002, SOL-005"
+R8,Canal gobernado,Todo pedido telefónico o por WhatsApp se registra en el CRM con canal_origen = Teléfono y entra por el contrato I8; no hay pedidos fuera del sistema,"DECISIÓN — equipo, EP (23/10/2026)","SOL-002, SOL-007, SOL-009, SOL-011"
+R9,Adopción de TUALI,Después de cada pedido se actualiza el estado de adopción del cliente (No usa → Híbrido → Digital) según su canal; los clientes telefónicos e híbridos reciben la campaña Pásate a TUALI,"SUPUESTO — equipo, EP (23/10/2026)","CLI-003 (Híbrido), CLI-002 (Híbrido), CAMP-004"

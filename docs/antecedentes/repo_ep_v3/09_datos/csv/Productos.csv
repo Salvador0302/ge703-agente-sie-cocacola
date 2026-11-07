@@ -1,0 +1,9 @@
+﻿id_producto,sku,descripcion,tipo_producto,familia,unidad_medida,configuracion,especificacion_tecnica,categoria_impuesto,tasa_igv,costo_unitario_referencia,vendible,estado_producto
+PRD-001,IK-500-12,Inca Kola 500 ml PET · paquete x12,Producto terminado,Gaseosas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,14.1,TRUE,Activo
+PRD-002,CC-500-12,Coca-Cola 500 ml PET · paquete x12,Producto terminado,Gaseosas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,14.1,TRUE,Activo
+PRD-003,IK-1500-6,Inca Kola 1.5 L PET · paquete x6,Producto terminado,Gaseosas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,15.8,TRUE,Activo
+PRD-004,CC-3000-4,Coca-Cola 3 L PET · paquete x4,Producto terminado,Gaseosas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,17.9,TRUE,Activo
+PRD-005,SL-625-15,Agua San Luis sin gas 625 ml · paquete x15,Producto terminado,Aguas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,7.6,TRUE,Activo
+PRD-006,FN-500-12,Fanta Naranja 500 ml PET · paquete x12,Producto terminado,Gaseosas,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,12.8,TRUE,Activo
+PRD-007,PW-500-12,Powerade Frutas 500 ml · paquete x12,Producto terminado,Isotónicos,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,15.2,TRUE,Activo
+PRD-008,FR-1000-6,Frugos del Valle Durazno 1 L · paquete x6,Producto terminado,Jugos,CJ,Estándar,Ficha didáctica; SKU y empaque por validar con catálogo ACL,Gravado,0.18,10.9,TRUE,Activo

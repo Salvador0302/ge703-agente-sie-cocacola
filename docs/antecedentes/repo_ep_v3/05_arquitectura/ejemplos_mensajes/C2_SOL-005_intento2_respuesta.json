@@ -1,0 +1,17 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "id_solicitud": "SOL-005",
+  "intento": 2,
+  "codigo_respuesta": "OK-ACEPTADO",
+  "estado_solicitud": "Aceptada",
+  "id_pedido": "PED-005",
+  "responsable_siguiente_paso": "Preventista 3",
+  "siguiente_paso": "Seguimiento de entrega",
+  "evento": "EV-03 Aceptar o rechazar pedido",
+  "pedido": {
+    "fecha_confirmacion": "2026-10-09",
+    "fecha_prometida": "2026-10-10",
+    "fecha_revision_promesa": null,
+    "estado_pedido_al_corte": "Entregado"
+  }
+}

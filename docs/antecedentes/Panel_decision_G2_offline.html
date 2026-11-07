@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang='es'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Comité de decisión ACL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: acta de comité en una sola vista — cabecera fija (decisión + reloj de 15 min), barra de 7 momentos, escenario central con la evidencia del momento activo */
+:root{
+  --bg:#EEF1F5; --surface:#FFFFFF; --sunk:#F5F7FA; --ink:#121A2B; --ink2:#3B4658; --muted:#566175; --line:#D3DAE4;
+  --accent:#0F6B7A; --accent-soft:#E3F1F3; --ep:#B0164E; --ep-soft:#FBE9F0;
+  --ok:#1D7A4C; --ok-soft:#E3F3EA; --warn:#9A6A00; --warn-soft:#FBF1D9; --bad:#B4322A; --bad-soft:#FBE7E5;
+  --f-display:'Archivo','Arial Narrow',Arial,sans-serif; --f-body:'Source Sans 3','Segoe UI',Arial,sans-serif; --f-mono:'IBM Plex Mono',Consolas,'Courier New',monospace;
+  --d-font:var(--f-body); --d-mono:var(--f-mono); --d-ink:var(--ink); --d-ink2:var(--ink2); --d-muted:var(--muted); --d-accent:var(--accent); --d-ep:var(--ep);
+  --d-box:#FFFFFF; --d-box2:#EAF4F6; --d-box3:#FBEAF0; --d-off:#EEF1F5; --d-band:#F4F6F9; --d-line:#B9C2D0; --d-pc1:#7C8798; --d-chip:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D131B; --surface:#151E29; --sunk:#111922; --ink:#E6ECF4; --ink2:#C3CCD9; --muted:#97A3B6; --line:#2A3748;
+  --accent:#45B8C9; --accent-soft:#12303A; --ep:#F0679A; --ep-soft:#3A1726;
+  --ok:#55C98D; --ok-soft:#123224; --warn:#E5B54A; --warn-soft:#33280F; --bad:#F27A6E; --bad-soft:#3A1916;
+  --d-box:#18222E; --d-box2:#123039; --d-box3:#3A1726; --d-off:#141C26; --d-band:#111922; --d-line:#3A4759; --d-pc1:#7D8AA0; --d-chip:#18222E;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D131B; --surface:#151E29; --sunk:#111922; --ink:#E6ECF4; --ink2:#C3CCD9; --muted:#97A3B6; --line:#2A3748;
+  --accent:#45B8C9; --accent-soft:#12303A; --ep:#F0679A; --ep-soft:#3A1726;
+  --ok:#55C98D; --ok-soft:#123224; --warn:#E5B54A; --warn-soft:#33280F; --bad:#F27A6E; --bad-soft:#3A1916;
+  --d-box:#18222E; --d-box2:#123039; --d-box3:#3A1726; --d-off:#141C26; --d-band:#111922; --d-line:#3A4759; --d-pc1:#7D8AA0; --d-chip:#18222E;
+  color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.app{min-height:100%;display:grid;grid-template-rows:auto auto 1fr auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;gap:10px;max-width:1680px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);font-stretch:85%;text-wrap:balance;margin:0;letter-spacing:-.005em}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.86em}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* ---- cabecera ---- */
+.top{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.6fr) auto;gap:14px;align-items:stretch}
+.brand{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand h1{font-size:26px;font-weight:800;line-height:1.05}
+.brand h1 span{color:var(--accent)}
+.ballot{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-content:center;min-width:0}
+.ballot .q{font-size:14.5px;line-height:1.35;min-width:0}
+.ballot .q b{font-weight:700}
+.votes{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-start;align-items:center}
+.votes .vl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.vote{font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;border:1.5px solid var(--line);color:var(--muted);white-space:nowrap}
+.vote.on{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;display:grid;grid-template-columns:auto auto;gap:4px 10px;align-items:center;min-width:220px}
+.clock .time{font-family:var(--f-mono);font-size:28px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.clock .time small{font-size:13px;color:var(--muted);font-weight:500}
+.clock.over .time{color:var(--bad)}
+.clock .ctl{display:flex;gap:6px;justify-content:flex-end}
+.iconbtn{border:1px solid var(--line);background:var(--sunk);border-radius:8px;padding:5px 9px;cursor:pointer;font-size:12.5px;font-weight:600}
+.iconbtn:hover{border-color:var(--accent)}
+.clock .now{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.clock .now b{color:var(--ink)}
+
+/* ---- barra de momentos ---- */
+.moments{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.tab{position:relative;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px 8px;cursor:pointer;display:flex;flex-direction:column;gap:1px;min-width:0;overflow:hidden}
+.tab:hover{border-color:var(--accent)}
+.tab .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
+.tab .n{font-family:var(--f-display);font-stretch:85%;font-weight:700;font-size:14.5px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab .w{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"] .n,.tab[aria-selected="true"] .w,.tab[aria-selected="true"] .k{color:var(--bg)}
+.tab .bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent)}
+.tab.live{box-shadow:inset 0 0 0 2px var(--accent)}
+.tab.done .bar{width:100%;background:var(--muted)}
+
+/* ---- escenario ---- */
+.stage{min-height:0;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.scene.wide{grid-template-columns:minmax(0,1fr)} .scene.wide>aside{display:none}
+.zoom{border:1px solid var(--line);background:var(--sunk);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12.5px;font-weight:600}
+.zoom:hover{border-color:var(--accent)}
+.scene{display:grid;grid-template-columns:minmax(250px,.3fr) minmax(0,1fr);gap:18px;align-items:start}
+.scene.full{grid-template-columns:minmax(0,1fr)}
+.card{display:flex;flex-direction:column;gap:12px;min-width:0}
+.who{display:flex;align-items:center;gap:10px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;flex:none}
+.who b{display:block;font-size:15px;line-height:1.2}
+.who span{font-size:12.5px;color:var(--muted)}
+.lab{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.decision{background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px}
+.decision .lab{color:var(--bg);opacity:.7}
+.decision p{font-size:16px;line-height:1.38;font-weight:600}
+.limit{border-left:3px solid var(--warn);background:var(--warn-soft);border-radius:0 10px 10px 0;padding:9px 12px;font-size:14px}
+.limit .lab{color:var(--warn)}
+.ev{display:flex;flex-direction:column;gap:5px;font-size:13.5px}
+.ev a,.ev code{font-family:var(--f-mono);font-size:12px;color:var(--accent);text-decoration:none;word-break:break-word}
+.ev li{list-style:none;display:flex;gap:6px}
+.ev ul{margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.ev li::before{content:"▸";color:var(--accent);flex:none}
+.visual{display:flex;flex-direction:column;gap:14px;min-width:0}
+.vh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.vh h2{font-size:22px;font-weight:800}
+.vh p{font-size:13.5px;color:var(--muted)}
+.svgwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:6px}
+.svgwrap svg{display:block;width:100%;min-width:760px;height:auto}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:10.5px;font-weight:600;padding:1px 6px;border-radius:5px;vertical-align:1px;white-space:nowrap}
+.tag.h{background:var(--ok-soft);color:var(--ok)} .tag.s{background:var(--warn-soft);color:var(--warn)} .tag.p{background:var(--bad-soft);color:var(--bad)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.box{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--sunk);min-width:0}
+.box h3{font-size:15.5px;font-weight:700;margin-bottom:6px}
+.box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:14px}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat .v{font-family:var(--f-display);font-weight:800;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.stat .v.ep{color:var(--ep)}
+.stat .d{font-size:13px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:700;padding:6px 8px;border-bottom:1.5px solid var(--line)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.code{font-family:var(--f-mono);font-size:11.5px;font-weight:600;padding:2px 7px;border-radius:6px;white-space:nowrap;display:inline-block}
+.code.ok{background:var(--ok-soft);color:var(--ok)} .code.w{background:var(--warn-soft);color:var(--warn)} .code.b{background:var(--bad-soft);color:var(--bad)}
+.check{color:var(--ok);font-weight:700}
+.crit{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 10px;align-items:baseline;font-size:14px}
+.crit .m{font-family:var(--f-mono);font-size:12px;font-weight:600;white-space:nowrap}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.compare>div{padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.compare .before{background:var(--bad-soft)} .compare .after{background:var(--ok-soft)}
+.compare h3{font-size:15px}
+.compare ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px}
+.flow .st{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 9px;font-weight:600;white-space:nowrap}
+.flow .st.ok{border-color:var(--ok);color:var(--ok)} .flow .st.w{border-color:var(--warn);color:var(--warn)} .flow .st.b{border-color:var(--bad);color:var(--bad)}
+.flow .ar{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--f-mono);font-size:11.5px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 7px}
+.chips span.new{border-color:var(--ep);color:var(--ep);font-weight:600}
+.cval{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:5px 10px;align-items:center;font-size:13.5px}
+.cval .n{font-family:var(--f-mono);font-weight:600;color:var(--accent)}
+/* línea de tiempo de la excepción */
+.tl{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:28px;height:2px;background:var(--line)}
+.tl .ev2{position:relative;padding:0 8px 0 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tl .d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.tl .dot{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);margin:6px 0 4px;position:relative;z-index:1}
+.tl .dot.b{border-color:var(--bad)} .tl .dot.w{border-color:var(--warn)} .tl .dot.ok{border-color:var(--ok)}
+.tl .t{font-size:13px;line-height:1.3}
+.tl .t b{display:block;font-size:13.5px}
+.dce{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dce .box{background:var(--surface)}
+.dce .step{font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.dce .step.d{color:var(--accent)} .dce .step.c{color:var(--warn)} .dce .step.e{color:var(--ep)}
+.verdict{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--ok-soft);border:1.5px solid var(--ok);border-radius:12px;padding:12px 16px}
+.verdict .big{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--ok);line-height:1}
+.verdict p{font-size:14.5px;flex:1;min-width:240px}
+/* vista general */
+.ov{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ovc{text-align:left;border:1px solid var(--line);background:var(--sunk);border-radius:12px;padding:10px 13px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-width:0}
+.ovc:hover{border-color:var(--accent)}
+.ovc .k{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.ovc h3{font-size:16.5px;font-weight:800}
+.ovc p{font-size:13.5px;line-height:1.35}
+.ovc .who2{font-size:12.5px;color:var(--accent);font-weight:600}
+.thesis{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+.thesis .big{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,2.1vw,32px);line-height:1.06;font-stretch:85%}
+.thesis .big em{font-style:normal;color:var(--ep)}
+.kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kv .box{background:var(--surface)}
+/* registro del vocal */
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--ink2)}
+.form input,.form textarea,.form select{font:inherit;font-size:15px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 10px}
+.form textarea{min-height:76px;resize:vertical}
+.form .wide{grid-column:1/-1}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.steps3 .box b{display:block;font-family:var(--f-display);font-size:15px}
+/* pie */
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.foot a{color:var(--accent);font-weight:600}
+.keys kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--surface);color:var(--ink2)}
+.small{font-size:12.5px;color:var(--muted)}
+@media (min-width:1100px){ .app{height:100%} }
+@media (max-width:1180px){ .top{grid-template-columns:1fr 1fr} .clock{grid-column:1/-1} .moments{grid-template-columns:repeat(4,minmax(0,1fr))} .ov{grid-template-columns:repeat(2,minmax(0,1fr))} .kv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){ .top{grid-template-columns:1fr} .scene{grid-template-columns:1fr} .grid2,.grid3,.dce,.thesis,.form,.steps3,.compare{grid-template-columns:1fr} .tl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px} .tl::before{display:none} .ballot{grid-template-columns:1fr} .votes{justify-content:flex-start}}
+@media (max-width:520px){ .moments{grid-template-columns:repeat(2,minmax(0,1fr))} .ov,.kv{grid-template-columns:1fr} .brand h1{font-size:22px}}
+@media (prefers-reduced-motion:no-preference){ .scene{animation:in .22s ease-out} @keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}} }
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">GE703 · Examen parcial · G2 · sábado 24/10/2026</div>
+      <h1>Comité de decisión ERP · <span>Coca-Cola / ACL</span></h1>
+      <div class="small">Canal tradicional de Lima Norte · paquete de evidencias v3.0</div>
+    </div>
+    <div class="ballot" aria-label="Decisión solicitada al comité">
+      <p class="q"><b>¿Aprobamos un solo contrato CRM–ERP para los pedidos de TUALI, preventa y teléfono, con TUALI como canal preferente?</b></p>
+      <div class="votes" aria-label="Opciones del comité"><span class="vl">Recomendación</span><span class="vote on">✓ Aprobar con condiciones</span><span class="vote">Ajustar</span><span class="vote">Rechazar</span></div>
+    </div>
+    <div class="clock" id="clock" aria-live="off">
+      <div class="time" id="time">00:00 <small>/ 15:00</small></div>
+      <div class="ctl"><button class="iconbtn" id="play" type="button" aria-label="Iniciar o pausar el cronómetro">Iniciar</button><button class="iconbtn" id="reset" type="button" aria-label="Reiniciar el cronómetro">↺</button><button class="iconbtn" id="fs" type="button" aria-label="Pantalla completa">⤢</button></div>
+      <div class="now" id="now">Momento sugerido: <b>—</b></div>
+    </div>
+  </header>
+
+  <nav class="moments" role="tablist" aria-label="Momentos de la exposición">
+    <button class="tab" role="tab" data-m="0" type="button"><span class="k"><span>0</span><span>panel</span></span><span class="n">Vista general</span><span class="w">todo el proyecto</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="1" type="button"><span class="k"><span>1</span><span>0–1′</span></span><span class="n">Decisión</span><span class="w">Salvador</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="2" type="button"><span class="k"><span>2</span><span>1–4′</span></span><span class="n">Arquitectura base</span><span class="w">Salvador Barrionuevo</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="3" type="button"><span class="k"><span>3</span><span>4–6′</span></span><span class="n">Recorrido O2C</span><span class="w">José Cornejo</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="4" type="button"><span class="k"><span>4</span><span>6–9′</span></span><span class="n">Contrato CRM–ERP</span><span class="w">Gianmarco Leandro</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="5" type="button"><span class="k"><span>5</span><span>9–11′</span></span><span class="n">Escenario de quiebre</span><span class="w">José Cornejo</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="6" type="button"><span class="k"><span>6</span><span>11–14′</span></span><span class="n">Recomendación final</span><span class="w">David Urbano</span><span class="bar"></span></button>
+    <button class="tab" role="tab" data-m="7" type="button"><span class="k"><span>7</span><span>14–15′</span></span><span class="n">Pregunta</span><span class="w">Vocero</span><span class="bar"></span></button>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- 0 · VISTA GENERAL -->
+    <section class="scene full" data-scene="0" aria-label="Vista general">
+      <div class="visual">
+        <div class="thesis">
+          <div class="box" style="background:var(--surface)">
+            <div class="lab">Tesis del comité</div>
+            <p class="big">Un pedido, un contrato, tres canales: <em>el teléfono sigue, pero entra por las mismas reglas que TUALI.</em></p>
+          </div>
+          <div class="box" style="background:var(--surface)">
+            <div class="lab">Reto de negocio</div>
+            <p style="font-size:15px">ACL tiene más de 370 mil clientes y 200 mil bodegueros en TUALI, casi 4 de cada 10 bodegas del país <span class="tag h">HECHO · ACL</span>. Cerca del 46 % de sus clientes aún no está en la app <span class="tag s">SUPUESTO · cálculo</span>. Sus pedidos por teléfono se confirman a mano y la promesa sale sin mirar el ATP, que es la hipótesis H1 del PC1.</p>
+          </div>
+        </div>
+        <div class="ov">
+          <button class="ovc" type="button" data-go="1"><span class="k"><span>1 · 0–1′</span><span>decisión</span></span><h3>Aprobar el contrato único</h3><p>Criterio de éxito: ningún pedido sin C1–C5, toda respuesta con código y dueño, ninguna promesa sobre el ATP.</p><span class="who2">Salvador Barrionuevo</span></button>
+          <button class="ovc" type="button" data-go="2"><span class="k"><span>2 · 1–4′</span><span>arquitectura</span></span><h3>ECC sigue comprometiendo</h3><p>Se mantiene SAP ECC/APO del PC1. Sales Cloud registra la relación; Integration Suite lleva el contrato I8. El teléfono entra al CRM.</p><span class="who2">Salvador Barrionuevo</span></button>
+          <button class="ovc" type="button" data-go="3"><span class="k"><span>3 · 4–6′</span><span>O2C</span></span><h3>Don Lucho pasa a TUALI</h3><p>CAMP-004 → LEAD-013 → OPP-003 → COT-003-V01 → SOL-003-1 → <span class="code ok">OK-ACEPTADO</span> → PED-003. El pedido consume ATP y conecta con P2P.</p><span class="who2">José Cornejo</span></button>
+          <button class="ovc" type="button" data-go="4"><span class="k"><span>4 · 6–9′</span><span>contrato</span></span><h3>EV-02 con 5 validaciones</h3><p>Cliente, crédito, precio vigente, descuento autorizado y ATP. Nueve códigos de respuesta, cada uno con responsable e idempotencia por solicitud + intento.</p><span class="who2">Gianmarco Leandro</span></button>
+          <button class="ovc" type="button" data-go="5"><span class="k"><span>5 · 9–11′</span><span>quiebre</span></span><h3>600 paquetes, 380 en stock</h3><p>Llamada de Los Olivos: <span class="code w">ATP-PARCIAL</span> → promesa 380 + 220 → el cliente acepta → <span class="code ok">OK-PROMESA-ALT</span>. Planeamiento del CD propone y el preventista gestiona.</p><span class="who2">José Cornejo</span></button>
+          <button class="ovc" type="button" data-go="6"><span class="k"><span>6 · 11–14′</span><span>recomendación</span></span><h3>Aprobar con condiciones</h3><p>Piloto en el CD Lima Norte. Se aceptan como riesgos el CRM supuesto y una prueba de escritorio. Pendientes: B13, B14, B01 y B18.</p><span class="who2">David Urbano</span></button>
+        </div>
+        <div class="kv">
+          <div class="box"><div class="stat"><span class="v">12/12</span><span class="d">intentos conformes (Python = bitácora = Excel)</span></div></div>
+          <div class="box"><div class="stat"><span class="v">3</span><span class="d">canales, mismas reglas C1–C5</span></div></div>
+          <div class="box"><div class="stat"><span class="v">0</span><span class="d">pedidos aceptados sobre el ATP</span></div></div>
+          <div class="box"><div class="stat"><span class="v">40</span><span class="d">relaciones del modelo sin huérfanos</span></div></div>
+        </div>
+        <p class="small">Datos sintéticos de prueba, no son datos de ACL. Teclas: <span class="keys"><kbd>0</kbd>–<kbd>7</kbd> momento · <kbd>←</kbd><kbd>→</kbd> navegar · <kbd>Z</kbd> ampliar la evidencia · <kbd>espacio</kbd> cronómetro · <kbd>R</kbd> reiniciar</span>.</p>
+      </div>
+    </section>
+
+    <!-- 1 · DECISIÓN EJECUTIVA -->
+    <section class="scene" data-scene="1" hidden aria-label="Decisión ejecutiva">
+      <aside class="card">
+        <div class="who"><div class="avatar">SB</div><div><b>Salvador Barrionuevo</b><span>Momento 1 · 0–1′ · arquitecto del grupo</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>Que el comité apruebe el contrato único CRM–ERP para los tres canales, con TUALI como canal preferente para migrar a los clientes telefónicos e híbridos.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><span>ACL, “Nosotros” y nota de TUALI (F01, F03; acceso 23/10/2026)</span></li>
+          <li><code>10_pruebas/RESULTADO_VALIDACION.txt</code></li>
+          <li><code>02_fuentes/FUENTES.csv</code></li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>El 46 % es un cálculo nuestro (200 mil sobre 370 mil): estar en TUALI no significa pedir siempre por la app. El uso por pedido es un vacío (B18).</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Reto, decisión y criterio de éxito</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Lo que el comité debe aprobar en este examen</p></span></div>
+        <div class="kv">
+          <div class="box"><div class="stat"><span class="v">+370 mil</span><span class="d">clientes de ACL <span class="tag h">HECHO · ACL</span></span></div></div>
+          <div class="box"><div class="stat"><span class="v">200 mil</span><span class="d">bodegueros usan TUALI <span class="tag h">HECHO · ACL</span></span></div></div>
+          <div class="box"><div class="stat"><span class="v">≈4 de 10</span><span class="d">bodegas del país (base: 535 mil) <span class="tag h">HECHO · ACL</span></span></div></div>
+          <div class="box"><div class="stat"><span class="v ep">≈46 %</span><span class="d">clientes de ACL aún sin TUALI <span class="tag s">SUPUESTO · cálculo</span></span></div></div>
+        </div>
+        <div class="compare">
+          <div class="before"><h3>Hoy, un pedido por teléfono</h3><ul><li>Precio, stock y crédito se confirman a mano, en varios contactos.</li><li>La promesa se da sin ver el ATP: con una promoción fuerte se promete lo que no hay (H1 del PC1).</li><li>El rechazo llega tarde y sin causa clara.</li></ul></div>
+          <div class="after"><h3>Con el contrato único</h3><ul><li>El preventista registra la llamada en el CRM y el pedido pasa por C1–C5, igual que en TUALI.</li><li>El ERP responde en el mismo envío con un código, un responsable y el siguiente paso.</li><li>El CRM sabe quién es híbrido y lo invita a TUALI con un bono en su primer pedido.</li></ul></div>
+        </div>
+        <div class="box" style="background:var(--surface)">
+          <div class="lab">Criterio de éxito</div>
+          <div class="crit">
+            <span class="check">✓</span><span>Ningún pedido se crea sin pasar C1–C5</span><span class="m">12/12 en la prueba</span>
+            <span class="check">✓</span><span>Toda respuesta trae código, responsable y siguiente paso</span><span class="m">12/12</span>
+            <span class="check">✓</span><span>Ninguna promesa por encima del ATP sin aceptación del cliente</span><span class="m">0 casos</span>
+            <span class="check">✓</span><span>El resultado no depende del canal (TUALI, preventa, teléfono)</span><span class="m">3 canales</span>
+            <span style="color:var(--warn);font-weight:700">◷</span><span>En el piloto: más pedidos por TUALI y menos tiempo de cotización a pedido confirmado</span><span class="m">línea base B18</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · ARQUITECTURA -->
+    <section class="scene" data-scene="2" hidden aria-label="Arquitectura base">
+      <aside class="card">
+        <div class="who"><div class="avatar">SB</div><div><b>Salvador Barrionuevo</b><span>Momento 2 · 1–4′</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>Mantener SAP ECC/APO como único sistema que compromete precio, crédito, ATP y pedido; el CRM solo registra la relación y el canal, y todo pedido entra por I8.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><code>05_arquitectura/arquitectura_v3.png</code></li>
+          <li><code>05_arquitectura/interfaces.csv</code> (I1–I10)</li>
+          <li><code>CHANGELOG.md</code> (v1.0 → v3.0)</li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>No hay evidencia pública del CRM real de ACL (B13) ni de su versión de SAP (B01). ECC tiene mantenimiento principal hasta fines de 2027 <span class="tag h">HECHO · SAP</span>.</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Arquitectura ERP base v3.0</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Gris: PC1 · verde azulado: PC2 · granate: cambio del EP</p></span></div>
+        <div class="svgwrap"><svg class="dg" viewBox="0 0 1110 560" role="img" aria-label="Arquitectura ERP base v3.0 de ACL" xmlns="http://www.w3.org/2000/svg"><style>
+.dg text{font-family:var(--d-font,'Source Sans 3','Segoe UI',Arial,sans-serif);fill:var(--d-ink,#121A2B)}
+.dg .mono{font-family:var(--d-mono,'IBM Plex Mono',Consolas,monospace)}
+.dg .t{font-weight:700;font-size:13.5px}
+.dg .s{font-size:11.5px;fill:var(--d-muted,#566175)}
+.dg .h{font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--d-muted,#566175)}
+.dg .id{font-size:11px;fill:var(--d-accent,#0F6B7A)}
+.dg .lbl{font-size:11px;font-weight:600;fill:var(--d-ink,#121A2B)}
+.dg .lblep{font-size:11px;font-weight:700;fill:var(--d-ep,#B0164E)}
+.dg .box{fill:var(--d-box,#FFFFFF);stroke:var(--d-line,#B9C2D0);stroke-width:1.3}
+.dg .box1{fill:var(--d-box,#FFFFFF);stroke:var(--d-pc1,#7C8798);stroke-width:1.5}
+.dg .box2{fill:var(--d-box2,#EAF4F6);stroke:var(--d-accent,#0F6B7A);stroke-width:1.8}
+.dg .box3{fill:var(--d-box3,#FBEAF0);stroke:var(--d-ep,#B0164E);stroke-width:2}
+.dg .boxoff{fill:var(--d-off,#EEF1F5);stroke:var(--d-line,#B9C2D0);stroke-width:1.2;stroke-dasharray:5 4}
+.dg .band{fill:var(--d-band,#F4F6F9);stroke:none}
+.dg .a{stroke:var(--d-ink2,#3B4658);stroke-width:1.6;fill:none}
+.dg .a2{stroke:var(--d-accent,#0F6B7A);stroke-width:2.2;fill:none}
+.dg .a3{stroke:var(--d-ep,#B0164E);stroke-width:3;fill:none}
+.dg .ad{stroke:var(--d-ink2,#3B4658);stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+.dg .front{stroke:var(--d-ep,#B0164E);stroke-width:1.4;stroke-dasharray:3 4;fill:none}
+.dg .chip{fill:var(--d-chip,#FFFFFF);stroke:var(--d-line,#B9C2D0);stroke-width:1}
+.dg .hd{fill:var(--d-ink2,#3B4658)} .hd2{fill:var(--d-accent,#0F6B7A)} .hd3{fill:var(--d-ep,#B0164E)}
+.dg .sw1{fill:var(--d-box,#FFFFFF);stroke:var(--d-pc1,#7C8798);stroke-width:1.5}
+</style><defs>
+<marker id="arm1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd"/></marker>
+<marker id="arm2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd2"/></marker>
+<marker id="arm3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd3"/></marker>
+</defs><text x="30" y="26" class="h" text-anchor="start">CANALES DE PEDIDO</text><text x="280" y="26" class="h" text-anchor="start">CRM · RELACIÓN</text><text x="540" y="26" class="h" text-anchor="start">INTEGRACIÓN</text><text x="780" y="26" class="h" text-anchor="start">ERP · COMPROMISO (BACKBONE PC1)</text><rect x="30" y="150" width="190" height="60" rx="8" class="box1"/><text x="42" y="171" class="t" text-anchor="start">TUALI (app)</text><text x="42" y="187" class="s" text-anchor="start">pedido del bodeguero</text><rect x="30" y="235" width="190" height="60" rx="8" class="box1"/><text x="42" y="256" class="t" text-anchor="start">AC Móvil · preventa</text><text x="42" y="272" class="s" text-anchor="start">preventista en ruta</text><rect x="30" y="320" width="190" height="60" rx="8" class="box3"/><text x="42" y="341" class="t" text-anchor="start">Teléfono / WhatsApp</text><text x="42" y="357" class="s" text-anchor="start">registrado en el CRM</text><rect x="280" y="130" width="190" height="230" rx="8" class="box2"/><text x="292" y="151" class="t" text-anchor="start">SAP Sales Cloud</text><text x="292" y="167" class="s" text-anchor="start">[SUPUESTO] sistema de</text><text x="292" y="182" class="s" text-anchor="start">registro de la relación</text><text x="292" y="197" class="s" text-anchor="start"></text><text x="292" y="212" class="s" text-anchor="start">· campaña y lead</text><text x="292" y="227" class="s" text-anchor="start">· oportunidad</text><text x="292" y="242" class="s" text-anchor="start">· cotización versionada</text><text x="292" y="257" class="s" text-anchor="start">· canal y adopción TUALI</text><text x="292" y="272" class="s" text-anchor="start">· consentimiento (Ley 29733)</text><rect x="560" y="185" width="170" height="160" rx="8" class="box2"/><text x="572" y="206" class="t" text-anchor="start">SAP Integration</text><text x="572" y="222" class="t" text-anchor="start">Suite</text><text x="572" y="238" class="s" text-anchor="start">[SUPUESTO]</text><text x="572" y="253" class="s" text-anchor="start"></text><text x="572" y="268" class="s" text-anchor="start">· contrato I8</text><text x="572" y="283" class="s" text-anchor="start">· bitácora SOL + intento</text><text x="572" y="298" class="s" text-anchor="start">· idempotencia y reintento</text><rect x="780" y="48" width="145" height="56" rx="8" class="box1"/><text x="792" y="69" class="t" text-anchor="start">Anaplan · RGM</text><text x="792" y="85" class="s" text-anchor="start">promociones y precios</text><rect x="945" y="48" width="145" height="56" rx="8" class="box1"/><text x="957" y="69" class="t" text-anchor="start">SAP APO</text><text x="957" y="85" class="s" text-anchor="start">plan demanda/oferta</text><rect x="780" y="150" width="310" height="230" rx="8" class="box1"/><text x="792" y="171" class="t" text-anchor="start">SAP ECC</text><text x="792" y="187" class="s" text-anchor="start">único sistema que compromete</text><text x="792" y="202" class="s" text-anchor="start"></text><text x="792" y="217" class="s" text-anchor="start">· cliente maestro y crédito</text><text x="792" y="232" class="s" text-anchor="start">· precio y condición vigente</text><text x="792" y="247" class="s" text-anchor="start">· ATP por centro de distribución</text><text x="792" y="262" class="s" text-anchor="start">· pedido de venta (SD)</text><text x="792" y="277" class="s" text-anchor="start">· compras (MM) · P2P</text><text x="792" y="292" class="s" text-anchor="start">· contabilidad (FI)</text><rect x="990" y="160" width="46.5" height="20" rx="10" class="chip"/><text x="998" y="174" class="lblep" text-anchor="start">C1–C5</text><rect x="780" y="430" width="145" height="56" rx="8" class="box1"/><text x="792" y="451" class="t" text-anchor="start">WMS / TMS</text><text x="792" y="467" class="s" text-anchor="start">almacén y transporte</text><rect x="945" y="430" width="145" height="56" rx="8" class="box1"/><text x="957" y="451" class="t" text-anchor="start">Finanzas</text><text x="957" y="467" class="s" text-anchor="start">facturación · CxC · CxP</text><path d="M220,180 L278,205" class="a2" marker-end="url(#arm2)"/><path d="M220,265 L278,265" class="a2" marker-end="url(#arm2)"/><path d="M220,350 L278,330" class="a3" marker-end="url(#arm3)"/><text x="240" y="160" class="lbl" text-anchor="start">I9</text><path d="M470,235 L558,235" class="a2" marker-end="url(#arm2)"/><path d="M730,235 L778,235" class="a2" marker-end="url(#arm2)"/><text x="477" y="226" class="lbl" text-anchor="start">EV-02 / EV-05</text><text x="744" y="226" class="lbl" text-anchor="start">I8</text><path d="M778,300 L732,300" class="ad" marker-end="url(#arm1)"/><path d="M558,300 L472,300" class="ad" marker-end="url(#arm1)"/><text x="477" y="318" class="lbl" text-anchor="start">EV-03 / EV-04</text><text x="744" y="318" class="lbl" text-anchor="start">I8</text><path d="M820,150 L820,124 L375,124 L375,128" class="a2" marker-end="url(#arm2)"/><text x="392" y="118" class="lbl" text-anchor="start">I3 · catálogo, precio, ATP y crédito: el CRM consulta, no reserva</text><path d="M925,76 L943,76" class="a" marker-end="url(#arm1)"/><text x="927" y="68" class="lbl" text-anchor="start">I1</text><path d="M850,104 L850,148" class="a" marker-end="url(#arm1)"/><text x="858" y="132" class="lbl" text-anchor="start">I10</text><path d="M1017,104 L1017,148" class="a" marker-end="url(#arm1)" marker-start="url(#arm1)"/><text x="1025" y="132" class="lbl" text-anchor="start">I2</text><path d="M850,380 L850,428" class="a" marker-end="url(#arm1)" marker-start="url(#arm1)"/><text x="858" y="410" class="lbl" text-anchor="start">I5 / I6</text><path d="M1017,380 L1017,428" class="a" marker-end="url(#arm1)"/><text x="1025" y="410" class="lbl" text-anchor="start">I7</text><rect x="30" y="430" width="690" height="58" rx="8" class="box3"/><text x="44" y="452" class="lblep" text-anchor="start">Cambio del EP (v3.0): I4 ya no lleva pedidos directo a ECC y el teléfono deja de ser un canal fuera del sistema.</text><text x="44" y="472" class="s" text-anchor="start">Los tres canales entran por el mismo contrato I8, con las mismas validaciones C1–C5 y los mismos códigos de respuesta.</text><rect x="30" y="530" width="22" height="14" rx="3" class="sw1"/><text x="60" y="542" class="s" text-anchor="start">Se mantiene de PC1 (v1.0)</text><rect x="250" y="530" width="22" height="14" rx="3" class="box2"/><text x="280" y="542" class="s" text-anchor="start">Agregado en PC2 (v2.0–v2.1)</text><rect x="480" y="530" width="22" height="14" rx="3" class="box3"/><text x="510" y="542" class="s" text-anchor="start">Cambio del EP (v3.0)</text><text x="700" y="542" class="s" text-anchor="start">Interfaces lógicas I1–I10: mecanismo real por validar (B02)</text></svg></div>
+        <div class="tw"><table>
+          <thead><tr><th>Versión</th><th>Qué cambió</th><th>Por qué</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">PC1 · v1.0 · 25/09</td><td>SAP ECC/APO como backbone, con Anaplan, AC Móvil/TUALI, WMS/TMS e interfaces I1–I7</td><td>Continuidad con SAP en uso (criterio C1) y escala nacional</td></tr>
+            <tr><td class="mono">PC2 · v2.0 · 11/10</td><td>Se agrega SAP Sales Cloud y el contrato I8, junto con I9 e I10; I3 e I4 se modifican</td><td>El CRM registra la relación y el ERP compromete (S6, lámina 9)</td></tr>
+            <tr><td class="mono">PC2 · v2.1 · 16/10</td><td>El problema se precisa: clientes que piden por teléfono y no usan TUALI</td><td>Se distinguen clientes digitales, híbridos y telefónicos</td></tr>
+            <tr><td class="mono" style="color:var(--ep)">EP · v3.0 · 23/10</td><td>El teléfono entra al CRM y los tres canales usan I8. Se agrega el campo <code>canal_origen</code> y el mapa O2C–P2P</td><td>Las mismas reglas para todos los canales y una medición de la migración</td></tr>
+          </tbody></table></div>
+      </div>
+    </section>
+
+    <!-- 3 · RECORRIDO O2C -->
+    <section class="scene" data-scene="3" hidden aria-label="Recorrido O2C">
+      <aside class="card">
+        <div class="who"><div class="avatar">JC</div><div><b>José Cornejo</b><span>Momento 3 · 4–6′</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>El hilo O2C se cierra en el ERP: la cotización aceptada en TUALI no reserva stock; recién el pedido confirmado consume ATP, y ese consumo es lo que dispara P2P.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><code>08_procesos/mapa_o2c_p2p.png</code></li>
+          <li><code>EPN_SOL-003_intento1_*.json</code></li>
+          <li>Validador §6: cadena de FAC-003 a CAMP-004</li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>La entrega, la factura y el cobro aparecen solo como continuidad. P2P se muestra a nivel de mapa; los insumos y los responsables son supuestos.</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Mapa integrado O2C–P2P</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Hilo: Bodega Don Lucho, que antes pedía solo por teléfono</p></span></div>
+        <div class="svgwrap"><svg class="dg" viewBox="0 0 1110 462" role="img" aria-label="Mapa integrado O2C y P2P con la transacción que los conecta" xmlns="http://www.w3.org/2000/svg"><style>
+.dg text{font-family:var(--d-font,'Source Sans 3','Segoe UI',Arial,sans-serif);fill:var(--d-ink,#121A2B)}
+.dg .mono{font-family:var(--d-mono,'IBM Plex Mono',Consolas,monospace)}
+.dg .t{font-weight:700;font-size:13.5px}
+.dg .s{font-size:11.5px;fill:var(--d-muted,#566175)}
+.dg .h{font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--d-muted,#566175)}
+.dg .id{font-size:11px;fill:var(--d-accent,#0F6B7A)}
+.dg .lbl{font-size:11px;font-weight:600;fill:var(--d-ink,#121A2B)}
+.dg .lblep{font-size:11px;font-weight:700;fill:var(--d-ep,#B0164E)}
+.dg .box{fill:var(--d-box,#FFFFFF);stroke:var(--d-line,#B9C2D0);stroke-width:1.3}
+.dg .box1{fill:var(--d-box,#FFFFFF);stroke:var(--d-pc1,#7C8798);stroke-width:1.5}
+.dg .box2{fill:var(--d-box2,#EAF4F6);stroke:var(--d-accent,#0F6B7A);stroke-width:1.8}
+.dg .box3{fill:var(--d-box3,#FBEAF0);stroke:var(--d-ep,#B0164E);stroke-width:2}
+.dg .boxoff{fill:var(--d-off,#EEF1F5);stroke:var(--d-line,#B9C2D0);stroke-width:1.2;stroke-dasharray:5 4}
+.dg .band{fill:var(--d-band,#F4F6F9);stroke:none}
+.dg .a{stroke:var(--d-ink2,#3B4658);stroke-width:1.6;fill:none}
+.dg .a2{stroke:var(--d-accent,#0F6B7A);stroke-width:2.2;fill:none}
+.dg .a3{stroke:var(--d-ep,#B0164E);stroke-width:3;fill:none}
+.dg .ad{stroke:var(--d-ink2,#3B4658);stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+.dg .front{stroke:var(--d-ep,#B0164E);stroke-width:1.4;stroke-dasharray:3 4;fill:none}
+.dg .chip{fill:var(--d-chip,#FFFFFF);stroke:var(--d-line,#B9C2D0);stroke-width:1}
+.dg .hd{fill:var(--d-ink2,#3B4658)} .hd2{fill:var(--d-accent,#0F6B7A)} .hd3{fill:var(--d-ep,#B0164E)}
+.dg .sw1{fill:var(--d-box,#FFFFFF);stroke:var(--d-pc1,#7C8798);stroke-width:1.5}
+</style><defs>
+<marker id="mpm1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd"/></marker>
+<marker id="mpm2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd2"/></marker>
+<marker id="mpm3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="hd3"/></marker>
+</defs><rect x="0" y="18" width="1110" height="152" rx="10" class="band"/><rect x="0" y="184" width="1110" height="108" rx="10" class="band"/><rect x="0" y="306" width="1110" height="124" rx="10" class="band"/><text x="14" y="40" class="h" text-anchor="start">O2C</text><text x="14" y="56" class="s" text-anchor="start">tramo comercial</text><text x="14" y="206" class="h" text-anchor="start">PLANIFICAR</text><text x="14" y="222" class="s" text-anchor="start">demanda → oferta</text><text x="14" y="328" class="h" text-anchor="start">P2P</text><text x="14" y="344" class="s" text-anchor="start">abastecimiento</text><text x="120" y="36" class="id mono" text-anchor="start">CRM · SAP Sales Cloud</text><text x="624" y="36" class="lblep" text-anchor="start">contrato I8</text><text x="749" y="36" class="id mono" text-anchor="start">ERP · SAP ECC</text><path d="M612,42 L612,166" class="front"/><path d="M737,42 L737,166" class="front"/><rect x="120" y="50" width="110" height="84" rx="8" class="box2"/><text x="132" y="71" class="t" text-anchor="start">Campaña</text><text x="132" y="87" class="id mono" text-anchor="start">CAMP-004</text><text x="132" y="102" class="s" text-anchor="start">Marketing trade</text><rect x="245" y="50" width="110" height="84" rx="8" class="box2"/><text x="257" y="71" class="t" text-anchor="start">Lead</text><text x="257" y="87" class="id mono" text-anchor="start">LEAD-013</text><text x="257" y="102" class="s" text-anchor="start">Preventista</text><rect x="370" y="50" width="110" height="84" rx="8" class="box2"/><text x="382" y="71" class="t" text-anchor="start">Oportunidad</text><text x="382" y="87" class="id mono" text-anchor="start">OPP-003</text><text x="382" y="102" class="s" text-anchor="start">Preventista</text><rect x="495" y="50" width="110" height="84" rx="8" class="box2"/><text x="507" y="71" class="t" text-anchor="start">Cotización</text><text x="507" y="87" class="id mono" text-anchor="start">COT-003-V01</text><text x="507" y="102" class="s" text-anchor="start">Cliente acepta</text><rect x="620" y="50" width="110" height="84" rx="8" class="box3"/><text x="632" y="71" class="t" text-anchor="start">Solicitud de</text><text x="632" y="87" class="t" text-anchor="start">pedido</text><text x="632" y="103" class="id mono" text-anchor="start">SOL-003-1</text><text x="632" y="118" class="s" text-anchor="start">CRM → ERP</text><rect x="745" y="50" width="110" height="84" rx="8" class="box1"/><text x="757" y="71" class="t" text-anchor="start">Pedido</text><text x="757" y="87" class="t" text-anchor="start">confirmado</text><text x="757" y="103" class="id mono" text-anchor="start">PED-003</text><text x="757" y="118" class="s" text-anchor="start">ERP valida</text><rect x="870" y="50" width="110" height="84" rx="8" class="boxoff"/><text x="882" y="71" class="t" text-anchor="start">Entrega ·</text><text x="882" y="87" class="t" text-anchor="start">factura · cobro</text><text x="882" y="103" class="id mono" text-anchor="start">ENT·FAC·PAG</text><text x="882" y="118" class="s" text-anchor="start">fuera del EP</text><path d="M231,92 L243,92" class="a3" marker-end="url(#mpm3)"/><path d="M356,92 L368,92" class="a3" marker-end="url(#mpm3)"/><path d="M481,92 L493,92" class="a3" marker-end="url(#mpm3)"/><path d="M606,92 L618,92" class="a3" marker-end="url(#mpm3)"/><path d="M731,92 L743,92" class="a3" marker-end="url(#mpm3)"/><path d="M856,92 L868,92" class="ad" marker-end="url(#mpm1)"/><rect x="120" y="142" width="119.69999999999999" height="20" rx="10" class="chip"/><text x="128" y="156" class="lbl" text-anchor="start">fuente registrada</text><rect x="245" y="142" width="119.69999999999999" height="20" rx="10" class="chip"/><text x="253" y="156" class="lbl" text-anchor="start">R1 consentimiento</text><rect x="495" y="142" width="113.6" height="20" rx="10" class="chip"/><text x="503" y="156" class="lbl" text-anchor="start">R3 descuento ≤5%</text><rect x="620" y="142" width="77.0" height="20" rx="10" class="chip"/><text x="628" y="156" class="lbl" text-anchor="start">C1–C5 · R7</text><rect x="745" y="142" width="83.1" height="20" rx="10" class="chip"/><text x="753" y="156" class="lbl" text-anchor="start">reserva ATP</text><path d="M843,134 L843,206" class="a3" marker-end="url(#mpm3)"/><text x="834" y="184" class="lblep" text-anchor="end">transacción que conecta O2C y P2P</text><rect x="745" y="208" width="235" height="72" rx="8" class="box3"/><text x="757" y="229" class="t" text-anchor="start">Requerimiento de reposición</text><text x="757" y="245" class="s" text-anchor="start">el pedido consume ATP; el faltante</text><text x="757" y="260" class="s" text-anchor="start">(ej. PED-002: 220 paq.) se repone</text><rect x="420" y="208" width="250" height="72" rx="8" class="box1"/><text x="432" y="229" class="t" text-anchor="start">Plan de distribución y producción</text><text x="432" y="245" class="s" text-anchor="start">SAP APO → ECC (I2)</text><text x="432" y="260" class="s" text-anchor="start">responsable: Planeamiento</text><rect x="120" y="208" width="230" height="72" rx="8" class="box1"/><text x="132" y="229" class="t" text-anchor="start">Necesidad de insumos (MRP)</text><text x="132" y="245" class="s" text-anchor="start">concentrado, preformas PET,</text><text x="132" y="260" class="s" text-anchor="start">azúcar, CO₂ [SUPUESTO]</text><path d="M743,244 L672,244" class="a3" marker-end="url(#mpm3)"/><path d="M418,244 L352,244" class="a3" marker-end="url(#mpm3)"/><rect x="120" y="340" width="150" height="74" rx="8" class="box1"/><text x="132" y="361" class="t" text-anchor="start">Solicitud de compra</text><text x="132" y="377" class="id mono" text-anchor="start">SolPed · ECC MM</text><text x="132" y="392" class="s" text-anchor="start">Jefe del área</text><rect x="300" y="340" width="150" height="74" rx="8" class="box1"/><text x="312" y="361" class="t" text-anchor="start">Orden de compra</text><text x="312" y="377" class="id mono" text-anchor="start">OC · Compras</text><text x="312" y="392" class="s" text-anchor="start">proveedor habilitado</text><rect x="480" y="340" width="150" height="74" rx="8" class="box1"/><text x="492" y="361" class="t" text-anchor="start">Recepción</text><text x="492" y="377" class="id mono" text-anchor="start">EM · WMS</text><text x="492" y="392" class="s" text-anchor="start">Almacén y Calidad</text><rect x="660" y="340" width="150" height="74" rx="8" class="box1"/><text x="672" y="361" class="t" text-anchor="start">Factura proveedor</text><text x="672" y="377" class="id mono" text-anchor="start">CxP</text><text x="672" y="392" class="s" text-anchor="start">conciliación 3 vías</text><rect x="840" y="340" width="150" height="74" rx="8" class="box1"/><text x="852" y="361" class="t" text-anchor="start">Pago</text><text x="852" y="377" class="id mono" text-anchor="start">Tesorería</text><text x="852" y="392" class="s" text-anchor="start">doble autorización</text><path d="M271,377 L298,377" class="a" marker-end="url(#mpm1)"/><path d="M451,377 L478,377" class="a" marker-end="url(#mpm1)"/><path d="M631,377 L658,377" class="a" marker-end="url(#mpm1)"/><path d="M811,377 L838,377" class="a" marker-end="url(#mpm1)"/><path d="M200,280 L200,338" class="a3" marker-end="url(#mpm3)"/><rect x="1000" y="50" width="100" height="364" rx="8" class="box1"/><text x="1050" y="74" class="t" text-anchor="middle">Finanzas</text><text x="1050" y="92" class="t" text-anchor="middle">y tesorería</text><text x="1050" y="110" class="s" text-anchor="middle">(I7)</text><text x="1050" y="250" class="s" text-anchor="middle">el cobro y</text><text x="1050" y="265" class="s" text-anchor="middle">el pago se</text><text x="1050" y="280" class="s" text-anchor="middle">concilian</text><text x="1050" y="295" class="s" text-anchor="middle">en caja</text><path d="M981,92 L998,92" class="ad" marker-end="url(#mpm1)"/><path d="M991,377 L998,377" class="a" marker-end="url(#mpm1)"/><path d="M120,446 L160,446" class="a3" marker-end="url(#mpm3)"/><text x="168" y="450" class="s" text-anchor="start">hilo del escenario normal y transacción que conecta</text><rect x="470" y="439" width="22" height="14" rx="3" class="box3"/><text x="500" y="450" class="s" text-anchor="start">evento de transición del contrato</text><rect x="720" y="439" width="22" height="14" rx="3" class="boxoff"/><text x="750" y="450" class="s" text-anchor="start">fuera del alcance del EP</text></svg></div>
+        <div class="tw"><table>
+          <thead><tr><th>Evento</th><th>Qué pasa</th><th>Responsable</th><th>Regla o control</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">CAMP-004</td><td>“Pásate a TUALI”: bono de 2 % en el primer pedido por la app</td><td>Marketing trade</td><td>Campaña con fuente y vigencia</td></tr>
+            <tr><td class="mono">LEAD-013</td><td>30/09: visita con demostración; el cliente acepta probar TUALI</td><td>Preventista 1</td><td>R1: en ruta, con smartphone y consentimiento para WhatsApp</td></tr>
+            <tr><td class="mono">OPP-003 · COT-003-V01</td><td>01/10: 65 paquetes con 5 % (3 % de promoción + 2 % de bono), aceptada en TUALI. Total S/ 1,589.02 con IGV</td><td>Preventista · cliente</td><td>R2: solo una versión aceptada · R3: hasta 5 % sin aprobación</td></tr>
+            <tr><td class="mono">SOL-003-1 · EV-02</td><td>02/10: el CRM pide crear el pedido, con <code>canal_origen = TUALI</code></td><td>CRM → ERP</td><td>C1–C5 · R7 idempotencia</td></tr>
+            <tr><td class="mono">EV-03 · PED-003</td><td><span class="code ok">OK-ACEPTADO</span>: pedido confirmado con promesa para el 03/10</td><td>ERP · Preventista</td><td>Reserva de ATP en el CD Lima Norte</td></tr>
+          </tbody></table></div>
+      </div>
+    </section>
+
+    <!-- 4 · CONTRATO -->
+    <section class="scene" data-scene="4" hidden aria-label="Contrato CRM–ERP">
+      <aside class="card">
+        <div class="who"><div class="avatar">GL</div><div><b>Gianmarco Leandro</b><span>Momento 4 · 6–9′</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>El paso de cotización a pedido es un contrato con datos mínimos fijos, cinco validaciones en orden y una respuesta codificada. Ningún canal puede saltárselo.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><code>05_arquitectura/CONTRATO_CRM_ERP.md</code></li>
+          <li><code>codigos_respuesta.csv</code> · <code>eventos_contrato.csv</code></li>
+          <li>Excel v3, hoja <code>Prueba_contrato</code></li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>El formato del mensaje es ilustrativo y no es la API de SAP. Los umbrales de 5 % y 12 % y la política de crédito son supuestos por validar (B15 y B16).</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Contrato de transición CRM–ERP</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Hasta la solicitud de creación de pedido y sus respuestas</p></span></div>
+        <div class="grid2">
+          <div class="box">
+            <h3>Sistema de registro</h3>
+            <table><tbody>
+              <tr><td>Campaña, lead, contacto, consentimiento, canal</td><td><b>CRM</b></td></tr>
+              <tr><td>Oportunidad y cotización versionada</td><td><b>CRM</b> (consulta precio y ATP)</td></tr>
+              <tr><td>Solicitud + intento (bitácora)</td><td><b>Integration Suite</b></td></tr>
+              <tr><td>Cliente, crédito, precio, descuento, ATP, pedido</td><td><b>ERP · ECC</b></td></tr>
+            </tbody></table>
+          </div>
+          <div class="box">
+            <h3>Estados de la solicitud</h3>
+            <div class="flow"><span class="st">Enviada</span><span class="ar">→</span><span class="st ok">Aceptada</span><span class="ar">|</span><span class="st b">Rechazada</span><span class="ar">|</span><span class="st w">Promesa alternativa</span></div>
+            <div class="flow" style="margin-top:8px"><span class="st w">Promesa alternativa</span><span class="ar">→ EV-05 (el cliente acepta) →</span><span class="st ok">Aceptada</span></div>
+            <p class="small" style="margin-top:8px">Cotización: Borrador → Pendiente de aprobación → Aceptada | Rechazada | Vencida. Pedido: Confirmado → Entrega parcial → Entregado → Cerrado.</p>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Datos mínimos del evento de transición EV-02</h3>
+          <div class="chips"><span>id_solicitud + intento</span><span class="new">canal_origen · v3.0</span><span>id_cotizacion + versión</span><span>id_oportunidad</span><span>id_cliente · código ERP</span><span>dirección de entrega</span><span>líneas: producto, cantidad, id_precio</span><span>descuento + id_regla</span><span>aprobador y fecha (&gt;5 %)</span><span>condición de pago</span><span>acepta entrega parcial</span><span>fecha de envío</span></div>
+        </div>
+        <div class="grid2">
+          <div class="box">
+            <h3>Validaciones del ERP, en este orden</h3>
+            <div class="cval">
+              <span class="n">C1</span><span>Cliente activo y sincronizado</span><span class="code b">CLI-NO-VALIDO</span>
+              <span class="n">C2</span><span>Crédito: no bloqueado y dentro del límite</span><span class="code b">CRED-BLOQ</span>
+              <span class="n">C3</span><span>Precio vigente en ECC a la fecha de envío</span><span class="code b">PRECIO-NO-VIG</span>
+              <span class="n">C4</span><span>Descuento dentro de regla o aprobado</span><span class="code b">DESC-SIN-APROB</span>
+              <span class="n">C5</span><span>Cantidad ≤ ATP del CD</span><span class="code w">ATP-PARCIAL</span>
+              <span class="n">OK</span><span>Todo correcto / promesa aceptada</span><span class="code ok">OK-ACEPTADO · OK-PROMESA-ALT</span>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Respuestas del ERP y responsable</h3>
+            <table><tbody>
+              <tr><td><span class="code w">ATP-PARCIAL</span></td><td>EV-04: cantidad y fecha alternativas · Planeamiento CD → preventista</td></tr>
+              <tr><td><span class="code b">CRED-BLOQ</span></td><td>Créditos y cobranzas: liberar, pedir garantía o pasar a contado</td></tr>
+              <tr><td><span class="code b">PRECIO-NO-VIG</span></td><td>Analista de precios RGM: cargar la condición (I10) y reenviar</td></tr>
+              <tr><td><span class="code b">DUPLICADO</span></td><td>Devuelve el pedido existente; nunca crea otro (R7)</td></tr>
+            </tbody></table>
+            <p class="small" style="margin-top:6px">Son nueve códigos en total. Un reintento conserva el <code>id_solicitud</code> y aumenta el número de intento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · ESCENARIO DE QUIEBRE -->
+    <section class="scene" data-scene="5" hidden aria-label="Escenario de quiebre">
+      <aside class="card">
+        <div class="who"><div class="avatar">JC</div><div><b>José Cornejo</b><span>Momento 5 · 9–11′</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>Ante una promoción sin stock suficiente, el ERP no confirma ni rechaza en silencio: propone una promesa alternativa y el pedido solo existe con la aceptación registrada del cliente.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><code>EPX_SOL-002_intento1/2_*.json</code></li>
+          <li>Validador §4: ATP = 402 − 22 = 380</li>
+          <li>Validador §9: 11 de 11 conformes</li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>Es una prueba de escritorio con datos sintéticos; no se ejecutó en un SAP real. Que la reposición llegue el 12/10 es un supuesto.</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Excepción prioritaria: promoción sin ATP suficiente</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Comercial Los Olivos, mayorista híbrido, pide por teléfono</p></span></div>
+        <div class="tl" aria-label="Línea de tiempo de la excepción">
+          <div class="ev2"><span class="d">06/10</span><span class="dot"></span><span class="t"><b>Llamada</b>600 paquetes de Inca Kola 500 ml en promoción con 10 %. Queda registrada en el CRM.</span></div>
+          <div class="ev2"><span class="d">06–07/10</span><span class="dot w"></span><span class="t"><b>V1 rechazada</b>El supervisor no aprueba el 10 %; la V2 sale con 8 %. La V1 nunca se envía (C4).</span></div>
+          <div class="ev2"><span class="d">07/10</span><span class="dot b"></span><span class="t"><b>SOL-002-1</b>C1–C4 pasan, C5 falla: hay 380 de 600. <span class="code w">ATP-PARCIAL</span></span></div>
+          <div class="ev2"><span class="d">07/10</span><span class="dot w"></span><span class="t"><b>EV-04 promesa</b>380 el 09/10 y 220 el 12/10, con reposición desde planta.</span></div>
+          <div class="ev2"><span class="d">08/10</span><span class="dot ok"></span><span class="t"><b>SOL-002-2 · EV-05</b>El cliente acepta. <span class="code ok">OK-PROMESA-ALT</span> → PED-002</span></div>
+          <div class="ev2"><span class="d">09–12/10</span><span class="dot"></span><span class="t"><b>Entrega parcial</b>Se entregan 380 y quedan 220 en reposición. Si se atrasa: EV-06.</span></div>
+        </div>
+        <div class="dce">
+          <div class="box"><span class="step d">Se detecta</span><p style="font-size:14px">En el ERP, con C5 (ATP por CD) al momento del envío y no en la llamada. El cálculo es físico menos reservado: 402 − 22 = 380.</p></div>
+          <div class="box"><span class="step c">Se contiene</span><p style="font-size:14px">No se crea el pedido en el intento 1. La V1 con 10 % no sale del CRM. Una entrega parcial exige la aceptación registrada del cliente (EV-05).</p></div>
+          <div class="box"><span class="step e">Se escala</span><p style="font-size:14px">Planeamiento del CD propone la promesa y el preventista 2 la gestiona. El descuento lo decide el supervisor. Si la reposición se atrasa, EV-06 abre un caso de atención.</p></div>
+        </div>
+        <div class="tw"><table>
+          <thead><tr><th>Verificación</th><th>Esperado</th><th>Observado</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Canal de origen</td><td>Teléfono</td><td>Teléfono</td><td class="check">Conforme</td></tr>
+            <tr><td>Versión enviada</td><td>COT-002-V02 · 8 % aprobado</td><td>COT-002-V02 · 8 % aprobado</td><td class="check">Conforme</td></tr>
+            <tr><td>Intento 1</td><td>ATP-PARCIAL, sin pedido</td><td>ATP-PARCIAL, sin pedido</td><td class="check">Conforme</td></tr>
+            <tr><td>Intento 2</td><td>OK-PROMESA-ALT · PED-002</td><td>OK-PROMESA-ALT · PED-002</td><td class="check">Conforme</td></tr>
+            <tr><td>Entregado / pendiente al corte</td><td>380 / 220</td><td>380 / 220</td><td class="check">Conforme</td></tr>
+          </tbody></table></div>
+      </div>
+    </section>
+
+    <!-- 6 · RECOMENDACIÓN -->
+    <section class="scene" data-scene="6" hidden aria-label="Recomendación final">
+      <aside class="card">
+        <div class="who"><div class="avatar">DU</div><div><b>David Urbano</b><span>Momento 6 · 11–14′</span></div></div>
+        <div class="decision"><div class="lab">Decisión que defiende</div><p>Aprobar con condiciones: un piloto acotado que mida la línea base antes de escalar, con los riesgos y límites declarados.</p></div>
+        <div class="ev"><div class="lab">Evidencia</div><ul>
+          <li><code>04_backlog/BACKLOG_PRIORIZADO.csv</code></li>
+          <li><code>03_trazabilidad/MATRIZ_TRAZABILIDAD.md</code></li>
+          <li><code>06_ia_etica/</code> · <code>02_fuentes/</code></li></ul></div>
+        <div class="limit"><div class="lab">Límite que reconoce</div>Esta recomendación es académica. No adjudica licencias, presupuesto ni partner, y no cubre pedido operativo, entrega, facturación ni posventa.</div>
+      </aside>
+      <div class="visual">
+        <div class="verdict"><span class="big">Aprobar con condiciones</span><p>Piloto del contrato único en el CD Lima Norte, canal tradicional, durante 8 semanas <span class="tag s">SUPUESTO</span>. El teléfono no se elimina, pero todo pedido telefónico se registra en el CRM.</p></div>
+        <div class="grid2">
+          <div class="box">
+            <h3>Riesgos que aceptamos</h3>
+            <table><tbody>
+              <tr><td><b>El CRM real de ACL es desconocido</b> (B13)</td><td>La frontera y el contrato no dependen del producto; se ajusta I8 si no es Sales Cloud.</td></tr>
+              <tr><td><b>ECC sale de mantenimiento principal en 2027</b></td><td>Sales Cloud también integra con S/4HANA; el contrato se conserva.</td></tr>
+              <tr><td><b>La prueba es de escritorio</b></td><td>El validador es reproducible; el siguiente paso es un sandbox.</td></tr>
+              <tr><td><b>Hay clientes que no quieren la app</b></td><td>El teléfono sigue, con las mismas reglas; la migración es por incentivo.</td></tr>
+            </tbody></table>
+          </div>
+          <div class="box">
+            <h3>Pendientes priorizados</h3>
+            <table><tbody>
+              <tr><td class="mono">B13</td><td>Confirmar el CRM real de ACL</td><td><span class="tag p">CRÍTICA</span></td></tr>
+              <tr><td class="mono">B14</td><td>Cómo entran hoy a SAP los pedidos de TUALI y AC Móvil</td><td><span class="tag p">CRÍTICA</span></td></tr>
+              <tr><td class="mono">B01</td><td>Instancia y versión SAP de ACL Perú</td><td><span class="tag p">CRÍTICA</span></td></tr>
+              <tr><td class="mono">B18</td><td>Línea base: pedidos por canal y tiempo de confirmación</td><td><span class="tag s">MEDIA</span></td></tr>
+              <tr><td class="mono">B15·16</td><td>Políticas reales de descuento y crédito</td><td><span class="tag s">ALTA</span></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Siguiente incremento</h3>
+          <div class="flow"><span class="st">S7 · pedido operativo, entrega y factura (EV-06, EV-07, FAC-002 parcial)</span><span class="ar">→</span><span class="st">PC3 · producción y MRP: la reposición de 220 conecta con P2P</span><span class="ar">→</span><span class="st">Agente por proceso sobre contratos ya probados</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · PREGUNTA -->
+    <section class="scene" data-scene="7" hidden aria-label="Pregunta del vocal y respuesta del vocero">
+      <aside class="card">
+        <div class="who"><div class="avatar">?</div><div><b>Vocal invitado y vocero</b><span>Momento 7 · 14–15′ · los designa el docente</span></div></div>
+        <div class="decision"><div class="lab">Cómo responde el vocero</div><p>En menos de un minuto: el dato del panel, la decisión que lo usa y el límite que reconocemos.</p></div>
+        <div class="limit"><div class="lab">Regla</div>Una sola pregunta de contraste, breve y pertinente. El docente la modera y puede sustituirla.</div>
+      </aside>
+      <div class="visual">
+        <div class="vh"><h2>Registro del vocal invitado</h2><span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="zoom" type="button" data-zoom>Ampliar evidencia</button><p>Se completa en vivo y queda solo en este navegador</p></span></div>
+        <form class="form" id="vocal" autocomplete="off">
+          <label for="v-grupo">Grupo del vocal<input id="v-grupo" name="grupo" placeholder="Ej.: G5"></label>
+          <label for="v-nombre">Nombre del vocal<input id="v-nombre" name="nombre" placeholder="Nombre y apellido"></label>
+          <label class="wide" for="v-preg">Pregunta de contraste<textarea id="v-preg" name="pregunta" placeholder="Escribe la pregunta tal como se formula"></textarea></label>
+          <label for="v-vocero">Vocero designado<select id="v-vocero" name="vocero"><option value="">Lo designa el docente</option><option>Salvador Barrionuevo</option><option>José Cornejo</option><option>Gianmarco Leandro</option><option>David Urbano</option></select></label>
+          <label for="v-ir">Evidencia que se muestra<select id="v-ir" name="evidencia"><option value="">Elegir momento</option><option value="1">1 · Decisión</option><option value="2">2 · Arquitectura</option><option value="3">3 · O2C–P2P</option><option value="4">4 · Contrato</option><option value="5">5 · Quiebre</option><option value="6">6 · Recomendación</option></select></label>
+          <label class="wide" for="v-resp">Respuesta del vocero (evidencia → decisión → límite)<textarea id="v-resp" name="respuesta" placeholder="Resumen de la respuesta"></textarea></label>
+        </form>
+        <div class="steps3">
+          <div class="box"><b>1 · Evidencia</b><span class="small">“En el validador, SOL-002 da ATP-PARCIAL con 380 de 600…”</span></div>
+          <div class="box"><b>2 · Decisión</b><span class="small">“…por eso el ERP propone y el pedido solo nace con la aceptación…”</span></div>
+          <div class="box"><b>3 · Límite</b><span class="small">“…y reconocemos que es una prueba de escritorio con datos sintéticos.”</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Paquete de evidencias v3.0: <a href="https://drive.google.com/drive/folders/17P-ot4uLSmdB-U3gF8FgSIXztHumbpYt" target="_blank" rel="noopener">repositorio del G2 en Drive</a> · reproducir con <code class="mono">python 10_pruebas/validar_contrato.py</code></span>
+    <span><span class="tag h">HECHO</span> fuente identificable · <span class="tag s">SUPUESTO</span> decisión o dato didáctico · <span class="tag p">PENDIENTE</span> por validar con ACL</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var scenes=[].slice.call(document.querySelectorAll('.scene'));
+  var stage=document.getElementById('stage');
+  var cur=0;
+  function show(i,push){
+    i=Math.max(0,Math.min(7,i)); cur=i;
+    scenes.forEach(function(s){s.hidden=(+s.dataset.scene!==i)});
+    tabs.forEach(function(t){t.setAttribute('aria-selected',String(+t.dataset.m===i)); t.tabIndex=(+t.dataset.m===i)?0:-1});
+    stage.scrollTop=0;
+    if(push){try{history.replaceState(null,'','#m'+i)}catch(e){try{location.hash='m'+i}catch(e2){}}}
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(+t.dataset.m,true)})});
+  [].slice.call(document.querySelectorAll('[data-go]')).forEach(function(b){b.addEventListener('click',function(){show(+b.dataset.go,true)})});
+  var h=(location.hash||'').match(/^#m([0-7])$/); show(h?+h[1]:0,false);
+  function zoom(){var s=scenes[cur]; if(!s||cur===0) return; var on=!s.classList.contains('wide'); scenes.forEach(function(x){x.classList.toggle('wide',on)}); [].slice.call(document.querySelectorAll('[data-zoom]')).forEach(function(b){b.textContent=on?'Ver ficha del integrante':'Ampliar evidencia'})}
+  [].slice.call(document.querySelectorAll('[data-zoom]')).forEach(function(b){b.addEventListener('click',zoom)});
+
+  // Cronómetro de 15 minutos con los cortes de la guía
+  var cuts=[[1,0,60],[2,60,240],[3,240,360],[4,360,540],[5,540,660],[6,660,840],[7,840,900]];
+  var names={1:'Decisión',2:'Arquitectura',3:'Recorrido O2C',4:'Contrato',5:'Quiebre',6:'Recomendación',7:'Pregunta'};
+  var t0=null, acc=0, timer=null;
+  var elT=document.getElementById('time'), elNow=document.getElementById('now'), elClock=document.getElementById('clock'), btn=document.getElementById('play');
+  function secs(){return acc+(t0?(Date.now()-t0)/1000:0)}
+  function fmt(s){s=Math.floor(s);var m=Math.floor(s/60),r=s%60;return (m<10?'0':'')+m+':'+(r<10?'0':'')+r}
+  function paint(){
+    var s=secs(); elT.innerHTML=fmt(s)+' <small>/ 15:00</small>';
+    elClock.classList.toggle('over',s>=900);
+    var live=null;
+    cuts.forEach(function(c){
+      var tab=tabs[c[0]], bar=tab.querySelector('.bar');
+      var p=Math.max(0,Math.min(1,(s-c[1])/(c[2]-c[1])));
+      bar.style.width=(p*100)+'%';
+      tab.classList.toggle('done',s>=c[2]); tab.classList.toggle('live',s>=c[1]&&s<c[2]&&(t0||acc>0));
+      if(s>=c[1]&&s<c[2]) live=c;
+    });
+    if(!t0&&acc===0){elNow.innerHTML='Momento sugerido: <b>—</b>'}
+    else if(s>=900){elNow.innerHTML='<b style="color:var(--bad)">Tiempo cumplido: se cierra la exposición</b>'}
+    else if(live){elNow.innerHTML='Momento sugerido: <b>'+live[0]+' · '+names[live[0]]+'</b> · quedan '+fmt(live[2]-s)}
+  }
+  function toggle(){ if(t0){acc+=(Date.now()-t0)/1000;t0=null;clearInterval(timer);btn.textContent='Seguir'} else {t0=Date.now();timer=setInterval(paint,250);btn.textContent='Pausar'} paint() }
+  function reset(){t0=null;acc=0;clearInterval(timer);btn.textContent='Iniciar';paint()}
+  btn.addEventListener('click',toggle); document.getElementById('reset').addEventListener('click',reset);
+  document.getElementById('fs').addEventListener('click',function(){
+    var d=document.documentElement;
+    try{ if(document.fullscreenElement){document.exitFullscreen()} else if(d.requestFullscreen){var p=d.requestFullscreen(); if(p&&p.catch)p.catch(function(){})} }catch(e){}
+  });
+  document.addEventListener('keydown',function(e){
+    var tg=e.target, typing=tg&&(/INPUT|TEXTAREA|SELECT/.test(tg.tagName));
+    if(typing||e.metaKey||e.ctrlKey||e.altKey) return;
+    if(/^[0-7]$/.test(e.key)){show(+e.key,true);e.preventDefault()}
+    else if(e.key==='ArrowRight'){show(cur+1,true);e.preventDefault()}
+    else if(e.key==='ArrowLeft'){show(cur-1,true);e.preventDefault()}
+    else if(e.key===' '){toggle();e.preventDefault()}
+    else if(e.key==='r'||e.key==='R'){reset()}
+    else if(e.key==='z'||e.key==='Z'){zoom()}
+  });
+  paint();
+
+  // Registro del vocal: se guarda solo en este navegador
+  var form=document.getElementById('vocal'), KEY='ge703-ep-g2-vocal';
+  try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');Object.keys(saved).forEach(function(k){if(form.elements[k])form.elements[k].value=saved[k]})}catch(e){}
+  form.addEventListener('input',function(){
+    var o={};[].slice.call(form.elements).forEach(function(el){if(el.name)o[el.name]=el.value});
+    try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}
+  });
+  form.addEventListener('submit',function(e){e.preventDefault()});
+  document.getElementById('v-ir').addEventListener('change',function(e){if(e.target.value)show(+e.target.value,true)});
+})();
+</script>
+
+</body>
+</html>

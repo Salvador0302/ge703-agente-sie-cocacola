@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Agente SIE: archivos generados en cada ejecución (se regeneran desde datos/seed)
+*.db
+*.db-journal
+*.sqlite
+logs/
+entrega/salida/
+*.zip

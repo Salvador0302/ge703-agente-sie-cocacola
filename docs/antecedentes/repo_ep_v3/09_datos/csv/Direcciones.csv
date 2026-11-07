@@ -1,0 +1,25 @@
+﻿id_direccion,id_cliente,tipo_direccion,direccion,pais,departamento,provincia,distrito,ventana_entrega,restriccion_entrega,estado_direccion
+DIR-001,CLI-001,Fiscal,"Jr. Simulado 10, lote 1 (ficticio)",PE,Lima,Lima,Comas,No aplica,No aplica,Activa
+DIR-002,CLI-001,Entrega,"Jr. Simulado 10, lote 1 (ficticio)",PE,Lima,Lima,Comas,Lun-Sáb 08:00-13:00,Ruta de preventa R-01; vehículo liviano (supuesto),Activa
+DIR-003,CLI-002,Fiscal,"Jr. Simulado 20, lote 2 (ficticio)",PE,Lima,Lima,Los Olivos,No aplica,No aplica,Activa
+DIR-004,CLI-002,Entrega,"Jr. Simulado 20, lote 2 (ficticio)",PE,Lima,Lima,Los Olivos,Lun-Vie 07:00-12:00,Descarga en patio; presentar guía de remisión (supuesto),Activa
+DIR-005,CLI-003,Fiscal,"Jr. Simulado 30, lote 3 (ficticio)",PE,Lima,Lima,San Martín de Porres,No aplica,No aplica,Activa
+DIR-006,CLI-003,Entrega,"Jr. Simulado 30, lote 3 (ficticio)",PE,Lima,Lima,San Martín de Porres,Lun-Sáb 08:00-13:00,Ruta de preventa R-03; vehículo liviano (supuesto),Activa
+DIR-007,CLI-004,Fiscal,"Jr. Simulado 40, lote 4 (ficticio)",PE,Lima,Lima,San Juan de Lurigancho,No aplica,No aplica,Activa
+DIR-008,CLI-004,Entrega,"Jr. Simulado 40, lote 4 (ficticio)",PE,Lima,Lima,San Juan de Lurigancho,Lun-Sáb 08:00-13:00,Ruta de preventa R-04; vehículo liviano (supuesto),Activa
+DIR-009,CLI-005,Fiscal,"Jr. Simulado 50, lote 5 (ficticio)",PE,Lima,Lima,Ate,No aplica,No aplica,Activa
+DIR-010,CLI-005,Entrega,"Jr. Simulado 50, lote 5 (ficticio)",PE,Lima,Lima,Ate,Lun-Vie 07:00-12:00,Descarga en patio; presentar guía de remisión (supuesto),Activa
+DIR-011,CLI-006,Fiscal,"Jr. Simulado 60, lote 6 (ficticio)",PE,Lima,Lima,Villa El Salvador,No aplica,No aplica,Activa
+DIR-012,CLI-006,Entrega,"Jr. Simulado 60, lote 6 (ficticio)",PE,Lima,Lima,Villa El Salvador,Lun-Sáb 08:00-13:00,Ruta de preventa R-06; vehículo liviano (supuesto),Activa
+DIR-013,CLI-007,Fiscal,"Jr. Simulado 70, lote 7 (ficticio)",PE,Callao,Callao,Callao,No aplica,No aplica,Activa
+DIR-014,CLI-007,Entrega,"Jr. Simulado 70, lote 7 (ficticio)",PE,Callao,Callao,Callao,Lun-Sáb 08:00-13:00,Ruta de preventa R-07; vehículo liviano (supuesto),Activa
+DIR-015,CLI-008,Fiscal,"Jr. Simulado 80, lote 8 (ficticio)",PE,Lima,Lima,Independencia,No aplica,No aplica,Activa
+DIR-016,CLI-008,Entrega,"Jr. Simulado 80, lote 8 (ficticio)",PE,Lima,Lima,Independencia,Lun-Sáb 08:00-13:00,Ruta de preventa R-08; vehículo liviano (supuesto),Activa
+DIR-017,CLI-009,Fiscal,"Jr. Simulado 90, lote 9 (ficticio)",PE,Lima,Lima,Puente Piedra,No aplica,No aplica,Activa
+DIR-018,CLI-009,Entrega,"Jr. Simulado 90, lote 9 (ficticio)",PE,Lima,Lima,Puente Piedra,Lun-Vie 07:00-12:00,Descarga en patio; presentar guía de remisión (supuesto),Activa
+DIR-019,CLI-010,Fiscal,"Jr. Simulado 100, lote 10 (ficticio)",PE,Lima,Lima,San Juan de Miraflores,No aplica,No aplica,Activa
+DIR-020,CLI-010,Entrega,"Jr. Simulado 100, lote 10 (ficticio)",PE,Lima,Lima,San Juan de Miraflores,Lun-Sáb 08:00-13:00,Ruta de preventa R-10; vehículo liviano (supuesto),Activa
+DIR-021,CLI-011,Fiscal,"Jr. Simulado 110, lote 11 (ficticio)",PE,Lima,Lima,La Victoria,No aplica,No aplica,Activa
+DIR-022,CLI-011,Entrega,"Jr. Simulado 110, lote 11 (ficticio)",PE,Lima,Lima,La Victoria,Lun-Vie 07:00-12:00,Descarga en patio; presentar guía de remisión (supuesto),Activa
+DIR-023,CLI-012,Fiscal,"Jr. Simulado 120, lote 12 (ficticio)",PE,Lima,Lima,Carabayllo,No aplica,No aplica,Activa
+DIR-024,CLI-012,Entrega,"Jr. Simulado 120, lote 12 (ficticio)",PE,Lima,Lima,Carabayllo,Lun-Sáb 08:00-13:00,Ruta de preventa R-12; vehículo liviano (supuesto),Inactiva

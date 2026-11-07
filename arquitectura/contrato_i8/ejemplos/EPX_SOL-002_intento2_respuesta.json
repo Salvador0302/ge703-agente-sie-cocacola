@@ -1,0 +1,17 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "id_solicitud": "SOL-002",
+  "intento": 2,
+  "codigo_respuesta": "OK-PROMESA-ALT",
+  "estado_solicitud": "Aceptada",
+  "id_pedido": "PED-002",
+  "responsable_siguiente_paso": "Preventista 2",
+  "siguiente_paso": "Seguimiento de la reposición de 220 paquetes",
+  "evento": "EV-03 Aceptar o rechazar pedido",
+  "pedido": {
+    "fecha_confirmacion": "2026-10-08",
+    "fecha_prometida": "2026-10-09",
+    "fecha_revision_promesa": "2026-10-12",
+    "estado_pedido_al_corte": "Entrega parcial"
+  }
+}

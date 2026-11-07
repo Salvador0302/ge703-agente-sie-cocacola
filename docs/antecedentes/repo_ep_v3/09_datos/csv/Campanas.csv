@@ -1,0 +1,5 @@
+﻿id_campana,nombre_campana,tipo_campana,canal,sistema_origen,fecha_inicio,fecha_fin,objetivo,responsable,estado_campana
+CAMP-001,Bodega Conectada TUALI · afiliación Q4 2026,Captación,App TUALI y redes,TUALI → SAP Sales Cloud,2026-10-01,2026-12-31,Captar bodegas nuevas con consentimiento y datos mínimos para calificación,Marketing trade (supuesto),Activa
+CAMP-002,Fin de Año Inca Kola 500 ml · canal tradicional,Promoción RGM,Preventa y TUALI,Anaplan RGM → SAP ECC (condición),2026-10-01,2026-12-31,Elevar volumen de Inca Kola 500 ml en mayoristas y bodegas con precio promocional vigente,RGM / Revenue Management (supuesto),Activa
+CAMP-003,Prospección de ruta Lima Norte,Prospección,Visita de preventa (AC Móvil),AC Móvil → SAP Sales Cloud,2026-10-01,2026-11-30,Registrar bodegas sin código de cliente detectadas en ruta,Supervisor de ventas Lima Norte (supuesto),Activa
+CAMP-004,Pásate a TUALI · migración de pedidos telefónicos,Adopción digital,"Preventa, WhatsApp y app TUALI",SAP Sales Cloud,2026-09-28,2026-12-31,Migrar a TUALI a clientes que piden por teléfono o son híbridos; bono de 2% en el primer pedido por la app,Marketing trade (supuesto),Activa

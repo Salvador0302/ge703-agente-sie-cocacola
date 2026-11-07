@@ -1,0 +1,12 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "id_solicitud": "SOL-011",
+  "intento": 1,
+  "codigo_respuesta": "CRED-BLOQ",
+  "estado_solicitud": "Rechazada",
+  "id_pedido": null,
+  "responsable_siguiente_paso": "Créditos y cobranzas",
+  "siguiente_paso": "Regularizar deuda o garantía; el preventista informa al cliente",
+  "evento": "EV-03 Aceptar o rechazar pedido",
+  "causa": "Crédito del cliente en estado Bloqueado (C2)"
+}

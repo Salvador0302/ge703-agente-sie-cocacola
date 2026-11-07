@@ -1,0 +1,294 @@
+﻿Tabla,Columna,Descripción de la columna,Tipo de dato,Ejemplo,Valores categóricos,Regla de calidad
+Campanas,id_campana,Identificador de la campaña o fuente comercial,Texto,CAMP-001,No aplica,"Obligatorio, único e inmutable."
+Campanas,nombre_campana,Nombre de la campaña,Texto,Bodega Conectada TUALI · afiliación Q4 2026,No aplica,Obligatorio.
+Campanas,tipo_campana,Tipo de campaña,Texto,Captación,"Captación, Promoción RGM, Prospección",Valor de la lista.
+Campanas,canal,Canal por el que se ejecuta,Texto,App TUALI y redes,No aplica,Obligatorio.
+Campanas,sistema_origen,Sistema donde nace el dato de la campaña,Texto,TUALI → SAP Sales Cloud,No aplica,Obligatorio; identifica el sistema de registro.
+Campanas,fecha_inicio,Inicio de vigencia,Fecha,01/10/2026,No aplica,Obligatoria; menor o igual que fecha_fin.
+Campanas,fecha_fin,Fin de vigencia,Fecha,31/12/2026,No aplica,Obligatoria.
+Campanas,objetivo,Resultado esperado de la campaña,Texto,Captar bodegas nuevas con consentimiento y datos mínimos para calificación,No aplica,Obligatorio y medible.
+Campanas,responsable,Área dueña de la campaña,Texto,Marketing trade (supuesto),No aplica,Obligatorio.
+Campanas,estado_campana,Estado de la campaña,Texto,Activa,"Activa, Cerrada, Planificada",Valor de la lista.
+Clientes,id_cliente,Clave compartida entre CRM y ERP,Texto,CLI-001,No aplica,"Obligatorio, único e inmutable."
+Clientes,id_cuenta_crm,Identificador de cuenta CRM,Texto,CTA-001,No aplica,"Obligatorio, único e inmutable."
+Clientes,codigo_cliente_erp,Código ERP del cliente,Texto,ERPCLI-001,No aplica,"Obligatorio, único e inmutable."
+Clientes,tipo_cliente,Forma de relación comercial,Texto categórico,Bodega,"Bodega, Mayorista",Usar un valor del dominio indicado.
+Clientes,razon_social,Nombre fiscal ficticio,Texto,Bodega Santa Rosa (sintético),No aplica,Obligatorio. Texto sin espacios al extremo.
+Clientes,nombre_comercial,Nombre comercial ficticio,Texto,Bodega Santa Rosa,No aplica,Obligatorio. Texto sin espacios al extremo.
+Clientes,tipo_documento_fiscal,Tipo de identificación de este conjunto,Texto categórico,RUC,RUC,Usar un valor del dominio indicado.
+Clientes,numero_documento_fiscal,Identificador fiscal de prueba,Texto,SIM-RUC10-00001,No aplica,Único; patrón SIM-RUC-00000. No es un RUC validable.
+Clientes,estado_cliente,Habilitación operativa,Texto categórico,Activo,"Activo, Bloqueado, Inactivo",Usar un valor del dominio indicado.
+Clientes,segmento_cliente,Segmento comercial,Texto categórico,Bodega,"Bodega, Mayorista",Usar un valor del dominio indicado.
+Clientes,sector_economico,Actividad principal,Texto categórico,Comercio minorista,"Comercio minorista, Comercio mayorista",Usar un valor del dominio indicado.
+Clientes,pais,País de operación,Texto categórico,PE,PE,Usar un valor del dominio indicado.
+Clientes,estado_credito,Resultado de evaluación crediticia,Texto categórico,Contado,"Contado, Aprobado, Pendiente, Bloqueado",Usar un valor del dominio indicado.
+Clientes,limite_credito,Límite de crédito en PEN,Decimal,0,No aplica,Número mayor o igual a cero.
+Clientes,moneda_credito,Moneda del límite,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Clientes,condicion_pago_dias,Días desde la emisión hasta el vencimiento,Entero,0,No aplica,"Valores permitidos: 0, 15, 30, 45."
+Clientes,ejecutivo_cuenta,Responsable comercial por rol,Texto,Preventista 1,No aplica,Obligatorio. Texto sin espacios al extremo.
+Clientes,fuente_maestro,Sistema dueño de la identidad,Texto categórico,ERP,ERP,Usar un valor del dominio indicado.
+Clientes,estado_sincronizacion,Situación de réplica hacia CRM,Texto categórico,Sincronizado,"Sincronizado, Pendiente",Usar un valor del dominio indicado.
+Clientes,fecha_ultima_verificacion,Última validación del maestro,Fecha,05/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Clientes,fecha_ultima_sincronizacion,Última réplica confirmada,Fecha,05/10/2026,No aplica,"Admite vacío según condición. Fecha válida, no posterior al corte."
+Contactos,id_contacto,Clave del contacto,Texto,CON-001,No aplica,"Obligatorio, único e inmutable."
+Contactos,id_cliente,Cuenta a la que pertenece,Texto,CLI-001,No aplica,Debe existir en Clientes. No puede cambiar sin revisión de identidad.
+Contactos,nombre_completo,Nombre ficticio,Texto,Contacto ficticio 1-1,No aplica,Obligatorio. Texto sin espacios al extremo.
+Contactos,rol_contacto,Función del contacto,Texto categórico,Propietario,"Propietario, Compras, Finanzas",Usar un valor del dominio indicado.
+Contactos,email,Correo sintético,Texto,contacto1.1@example.com,No aplica,Debe usar el dominio reservado example.com.
+Contactos,telefono,Teléfono ficticio,Texto,SIM-TEL-00011,No aplica,Texto con prefijo SIM; no usar para contactar.
+Contactos,canal_preferido,Canal autorizado para interacción,Texto categórico,TUALI,"TUALI, WhatsApp, Email, Telefono",Usar un valor del dominio indicado.
+Contactos,consentimiento_comunicaciones,Consentimiento para la finalidad declarada,Booleano,True,No aplica,VERDADERO o FALSO.
+Contactos,finalidad_consentimiento,Alcance del permiso,Texto categórico,Comercial,"Comercial, Transaccional",Usar un valor del dominio indicado.
+Contactos,fecha_consentimiento,Fecha de aceptación,Fecha,05/10/2026,No aplica,Admite vacío según condición. Obligatoria si consentimiento es VERDADERO.
+Contactos,fecha_fin_consentimiento,Fin del permiso,Fecha,30/09/2027,No aplica,"Admite vacío según condición. Si existe, debe ser igual o posterior al inicio."
+Contactos,evidencia_consentimiento,Referencia de la evidencia sintética,Texto,CONS-001,No aplica,Admite vacío según condición. Obligatoria si consentimiento es VERDADERO.
+Contactos,estado_contacto,Vigencia de contacto,Texto categórico,Activo,"Activo, Inactivo",Usar un valor del dominio indicado.
+Contactos,fecha_actualizacion,Última actualización,Fecha,05/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Direcciones,id_direccion,Clave de dirección,Texto,DIR-001,No aplica,"Obligatorio, único e inmutable."
+Direcciones,id_cliente,Cliente propietario,Texto,CLI-001,No aplica,Obligatorio. Debe existir en Clientes.
+Direcciones,tipo_direccion,Uso de dirección,Texto categórico,Fiscal,"Fiscal, Entrega",Usar un valor del dominio indicado.
+Direcciones,direccion,Dirección ficticia,Texto,"Jr. Simulado 10, lote 1 (ficticio)",No aplica,Obligatorio. Texto sin espacios al extremo.
+Direcciones,pais,Código del país,Texto categórico,PE,PE,Usar un valor del dominio indicado.
+Direcciones,departamento,Departamento del conjunto,Texto categórico,Lima,"Lima, Callao",Usar un valor del dominio indicado.
+Direcciones,provincia,Provincia de la dirección,Texto,Lima,No aplica,Obligatorio. Texto sin espacios al extremo.
+Direcciones,distrito,Distrito de la dirección,Texto,Comas,No aplica,Obligatorio. Texto sin espacios al extremo.
+Direcciones,ventana_entrega,Horario de recepción,Texto categórico,No aplica,No aplica,Usar un valor del dominio indicado.
+Direcciones,restriccion_entrega,Condición para recepción,Texto,No aplica,No aplica,Obligatoria para dirección de Entrega. Usar No aplica para Fiscal.
+Direcciones,estado_direccion,Vigencia,Texto categórico,Activa,"Activa, Inactiva",Usar un valor del dominio indicado.
+Productos,id_producto,Clave de material o producto,Texto,PRD-001,No aplica,"Obligatorio, único e inmutable."
+Productos,sku,Código comercial,Texto,IK-500-12,No aplica,"Obligatorio, único e inmutable."
+Productos,descripcion,Nombre del componente ficticio,Texto,Inca Kola 500 ml PET · paquete x12,No aplica,Obligatorio. Texto sin espacios al extremo.
+Productos,tipo_producto,Distinción entre vendible e insumo,Texto categórico,Producto terminado,Producto terminado,Usar un valor del dominio indicado.
+Productos,familia,Familia técnica,Texto categórico,Gaseosas,"Gaseosas, Aguas, Isotónicos, Jugos",Usar un valor del dominio indicado.
+Productos,unidad_medida,Unidad base,Texto categórico,CJ,"CJ, UN",Usar un valor del dominio indicado.
+Productos,configuracion,Especificación base,Texto categórico,Estándar,Estándar,Usar un valor del dominio indicado.
+Productos,especificacion_tecnica,Dimensiones o grado didáctico,Texto,Ficha didáctica; SKU y empaque por validar con catálogo ACL,No aplica,Obligatorio. Texto sin espacios al extremo.
+Productos,categoria_impuesto,Tratamiento didáctico,Texto categórico,Gravado,Gravado,Usar un valor del dominio indicado.
+Productos,tasa_igv,Tasa didáctica del impuesto,Porcentaje,18.00%,No aplica,Proporción entre 0 y 1. Se muestra como porcentaje.
+Productos,costo_unitario_referencia,Costo sintético en PEN por unidad,Decimal,14.1,No aplica,Número mayor o igual a cero.
+Productos,vendible,Si puede cotizarse al cliente,Booleano,True,No aplica,VERDADERO o FALSO.
+Productos,estado_producto,Vigencia,Texto categórico,Activo,"Activo, Inactivo",Usar un valor del dominio indicado.
+Listas_precios,id_precio,Clave única de registro de precio,Texto,PRE-BOD-001,No aplica,Único e inmutable. No duplicar lista-producto con vigencias superpuestas.
+Listas_precios,id_lista_precio,Lista de precios,Texto categórico,LP-BOD-2026,"LP-BOD-2026, LP-MAY-2026",Usar un valor del dominio indicado.
+Listas_precios,id_producto,Producto vendible,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Listas_precios,segmento_cliente,Segmento aplicable,Texto categórico,Bodega,"Bodega, Mayorista",Usar un valor del dominio indicado.
+Listas_precios,moneda,Moneda del precio,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Listas_precios,precio_unitario,Precio sin impuesto,Decimal,21.5,No aplica,Mayor que cero.
+Listas_precios,vigente_desde,Primer día de aplicación,Fecha,01/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Listas_precios,vigente_hasta,Último día de aplicación,Fecha,31/12/2026,No aplica,Igual o posterior al inicio. Puede ser futura.
+Listas_precios,descuento_max_sin_aprobacion,Máximo descuento estándar,Porcentaje,5.00%,No aplica,Proporción entre 0 y 1. Se muestra como porcentaje.
+Listas_precios,condicion_facturacion,Condición base,Texto categórico,Por entrega,"Por entrega, Entrega completa",Usar un valor del dominio indicado.
+Listas_precios,estado_lista,Habilitación,Texto categórico,Activa,"Activa, Inactiva",Usar un valor del dominio indicado.
+Reglas_descuento,id_regla_descuento,Clave de regla,Texto,REG-BOD-STD,No aplica,"Obligatorio, único e inmutable."
+Reglas_descuento,id_lista_precio,Lista gobernada,Texto categórico,LP-BOD-2026,"LP-BOD-2026, LP-MAY-2026",Usar un valor del dominio indicado.
+Reglas_descuento,descuento_desde,Límite inferior inclusive,Porcentaje,0,No aplica,Inclusive. Sin solapamiento con otro tramo vigente de la misma lista.
+Reglas_descuento,descuento_hasta,Límite superior inclusive,Porcentaje,5.00%,No aplica,Mayor o igual al límite inferior.
+Reglas_descuento,autoridad,Rol autorizado,Texto categórico,Preventista,"Preventista, Supervisor de ventas",Usar un valor del dominio indicado.
+Reglas_descuento,requiere_aprobacion,Si exige aprobación adicional,Booleano,False,No aplica,VERDADERO o FALSO.
+Reglas_descuento,vigente_desde,Primer día válido,Fecha,01/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Reglas_descuento,vigente_hasta,Último día válido,Fecha,31/12/2026,No aplica,Mayor o igual al inicio. Puede ser futura.
+Almacenes,id_almacen,Clave del almacén,Texto,ALM-001,No aplica,"Obligatorio, único e inmutable."
+Almacenes,nombre_almacen,Nombre operativo ficticio,Texto,CD Lima Norte (supuesto),No aplica,Obligatorio. Texto sin espacios al extremo.
+Almacenes,ubicacion,Sede descrita en el caso,Texto,Centro de distribución que atiende rutas de Lima Norte (supuesto didáctico),No aplica,Obligatorio. Texto sin espacios al extremo.
+Almacenes,tipo_almacen,Función,Texto categórico,Centro de distribución,"Centro de distribución, Planta",Usar un valor del dominio indicado.
+Almacenes,estado_almacen,Vigencia,Texto categórico,Activo,"Activo, Inactivo",Usar un valor del dominio indicado.
+Leads,id_lead,Identificador del lead en CRM,Texto,LEAD-001,No aplica,"Obligatorio, único e inmutable."
+Leads,id_campana,Campaña o fuente que originó el lead,Texto,CAMP-001,No aplica,Obligatorio; debe existir en Campanas.
+Leads,fecha_captura,Fecha de captura,Fecha,02/10/2026,No aplica,Obligatoria.
+Leads,canal_captura,Canal donde se capturó el interés,Texto,TUALI,"TUALI, AC Móvil, Redes sociales, Referido",Valor de la lista.
+Leads,nombre_negocio,Nombre del negocio declarado,Texto,Bodega Santa Rosa (sintético),No aplica,Obligatorio; datos sintéticos.
+Leads,tipo_documento_fiscal,Tipo de documento fiscal,Texto,RUC,RUC,Obligatorio para calificar.
+Leads,numero_documento_fiscal,Documento fiscal sintético,Texto,SIM-RUC10-00001,No aplica,Obligatorio para calificar; se usa para detectar duplicados contra Clientes.
+Leads,distrito,Distrito declarado,Texto,Comas,No aplica,Obligatorio; define si está en ruta.
+Leads,consentimiento_comunicaciones,Consentimiento para comunicaciones comerciales,Booleano,True,No aplica,Sin consentimiento el lead se descarta y no se contacta.
+Leads,evidencia_consentimiento,Referencia a la evidencia del consentimiento,Texto,CONS-001,No aplica,Obligatoria si hay consentimiento.
+Leads,estado_lead,Estado del lead,Texto,Convertido,"Nuevo, En calificación, Calificado, Descartado, Convertido",Valor de la lista; Convertido exige id_cliente.
+Leads,criterio_calificacion,Criterios verificados o pendientes,Texto,Dentro de ruta; RUC válido; consentimiento comercial; visita de preventa realizada,No aplica,Obligatorio desde En calificación.
+Leads,motivo_descarte,Causa del descarte,Texto,Fuera de zona de reparto,No aplica,Obligatorio si estado_lead = Descartado.
+Leads,id_cliente,Cliente creado o existente vinculado,Texto,CLI-001,No aplica,Obligatorio si Convertido o duplicado.
+Leads,responsable,Preventista dueño del lead,Texto,Preventista 1,No aplica,Obligatorio.
+Leads,fecha_calificacion,Fecha de la decisión de calificación,Fecha,03/10/2026,No aplica,Vacía mientras no hay decisión.
+Oportunidades,id_oportunidad,Clave de oportunidad,Texto,OPP-001,No aplica,"Obligatorio, único e inmutable."
+Oportunidades,id_cliente,Cliente interesado,Texto,CLI-001,No aplica,Obligatorio. Debe existir en Clientes.
+Oportunidades,id_contacto,Interlocutor del cliente,Texto,CON-001,No aplica,Debe existir en Contactos y pertenecer al mismo id_cliente.
+Oportunidades,necesidad,Necesidad sintetizada,Texto,Activación de bodega nueva y primer pedido con pack de lanzamiento,No aplica,Obligatorio. Texto sin espacios al extremo.
+Oportunidades,origen,Canal de captación,Texto categórico,Campaña TUALI,"Campaña TUALI, Promoción RGM, Visita preventa, Referido",Usar un valor del dominio indicado.
+Oportunidades,etapa,Estado comercial,Texto categórico,Ganada,"Calificada, Propuesta, Ganada, Perdida",Usar un valor del dominio indicado.
+Oportunidades,probabilidad,Estimación de conversión,Porcentaje,1,No aplica,Entre 0 y 1; Ganada=1 y Perdida=0.
+Oportunidades,valor_estimado,Importe estimado sin impuesto en PEN,Decimal,560,No aplica,Número mayor o igual a cero.
+Oportunidades,moneda,Moneda,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Oportunidades,fecha_apertura,Inicio de oportunidad,Fecha,03/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Oportunidades,fecha_cierre_estimada,Fecha esperada de decisión,Fecha,06/10/2026,No aplica,No anterior a apertura. Puede ser futura.
+Oportunidades,fecha_cierre_real,Fecha de decisión,Fecha,05/10/2026,No aplica,Admite vacío según condición. Solo para Ganada o Perdida; no anterior a apertura.
+Oportunidades,responsable,Rol comercial,Texto,Preventista 1,No aplica,Obligatorio. Texto sin espacios al extremo.
+Oportunidades,motivo_perdida,Causa de pérdida,Texto,El cliente postergó el evento (supuesto),No aplica,Admite vacío según condición. Solo obligatorio en Perdida.
+Oportunidades,id_campana,Campaña que originó la oportunidad,Texto,CAMP-001,No aplica,Opcional; debe existir en Campanas.
+Oportunidades,id_lead,Lead convertido en la oportunidad,Texto,LEAD-001,No aplica,Opcional; obligatorio si el cliente nace de un lead.
+Cotizaciones_cab,id_cotizacion,Clave única de versión,Texto,COT-001-V01,No aplica,"Obligatorio, único e inmutable."
+Cotizaciones_cab,numero_cotizacion,Familia de cotización,Texto,COT-001,No aplica,Obligatorio. Texto sin espacios al extremo.
+Cotizaciones_cab,version,Versión dentro de la familia,Entero,1,No aplica,Entero positivo; combinación número-versión única.
+Cotizaciones_cab,id_oportunidad,Oportunidad origen,Texto,OPP-001,No aplica,Obligatorio. Debe existir en Oportunidades.
+Cotizaciones_cab,id_direccion_entrega,Lugar de entrega del cliente,Texto,DIR-002,No aplica,"Debe existir en Direcciones, pertenecer al cliente de la operación y tener tipo Entrega."
+Cotizaciones_cab,fecha_emision,Día de oferta,Fecha,05/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Cotizaciones_cab,vigente_hasta,Fin de vigencia,Fecha,12/10/2026,No aplica,No anterior a emisión. Puede ser futura.
+Cotizaciones_cab,estado_cotizacion,Estado de la versión,Texto categórico,Aceptada,"Borrador, Pendiente aprobacion, Rechazada, Aceptada, Vencida",Usar un valor del dominio indicado.
+Cotizaciones_cab,estado_descuento,Estado del control de descuento,Texto categórico,No requerido,"Pendiente, Aprobado, Rechazado, No requerido",Usar un valor del dominio indicado.
+Cotizaciones_cab,aprobador,Autoridad del descuento,Texto,Supervisor de ventas,No aplica,Admite vacío según condición. Obligatorio si requiere aprobación.
+Cotizaciones_cab,fecha_aprobacion,Día de autorización,Fecha,07/10/2026,No aplica,"Admite vacío según condición. Obligatoria en Aprobado; vacía en Pendiente, Rechazado o No requerido."
+Cotizaciones_cab,acepta_entrega_parcial,Condición logística,Texto categórico,No,"Si, No",Usar un valor del dominio indicado.
+Cotizaciones_cab,condicion_facturacion,Regla acordada,Texto categórico,Por entrega,"Por entrega, Entrega completa",Usar un valor del dominio indicado.
+Cotizaciones_cab,moneda,Moneda,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Cotizaciones_cab,motivo_excepcion,Causa del control o rechazo,Texto,Descuento 10% rechazado por margen; se propone 8% en versión 2,No aplica,Admite vacío según condición. Opcional si no hay excepción.
+Cotizaciones_cab,base_imponible,Suma de bases de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_cab,importe_igv,Suma de impuestos de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_cab,importe_total,Suma de importes de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,id_cotizacion,Documento cabecera,Texto,COT-001-V01,No aplica,Obligatorio. Debe existir en Cotizaciones_cab.
+Cotizaciones_det,numero_linea,Número secuencial de ítem,Entero,1,No aplica,Mayor que cero; único dentro del documento.
+Cotizaciones_det,id_producto,Producto vendido,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Cotizaciones_det,cantidad,Cantidad en unidad base,Decimal,10,No aplica,Mayor que cero.
+Cotizaciones_det,id_precio,Precio vigente de referencia,Texto,PRE-BOD-001,No aplica,"Debe existir en Listas_precios y coincidir con producto, segmento del cliente, moneda y vigencia."
+Cotizaciones_det,precio_unitario,Precio unitario sin impuesto,Decimal,21.5,No aplica,Debe coincidir con el registro de precio.
+Cotizaciones_det,descuento_pct,Descuento aplicado,Porcentaje,5.00%,No aplica,"Entre 0 y 0,15; precisión máxima de cuatro decimales. Debe cumplir la regla asociada y su autorización."
+Cotizaciones_det,id_regla_descuento,Regla que autoriza el descuento,Texto,REG-BOD-STD,No aplica,Obligatorio. Debe existir en Reglas_descuento.
+Cotizaciones_det,tasa_igv,Tasa didáctica de impuesto,Porcentaje,18.00%,No aplica,Proporción entre 0 y 1. Se muestra como porcentaje.
+Cotizaciones_det,importe_bruto,Cantidad por precio,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,importe_descuento,Reducción monetaria,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,base_imponible,Bruto menos descuento,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,importe_igv,Base por tasa,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,importe_total,Base más impuesto,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,precio_vigente_desde,Inicio de vigencia del precio usado (derivado de Listas_precios),Fecha,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Cotizaciones_det,requiere_aprobacion,Si la regla de descuento exige aprobación (derivado),Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Solicitudes_pedido,id_solicitud,Identificador idempotente de la solicitud de creación de pedido,Texto,SOL-003,No aplica,Obligatorio; se repite en reintentos con intento distinto.
+Solicitudes_pedido,intento,Número de envío de la misma solicitud,Entero,1,No aplica,Obligatorio; inicia en 1.
+Solicitudes_pedido,tipo_mensaje,Tipo de mensaje del contrato,Texto,Solicitud inicial,"Solicitud inicial, Reintento, Confirmación promesa",Valor de la lista.
+Solicitudes_pedido,id_cotizacion,Versión de cotización que sustenta la solicitud,Texto,COT-003-V01,No aplica,Obligatorio; estado Aceptada.
+Solicitudes_pedido,id_cliente,Cliente de la cotización (derivado),Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Solicitudes_pedido,sistema_origen,Sistema que envía la solicitud,Texto,SAP Sales Cloud,"SAP Sales Cloud, TUALI, AC Móvil",Valor de la lista.
+Solicitudes_pedido,fecha_envio,Fecha del envío,Fecha,02/10/2026,No aplica,Obligatoria.
+Solicitudes_pedido,cantidad_solicitada,Suma de cantidades de la cotización (derivado),Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Solicitudes_pedido,cantidad_atp_confirmada,Cantidad que el ERP confirma disponible (respuesta ATP),Decimal,65,No aplica,Registrada desde la respuesta del ERP.
+Solicitudes_pedido,fecha_promesa_propuesta,Fecha de entrega propuesta por el ERP,Fecha,03/10/2026,No aplica,Obligatoria en respuestas de promesa.
+Solicitudes_pedido,acepta_entrega_parcial,Si el cliente acepta entrega parcial,Texto,No,"Si, No",Si/No.
+Solicitudes_pedido,codigo_respuesta,Código de respuesta del ERP,Texto,OK-ACEPTADO,"OK-ACEPTADO, OK-PROMESA-ALT, ATP-PARCIAL, PRECIO-NO-VIG, DESC-SIN-APROB, CRED-BLOQ, CLI-NO-VALIDO, DATO-OBLIG, DUPLICADO",Valor del catálogo de respuestas.
+Solicitudes_pedido,estado_solicitud,Estado de la solicitud en el contrato,Texto,Aceptada,"Enviada, Aceptada, Rechazada, Promesa alternativa",Valor de la lista.
+Solicitudes_pedido,id_pedido,Pedido creado en el ERP,Texto,PED-003,No aplica,Solo si la solicitud fue aceptada.
+Solicitudes_pedido,responsable,Responsable de la respuesta o del siguiente paso,Texto,Preventista 1,No aplica,Obligatorio en rechazos y promesas.
+Solicitudes_pedido,siguiente_paso,Acción siguiente,Texto,Seguimiento de entrega,No aplica,Obligatoria en rechazos y promesas.
+Prueba_contrato,solicitud_intento,Solicitud e intento verificados,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,id_cotizacion,Cotización de la solicitud,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,id_cliente,Cliente de la solicitud,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,c1_cliente_valido,Cliente activo y sincronizado en ERP,Booleano,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,c2_credito,"Crédito no bloqueado y total dentro del límite, o venta al contado",Booleano,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,c3_precio_vigente,Todas las líneas usan un precio vigente a la fecha de envío,Booleano,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,c4_descuento_autorizado,Descuento dentro de la regla autónoma o aprobado,Booleano,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,c5_atp_suficiente,Cantidad solicitada cubierta por el ATP confirmado,Booleano,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,codigo_esperado,Código que el contrato debería devolver según las reglas,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,codigo_registrado,Código registrado en la bitácora,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Prueba_contrato,resultado_prueba,Conforme si el código esperado coincide con el registrado,Texto,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_cab,id_pedido,Clave del pedido,Texto,PED-001,No aplica,"Obligatorio, único e inmutable."
+Pedidos_cab,id_cotizacion,Versión aceptada que origina pedido,Texto,COT-001-V01,No aplica,"Debe referenciar la versión Aceptada, vigente y con descuento autorizado."
+Pedidos_cab,id_direccion_entrega,Dirección comprometida,Texto,DIR-002,No aplica,"Debe existir en Direcciones, pertenecer al cliente de la operación y tener tipo Entrega."
+Pedidos_cab,fecha_confirmacion,Aceptación en ERP,Fecha,05/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Pedidos_cab,fecha_prometida,Fecha acordada para completar,Fecha,07/10/2026,No aplica,No anterior a confirmación. Puede ser futura.
+Pedidos_cab,fecha_revision_promesa,Fecha revisada aún no confirmada,Fecha,12/10/2026,No aplica,Admite vacío según condición. Opcional; propuesta didáctica pendiente de aceptación.
+Pedidos_cab,estado_pedido,Estado al corte,Texto categórico,Cerrado,"Confirmado, Entrega parcial, Entregado, Cerrado",Usar un valor del dominio indicado.
+Pedidos_cab,resultado_credito,Control previo al compromiso,Texto categórico,Aprobado,Aprobado,Aprobado antes de confirmar. Exposición total abierta no supera límite.
+Pedidos_cab,acepta_entrega_parcial,Aceptación logística,Texto categórico,No,"Si, No",Usar un valor del dominio indicado.
+Pedidos_cab,condicion_facturacion,Regla de emisión,Texto categórico,Por entrega,"Por entrega, Entrega completa",Usar un valor del dominio indicado.
+Pedidos_cab,moneda,Moneda,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Pedidos_cab,responsable_excepcion,Responsable del siguiente paso,Texto,Planeamiento CD y Preventista 2,No aplica,Admite vacío según condición. Opcional si no hay excepción.
+Pedidos_cab,causa_excepcion,Causa abierta,Texto,"ATP 380 de 600; 220 en reposición desde planta, prevista 12/10",No aplica,Admite vacío según condición. Opcional si no hay excepción.
+Pedidos_cab,base_imponible,Suma de bases de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_cab,importe_igv,Suma de impuestos de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_cab,importe_total,Suma de importes de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_det,id_pedido,Documento cabecera,Texto,PED-001,No aplica,Obligatorio. Debe existir en Pedidos_cab.
+Pedidos_det,numero_linea,Número secuencial de ítem,Entero,1,No aplica,Mayor que cero; único dentro del documento.
+Pedidos_det,id_producto,Producto vendido,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Pedidos_det,cantidad,Cantidad en unidad base,Decimal,10,No aplica,Mayor que cero.
+Pedidos_det,id_precio,Precio vigente de referencia,Texto,PRE-BOD-001,No aplica,"Debe existir en Listas_precios y coincidir con producto, segmento del cliente, moneda y vigencia."
+Pedidos_det,precio_unitario,Precio unitario sin impuesto,Decimal,21.5,No aplica,Debe coincidir con el registro de precio.
+Pedidos_det,descuento_pct,Descuento aplicado,Porcentaje,5.00%,No aplica,"Entre 0 y 0,15; precisión máxima de cuatro decimales. Debe cumplir la regla asociada y su autorización."
+Pedidos_det,id_regla_descuento,Regla que autoriza el descuento,Texto,REG-BOD-STD,No aplica,Obligatorio. Debe existir en Reglas_descuento.
+Pedidos_det,tasa_igv,Tasa didáctica de impuesto,Porcentaje,18.00%,No aplica,Proporción entre 0 y 1. Se muestra como porcentaje.
+Pedidos_det,importe_bruto,Cantidad por precio,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_det,importe_descuento,Reducción monetaria,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_det,base_imponible,Bruto menos descuento,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_det,importe_igv,Base por tasa,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pedidos_det,importe_total,Base más impuesto,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Entregas_cab,id_entrega,Clave de entrega,Texto,ENT-001,No aplica,"Obligatorio, único e inmutable."
+Entregas_cab,id_pedido,Pedido atendido,Texto,PED-001,No aplica,Obligatorio. Debe existir en Pedidos_cab.
+Entregas_cab,id_direccion_entrega,Lugar de recepción,Texto,DIR-002,No aplica,"Debe existir en Direcciones, pertenecer al cliente de la operación y tener tipo Entrega."
+Entregas_cab,id_almacen,Almacén de salida,Texto,ALM-001,No aplica,Obligatorio. Debe existir en Almacenes.
+Entregas_cab,fecha_despacho,Salida física autorizada,Fecha,07/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Entregas_cab,fecha_entrega,Recepción confirmada,Fecha,07/10/2026,No aplica,No anterior al despacho.
+Entregas_cab,estado_entrega,Resultado,Texto categórico,Confirmada,Confirmada,Usar un valor del dominio indicado.
+Entregas_cab,prueba_entrega,Referencia de recepción sintética,Texto,POD-001,No aplica,Obligatorio. Texto sin espacios al extremo.
+Entregas_cab,receptor,Rol receptor ficticio,Texto,Encargado de recepción (ficticio),No aplica,Obligatorio. Texto sin espacios al extremo.
+Entregas_cab,observacion,Incidencia o conformidad,Texto,Entrega completa,No aplica,Obligatorio. Texto sin espacios al extremo.
+Entregas_det,id_entrega,Entrega cabecera,Texto,ENT-001,No aplica,Obligatorio. Debe existir en Entregas_cab.
+Entregas_det,numero_linea,Ítem de la entrega,Entero,1,No aplica,Positivo; único por entrega.
+Entregas_det,id_pedido,Pedido de origen,Texto,PED-001,No aplica,Obligatorio. Debe existir en Pedidos_cab.
+Entregas_det,numero_linea_pedido,Línea original del pedido,Entero,1,No aplica,Debe existir con id_pedido en Pedidos_det.
+Entregas_det,id_producto,Producto entregado,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Entregas_det,cantidad_entregada,Cantidad física,Decimal,10,No aplica,Mayor que cero; acumulado no supera pedido.
+Entregas_det,lote,Lote sintético del producto,Texto,LOT-001-10,No aplica,Obligatorio. Texto sin espacios al extremo.
+Entregas_det,unidad_medida,Unidad del producto,Texto,CJ,No aplica,Debe coincidir con Productos.
+Facturas_cab,id_factura,Clave interna de factura,Texto,FAC-001,No aplica,"Obligatorio, único e inmutable."
+Facturas_cab,numero_documento,Número ficticio de comprobante,Texto,SIM-F001-000001,No aplica,"Obligatorio, único e inmutable."
+Facturas_cab,id_pedido,Pedido facturado,Texto,PED-001,No aplica,Obligatorio. Debe existir en Pedidos_cab.
+Facturas_cab,fecha_emision,Día de emisión,Fecha,07/10/2026,No aplica,No anterior a la última entrega facturada.
+Facturas_cab,fecha_vencimiento,Fin del plazo de pago,Fecha,07/10/2026,No aplica,Emisión más condición de pago del cliente.
+Facturas_cab,moneda,Moneda,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Facturas_cab,estado_factura,Estado documental,Texto categórico,Emitida,Emitida,Usar un valor del dominio indicado.
+Facturas_cab,base_imponible,Suma de bases de detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_cab,importe_igv,Suma de impuesto,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_cab,importe_total,Suma total del detalle,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_det,id_factura,Factura cabecera,Texto,FAC-001,No aplica,Obligatorio. Debe existir en Facturas_cab.
+Facturas_det,numero_linea,Ítem fiscal sintético,Entero,1,No aplica,Positivo; único por factura.
+Facturas_det,id_entrega,Entrega que respalda el ítem,Texto,ENT-001,No aplica,Obligatorio. Debe existir en Entregas_cab.
+Facturas_det,numero_linea_entrega,Ítem de entrega origen,Entero,1,No aplica,Debe existir con id_entrega en Entregas_det.
+Facturas_det,id_producto,Producto facturado,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Facturas_det,cantidad,Cantidad facturada,Decimal,10,No aplica,Positiva; no superior a cantidad entregada.
+Facturas_det,precio_unitario,Precio de la línea del pedido,Decimal,21.5,No aplica,Número mayor o igual a cero.
+Facturas_det,descuento_pct,Descuento autorizado del pedido,Porcentaje,5.00%,No aplica,"Entre 0 y 0,15; precisión máxima de cuatro decimales. Debe cumplir la regla asociada y su autorización."
+Facturas_det,tasa_igv,Tasa didáctica,Porcentaje,18.00%,No aplica,Proporción entre 0 y 1. Se muestra como porcentaje.
+Facturas_det,importe_bruto,Cantidad por precio,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_det,importe_descuento,Reducción monetaria,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_det,base_imponible,Bruto menos descuento,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_det,importe_igv,Base por tasa,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Facturas_det,importe_total,Base más impuesto,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pagos,id_pago,Clave de aplicación de pago,Texto,PAG-001,No aplica,"Obligatorio, único e inmutable."
+Pagos,id_factura,Documento al que se aplica,Texto,FAC-001,No aplica,Obligatorio. Debe existir en Facturas_cab.
+Pagos,fecha_pago,Fecha de cobro,Fecha,07/10/2026,No aplica,No anterior a factura; no posterior al corte.
+Pagos,fecha_aplicacion,Día de aplicación,Fecha,07/10/2026,No aplica,Igual o posterior al cobro y no posterior al corte.
+Pagos,medio_pago,Instrumento,Texto categórico,Efectivo contra entrega,"Efectivo contra entrega, Transferencia, Deposito",Usar un valor del dominio indicado.
+Pagos,moneda,Moneda,Texto categórico,PEN,PEN,Usar un valor del dominio indicado.
+Pagos,importe_aplicado,Importe aplicado a la factura,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Pagos,referencia_bancaria,Referencia ficticia única,Texto,SIM-CAJA-001,No aplica,"Obligatorio, único e inmutable."
+Pagos,estado_pago,Estado de aplicación,Texto categórico,Aplicado,Aplicado,Usar un valor del dominio indicado.
+Pagos,responsable_aplicacion,Rol que aplica el pago,Texto,Liquidación de ruta,No aplica,Obligatorio. Texto sin espacios al extremo.
+Movimientos_inventario,id_movimiento_inventario,Clave de movimiento,Texto,MOV-001,No aplica,"Obligatorio, único e inmutable."
+Movimientos_inventario,id_producto,Producto movilizado,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Movimientos_inventario,id_almacen,Almacén afectado,Texto,ALM-001,No aplica,Obligatorio. Debe existir en Almacenes.
+Movimientos_inventario,fecha_movimiento,Día de movimiento,Fecha,01/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Movimientos_inventario,tipo_movimiento,Naturaleza del evento,Texto categórico,Saldo inicial,"Saldo inicial, Reposicion, Salida entrega, Salida reposicion",Usar un valor del dominio indicado.
+Movimientos_inventario,cantidad_entrada,Unidades ingresadas,Decimal,492,No aplica,Positiva para Saldo inicial o Reposicion; cero para Salida entrega.
+Movimientos_inventario,cantidad_salida,Unidades retiradas,Decimal,0,No aplica,Positiva para Salida entrega; cero para entradas. No causa stock negativo.
+Movimientos_inventario,id_entrega,Entrega asociada a salida,Texto,ENT-003,No aplica,"Admite vacío según condición. Opcional. Si se informa, Debe existir en Entregas_cab."
+Movimientos_inventario,numero_linea_entrega,Línea asociada a salida,Entero,1,No aplica,Admite vacío según condición. Requerida para Salida entrega; vacía para entrada.
+Movimientos_inventario,lote,Lote sintético,Texto,LOT-001-10,No aplica,Obligatorio. Texto sin espacios al extremo.
+Movimientos_inventario,referencia,Evidencia sintética del movimiento,Texto,Saldo inicial didáctico,No aplica,Obligatorio. Texto sin espacios al extremo.
+Inventario_actual,id_producto,Producto contado,Texto,PRD-001,No aplica,Obligatorio. Debe existir en Productos.
+Inventario_actual,id_almacen,Almacén,Texto,ALM-001,No aplica,Obligatorio. Debe existir en Almacenes.
+Inventario_actual,fecha_corte,Corte fijo del conjunto,Fecha,11/10/2026,No aplica,"Fecha válida, no posterior al corte."
+Inventario_actual,stock_fisico,Entradas menos salidas,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Inventario_actual,stock_reservado,Parte disponible comprometida con pedidos abiertos,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Inventario_actual,stock_disponible,Físico menos reservado,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Inventario_actual,demanda_pendiente,Unidades aún no entregadas de pedidos,Decimal,(fórmula),No aplica,Calculado por fórmula; no se edita.
+Inventario_actual,cantidad_en_reposicion,Reposición pendiente declarada,Decimal,220,No aplica,Previsión no incluida en stock físico. Mayor o igual a cero.
+Inventario_actual,fecha_reposicion_prevista,Fecha de previsión,Fecha,12/10/2026,No aplica,Admite vacío según condición. Opcional; previsión sin confirmación operativa.
+Inventario_actual,estado_reposicion,Estado de seguimiento,Texto categórico,Pendiente,"No aplica, Pendiente, Atrasada",Usar un valor del dominio indicado.
+Inventario_actual,observacion,Condición o excepción didáctica,Texto,"380 entregados a CLI-002 el 09/10; 220 en reposición desde planta, prevista 12/10.",No aplica,Obligatorio. Texto sin espacios al extremo.
+Clientes,canal_pedido_habitual,Canal por el que el cliente pedía antes de las campañas de adopción,Texto,Teléfono,"TUALI, Preventa (AC Móvil), Teléfono, combinaciones",Se actualiza desde el CRM; supuesto didáctico
+Clientes,estado_adopcion_tuali,Estado de adopción de TUALI al corte,Texto,Híbrido,"Digital, Híbrido, No usa",Se recalcula después de cada pedido según el canal de origen
+Solicitudes_pedido,canal_origen,Canal en el que nació el pedido antes de entrar al contrato CRM–ERP,Texto,Teléfono,"TUALI, Preventa, Teléfono",Obligatorio en EV-02; no cambia las validaciones C1–C5

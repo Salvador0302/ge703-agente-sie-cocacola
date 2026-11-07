@@ -1,0 +1,10 @@
+[project]
+name = "agente-sie-g2"
+version = "4.0.0"
+description = "Agente SIE · GE703 · G2 · Coca-Cola / ACL (datos sintéticos)"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["pruebas"]
+pythonpath = ["producto", "pruebas"]
+addopts = "-ra"

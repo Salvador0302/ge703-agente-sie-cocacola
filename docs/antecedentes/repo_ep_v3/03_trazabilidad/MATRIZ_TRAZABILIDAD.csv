@@ -1,0 +1,71 @@
+﻿ID,Afirmación,Fuente,Tipo,Fecha,Dónde se usa,Entrega
+T01,"La PC1 exige contexto, problema de integración, comparativo, arquitectura, fuentes, supuestos y backlog verificables",PC1 oficial,HECHO,26/09/2026,Repositorio PC1,PC1
+T02,ACL es embotelladora y comercializadora exclusiva de las marcas Coca-Cola Perú,F01,HECHO,19/09/2026,Repositorio PC1,PC1
+T03,ACL cuenta con 6 plantas,F01,HECHO,19/09/2026,Repositorio PC1,PC1
+T04,"ACL cuenta con +4,500 colaboradores",F01,HECHO,19/09/2026,Repositorio PC1,PC1
+T05,"ACL atiende a +370,000 clientes",F01,HECHO,19/09/2026,Repositorio PC1,PC1
+T06,"ACL anunció inversión de US$1,000 millones durante cinco años",F02,HECHO,19/09/2026,Repositorio PC1,PC1
+T07,TUALI llegó a 200 mil bodegueros,F03,HECHO,19/09/2026,Repositorio PC1,PC1
+T08,"El desalineamiento entre planificación comercial, planificación y ejecución puede contribuir a OOS",Borrador/estrategia del equipo,SUPUESTO,19/09/2026,Repositorio PC1,PC1
+T09,OOS/fill rate/forecast y reprogramaciones deben medirse con datos de ACL,Equipo,PENDIENTE,19/09/2026,Repositorio PC1,PC1
+T10,ACL tiene evidencia pública de uso de SAP y SAP APO,S01,HECHO (fuente secundaria),19/09/2026,Repositorio PC1,PC1
+T11,La instancia SAP actual y su alcance exacto en ACL Perú no están confirmados,Equipo,PENDIENTE,19/09/2026,Repositorio PC1,PC1
+T12,SAP documenta capacidades de integración y extensibilidad,F04/F05,HECHO,12/09/2026,Repositorio PC1,PC1
+T13,Dynamics 365 documenta arquitectura y patrones de integración,F06/F08,HECHO,12/09/2026,Repositorio PC1,PC1
+T14,StarSoft documenta Gold Edition y capacidades del producto,F09/F10,HECHO,12/09/2026,Repositorio PC1,PC1
+T15,Odoo documenta API externa JSON-2,F11,HECHO,25/09/2026,Repositorio PC1,PC1
+T16,Odoo documenta controles de acceso y reglas de registro,F12,HECHO,25/09/2026,Repositorio PC1,PC1
+T17,Odoo se incorpora como cuarta arquitectura comparada,Equipo,DECISIÓN,25/09/2026,Repositorio PC1,PC1
+T18,SAP ECC/APO se mantiene como backbone,Equipo,DECISIÓN,25/09/2026,Repositorio PC1,PC1
+T19,"Anaplan, AC Móvil/TUALI y WMS/TMS complementan al backbone",Equipo,DECISIÓN,25/09/2026,Repositorio PC1,PC1
+T20,"Las interfaces dibujadas representan una arquitectura lógica propuesta, no un inventario productivo confirmado",Equipo,SUPUESTO,25/09/2026,Repositorio PC1,PC1
+T21,El protocolo y frecuencia reales de cada interfaz están pendientes,Equipo,PENDIENTE,25/09/2026,Repositorio PC1,PC1
+T22,Los datos del proyecto no incluyen información personal ni confidencial,Equipo,HECHO,25/09/2026,Repositorio PC1,PC1
+T23,Claude y ChatGPT se utilizaron como apoyo y deben ser revisados por el equipo,Declaración de IA,HECHO,25/09/2026,Repositorio PC1,PC1
+T24,Las contribuciones individuales deben ser verificables,PC1 oficial,HECHO,26/09/2026,Repositorio PC1,PC1
+T25,"Expositores, URL del repositorio y contribuciones individuales requieren completar por el equipo",Plantilla oficial,PENDIENTE → cerrado en la entrega PC1,25/09/2026,Repositorio PC1,PC1
+T26,"La PC2 exige incremento desde PC1, escenario comercial, contrato CRM–ERP, prueba, fuentes y límites; no se solicita agente comercial",C04,HECHO,11/10/2026,"Entregable, encabezados 1–5",PC2
+T27,No existe evidencia pública del CRM que usa ACL,Búsqueda del equipo,PENDIENTE,11/10/2026,Backlog B13,PC2
+T28,El CRM de ACL se modela como SAP Sales Cloud por continuidad con SAP (criterio C1 del PC1),Equipo,SUPUESTO / DECISIÓN,11/10/2026,"Entregable §1; contrato, propósito",PC2
+T29,"SAP documenta el flujo de pedido de SAP Sales Cloud a SAP S/4HANA, con IDs y estados devueltos al CRM",F15,HECHO,11/10/2026,Entregable §1,PC2
+T30,"Integrado con SAP ERP, el CRM de SAP puede consultar precio, ATP y crédito al ERP",S08 (contrastado con F15),HECHO (fuente secundaria),11/10/2026,"Contrato §2, mecanismo técnico",PC2
+T31,Los mensajes CRM–ERP pasan por SAP Integration Suite (bitácora y reintentos),Equipo,SUPUESTO,11/10/2026,05_arquitectura,PC2
+T32,"TUALI permite pedidos, promociones y consulta de portafolio",F03 / S09,HECHO,19/09/2026,Entregable §2,PC2
+T33,La plataforma digital concentró el 60% del volumen del canal tradicional en 2023 a nivel de todo Arca Continental (no solo Perú),F14,HECHO,11/10/2026,Entregable §2,PC2
+T34,El canal tradicional de ACL opera con preventa,S07,HECHO (trabajo del equipo con fuente),03/10/2026,Entregable §2,PC2
+T35,Una oportunidad o cotización no reserva stock; el pedido confirmado sí,C01 lám. 9,HECHO,10/10/2026,"Contrato §1, regla de frontera",PC2
+T36,"Ante ATP insuficiente se propone promesa alternativa; toda excepción conserva objeto, causa, estado, responsable y fecha",C01 lám. 18,HECHO,10/10/2026,R6; EV-04,PC2
+T37,En la S6 y la PC2 no se diseña ni evalúa el agente comercial,C01 lám. 21,HECHO,10/10/2026,Contrato §6,PC2
+T38,El tratamiento de datos de contacto requiere consentimiento con finalidad,F17 / S10,HECHO,11/10/2026,R1; LEAD-007,PC2
+T39,"R1: un lead se califica solo si está en ruta del CD, tiene RUC válido, no duplica un cliente y tiene consentimiento",Equipo,SUPUESTO,11/10/2026,08_procesos/REGLAS_NEGOCIO.csv,PC2
+T40,R2: solo una versión Aceptada y vigente de cotización genera solicitud,Equipo (a partir de C01 lám. 11 y 14),SUPUESTO,11/10/2026,Validador §3,PC2
+T41,R3: descuento hasta 5% preventista; 5–12% Supervisor de ventas; más de 12% fuera de política,Equipo,SUPUESTO,11/10/2026,Reglas_descuento; backlog B15,PC2
+T42,R4: solo se usan precios vigentes en ECC; las promociones de RGM se cargan como condiciones (I10),Equipo,SUPUESTO,11/10/2026,P-03 (SOL-005),PC2
+T43,R5: bodega nueva al contado; mayorista con límite; crédito bloqueado o excedido se rechaza,Equipo,SUPUESTO,11/10/2026,P-04 (SOL-011); backlog B16,PC2
+T44,"R6: si el ATP no cubre, el ERP propone cantidad y fecha; el parcial exige aceptación del cliente",C01 lám. 18,HECHO,10/10/2026,P-02 (SOL-002),PC2
+T45,R7: idempotencia por id_solicitud + intento; nunca dos pedidos por cotización,Equipo,SUPUESTO,11/10/2026,Validador §3,PC2
+T46,Facturación por entrega en el canal tradicional,Equipo,SUPUESTO,11/10/2026,Backlog B17,PC2
+T47,"Todos los datos del modelo son sintéticos (SIM-RUC, example.com, SIM-TEL)",Equipo,HECHO,11/10/2026,09_datos,PC2
+T48,"La prueba de escritorio da 12 de 12 intentos conformes, recalculada en Excel y en Python",10_pruebas/RESULTADO_VALIDACION.txt,HECHO (evidencia del equipo),11/10/2026,Entregable §4,PC2
+T49,"Con los datos de prueba: aceptación al primer envío 70%, promesa alternativa 10%, conversión lead → cliente 62.5% (v2.0); en v3.0: 70%, 10% y 66.7% de leads cerrados",10_pruebas/RESULTADO_VALIDACION.txt,HECHO (datos sintéticos),11/10/2026,Contrato §7; línea base ACL en B18,PC2
+T50,Cómo ingresan hoy a SAP los pedidos de TUALI y AC Móvil,Equipo,PENDIENTE,11/10/2026,Backlog B14,PC2
+T51,Políticas reales de descuento y crédito de ACL por rol y segmento,Equipo,PENDIENTE,11/10/2026,"Backlog B15, B16",PC2
+T52,La versión e instancia SAP de ACL sigue sin confirmar,Equipo,PENDIENTE,11/10/2026,Backlog B01 (heredado),PC2
+T53,ECC tiene horizonte de mantenimiento definido; el CRM elegido también se integra con S/4HANA,F16 / F15,HECHO,11/10/2026,Entregable §1,PC2
+T54,Claude se utilizó como apoyo en la PC2 y su salida fue revisada por el equipo,06_ia_etica/DECLARACION_IA.md,HECHO,11/10/2026,"Entregable, uso de IA",PC2
+T55,No se realizó revisión cruzada en la S6 (el grupo no asistió),Equipo,PENDIENTE,11/10/2026,07_revision; backlog B20,PC2
+T56,ACL declara más de 370 mil clientes; la misma página los llama también puntos de venta,F01 (acceso 23/10/2026),HECHO,23/10/2026,Reto de negocio; panel momento 1,EP
+T57,"Unos 200 mil bodegueros usan TUALI, casi 4 de cada 10 bodegas del país (base ~535 mil)",F03 (acceso 23/10/2026),HECHO,23/10/2026,Reto de negocio; cierra pendiente PC2 v2.1,EP
+T58,Cerca del 46% de los clientes de ACL aún no usa TUALI (200 mil / 370 mil),Cálculo del equipo con F01 y F03,SUPUESTO,23/10/2026,Reto de negocio; límite del momento 1,EP
+T59,Uso de TUALI por pedido y proporción de pedidos telefónicos en ACL,Equipo,PENDIENTE,23/10/2026,"Backlog B18, B23",EP
+T60,"Decisión: todo pedido de TUALI, preventa o teléfono entra a ECC por el contrato I8 con C1–C5",Equipo,DECISIÓN,23/10/2026,05_arquitectura; R8,EP
+T61,El pedido telefónico se registra en el CRM con canal_origen = Teléfono,Equipo,SUPUESTO,23/10/2026,R8; Solicitudes_pedido,EP
+T62,"Las validaciones C1–C5 no dependen del canal de origen: 12 de 12 conformes en TUALI, preventa y teléfono",10_pruebas/RESULTADO_VALIDACION.txt §8,HECHO (evidencia del equipo),23/10/2026,Panel momento 4,EP
+T63,Escenario normal EP-N: esperado = observado en 6 de 6 verificaciones,Validador §9,HECHO (datos sintéticos),23/10/2026,10_pruebas/PRUEBA_EP.md,EP
+T64,Excepción EP-X: esperado = observado en 11 de 11 verificaciones; ATP 380 recalculado,Validador §4 y §9,HECHO (datos sintéticos),23/10/2026,10_pruebas/PRUEBA_EP.md,EP
+T65,El pedido confirmado consume ATP y el faltante genera el requerimiento que APO/MRP convierte en compra,Lógica estándar ERP; I2 del PC1,SUPUESTO,23/10/2026,08_procesos/MAPA_O2C_P2P.md,EP
+T66,"Insumos de la reposición: concentrado, preformas PET, azúcar, CO₂",Avance S5 (S2),SUPUESTO,23/10/2026,Mapa O2C–P2P,EP
+T67,"Controles P2P: presupuesto y proveedor habilitado, recepción con tolerancias, tres vías y doble autorización",Avance S5 · matriz P2P (S07); C07,HECHO (curso) / SUPUESTO (ACL),23/10/2026,Mapa O2C–P2P,EP
+T68,ECC: mantenimiento principal hasta fines de 2027; extendido opcional 2028–2030,F16 (acceso 23/10/2026),HECHO,23/10/2026,Arquitectura v3.0; riesgos aceptados,EP
+T69,Piloto de 8 semanas en el CD Lima Norte como condición de aprobación,Equipo,SUPUESTO,23/10/2026,Recomendación final,EP
+T70,Claude se utilizó como apoyo en el EP y su salida fue revisada por el equipo,06_ia_etica/DECLARACION_IA.md,HECHO,23/10/2026,Uso de IA,EP

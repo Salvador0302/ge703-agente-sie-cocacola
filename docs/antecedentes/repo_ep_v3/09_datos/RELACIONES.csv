@@ -1,0 +1,41 @@
+﻿Tabla hija,Campo(s),Tabla padre,Clave de referencia,Cardinalidad,Admite vacío
+Leads,id_campana,Campanas,id_campana,N:1,No
+Leads,id_cliente,Clientes,id_cliente,N:1,Si
+Contactos,id_cliente,Clientes,id_cliente,N:1,No
+Direcciones,id_cliente,Clientes,id_cliente,N:1,No
+Listas_precios,id_producto,Productos,id_producto,N:1,No
+Oportunidades,id_cliente,Clientes,id_cliente,N:1,No
+Oportunidades,id_contacto,Contactos,id_contacto,N:1,No
+Oportunidades,id_campana,Campanas,id_campana,N:1,Si
+Oportunidades,id_lead,Leads,id_lead,N:1,Si
+Cotizaciones_cab,id_oportunidad,Oportunidades,id_oportunidad,N:1,No
+Cotizaciones_cab,id_direccion_entrega,Direcciones,id_direccion,N:1,No
+Cotizaciones_det,id_cotizacion,Cotizaciones_cab,id_cotizacion,N:1,No
+Cotizaciones_det,id_producto,Productos,id_producto,N:1,No
+Cotizaciones_det,id_precio,Listas_precios,id_precio,N:1,No
+Cotizaciones_det,id_regla_descuento,Reglas_descuento,id_regla_descuento,N:1,No
+Solicitudes_pedido,id_cotizacion,Cotizaciones_cab,id_cotizacion,N:1,No
+Solicitudes_pedido,id_pedido,Pedidos_cab,id_pedido,N:1,Si
+Prueba_contrato,solicitud_intento,Solicitudes_pedido,id_solicitud + intento,1:1,No
+Pedidos_cab,id_cotizacion,Cotizaciones_cab,id_cotizacion,N:1,No
+Pedidos_cab,id_direccion_entrega,Direcciones,id_direccion,N:1,No
+Pedidos_det,id_pedido,Pedidos_cab,id_pedido,N:1,No
+Pedidos_det,id_producto,Productos,id_producto,N:1,No
+Pedidos_det,id_precio,Listas_precios,id_precio,N:1,No
+Pedidos_det,id_regla_descuento,Reglas_descuento,id_regla_descuento,N:1,No
+Entregas_cab,id_pedido,Pedidos_cab,id_pedido,N:1,No
+Entregas_cab,id_direccion_entrega,Direcciones,id_direccion,N:1,No
+Entregas_cab,id_almacen,Almacenes,id_almacen,N:1,No
+Entregas_det,id_entrega,Entregas_cab,id_entrega,N:1,No
+Entregas_det,id_pedido + numero_linea_pedido,Pedidos_det,id_pedido + numero_linea,N:1,No
+Entregas_det,id_producto,Productos,id_producto,N:1,No
+Facturas_cab,id_pedido,Pedidos_cab,id_pedido,N:1,No
+Facturas_det,id_factura,Facturas_cab,id_factura,N:1,No
+Facturas_det,id_entrega + numero_linea_entrega,Entregas_det,id_entrega + numero_linea,N:1,No
+Facturas_det,id_producto,Productos,id_producto,N:1,No
+Pagos,id_factura,Facturas_cab,id_factura,N:1,No
+Movimientos_inventario,id_producto,Productos,id_producto,N:1,No
+Movimientos_inventario,id_almacen,Almacenes,id_almacen,N:1,No
+Movimientos_inventario,id_entrega + numero_linea_entrega,Entregas_det,id_entrega + numero_linea,N:1,Si
+Inventario_actual,id_producto,Productos,id_producto,N:1,No
+Inventario_actual,id_almacen,Almacenes,id_almacen,N:1,No
