@@ -1,0 +1,11 @@
+ID,Origen,Destino,Datos/propósito,Cambio PC2 (v2.0),Cambio EP (v3.0),Estado de evidencia
+I1,RGM Anaplan,SAP APO,Plan comercial / promociones / forecast,Se mantiene,Se mantiene,SUPUESTO
+I2,SAP APO,SAP ECC,Plan de producción y distribución; reposición del CD (conecta O2C con P2P),Se mantiene,Se usa como enlace O2C–P2P en el mapa integrado,SUPUESTO
+I3,SAP ECC,SAP Sales Cloud y canales,"Catálogo, precios, ATP y estado de crédito; el CRM consulta, no calcula ni reserva",Modificada: se extiende al CRM,Se mantiene,SUPUESTO
+I4,AC Móvil/TUALI,SAP ECC (vía I8),Pedidos de canal,Modificada: pasa por I8,Ningún canal entra directo a ECC; incluye el teléfono,SUPUESTO
+I5,SAP ECC,WMS/TMS,Órdenes de despacho,Se mantiene,Se mantiene,SUPUESTO
+I6,WMS/TMS,SAP ECC,Confirmación de despacho / inventario,Se mantiene,Se mantiene,SUPUESTO
+I7,SAP ECC,Finanzas,Facturación / cuentas por cobrar y pagar,Se mantiene,Se mantiene,HECHO/INTERPRETACIÓN
+I8,SAP Sales Cloud ↔ SAP ECC (SAP Integration Suite),—,"Contrato de transición: EV-01 alta de cliente, EV-02/EV-05 solicitud y confirmación, EV-03/EV-04 respuestas, EV-06/EV-07 avisos",Nueva,Agrega el dato mínimo canal_origen; mismas reglas C1–C5 para los tres canales,SUPUESTO
+I9,"TUALI, AC Móvil y teléfono/WhatsApp",SAP Sales Cloud,"Leads, visitas, consentimientos, cotizaciones aceptadas y pedidos telefónicos registrados por el preventista",Nueva (TUALI y AC Móvil),Se agrega el teléfono/WhatsApp como canal registrado,SUPUESTO
+I10,RGM Anaplan,SAP ECC,Condiciones de precio promocional con vigencia,Nueva,Se mantiene,SUPUESTO

@@ -1,0 +1,82 @@
+GE703 · EP · G2 · Validación independiente del contrato CRM–ERP (ACL) · v3.0
+==========================================================================
+
+1. Prueba del contrato (C1 cliente · C2 crédito · C3 precio vigente · C4 descuento · C5 ATP)
+solicitud-intento   C1  C2  C3  C4  C5  esperado        registrado      Excel           resultado
+SOL-003-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-004-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-006-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-007-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-001-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-008-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-002-1            V   V   V   V   F  ATP-PARCIAL     ATP-PARCIAL     ATP-PARCIAL     Conforme
+SOL-002-2            V   V   V   V   F  OK-PROMESA-ALT  OK-PROMESA-ALT  OK-PROMESA-ALT  Conforme
+SOL-005-1            V   V   F   V   V  PRECIO-NO-VIG   PRECIO-NO-VIG   PRECIO-NO-VIG   Conforme
+SOL-011-1            V   F   V   V   V  CRED-BLOQ       CRED-BLOQ       CRED-BLOQ       Conforme
+SOL-005-2            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+SOL-009-1            V   V   V   V   V  OK-ACEPTADO     OK-ACEPTADO     OK-ACEPTADO     Conforme
+→ 12 de 12 intentos conformes (Python = bitácora = Excel).
+
+2. Integridad referencial (hoja Relaciones del modelo)
+→ 40 relaciones revisadas; 0 huérfanos.
+
+3. Reglas de negocio del escenario
+R1 Calificación: 6 convertidos con consentimiento; 1 duplicado(s) enlazado(s) a su cliente; leads sin consentimiento descartados.
+R2 Cotización solicitable: las 10 cotizaciones enviadas están Aceptadas; ninguna versión Rechazada se envió.
+R3 Descuento: todas las líneas caen en su tramo (≤5% preventista; 5–12% Supervisor).
+R4 Precio vigente: verificado en C3 (ver SOL-005 intento 1).
+R5 Crédito: verificado en C2 (ver SOL-011).
+R7 Idempotencia: 10 solicitudes, 12 intentos correlativos; un solo pedido por cotización; pedido solo con código OK.
+
+4. ATP de PRD-001 en el CD Lima Norte al momento de SOL-002 (07/10/2026)
+Físico antes del 07/10: 402 · reservado por pedidos confirmados sin entregar: 22 · ATP = 380
+Solicitado: 600 · ATP registrado por el ERP: 380 · pendiente: 220 en reposición (prevista 12/10)
+Al corte (11/10): stock físico 0, en reposición 220 (Pendiente).
+
+5. Importes (IGV 18%, redondeo a 2 decimales)
+→ 30 documentos con base imponible recalculada desde sus líneas.
+COT-003-V01 (escenario normal): base 1346.62 + IGV 242.4 = total S/ 1589.02
+COT-002-V02 (excepción): base 11260.8 + IGV 2026.94 = total S/ 13287.74
+
+6. Cadenas de trazabilidad (de la factura hacia la campaña)
+Normal (Don Lucho, TUALI):      CAMP-004 → LEAD-013 → CLI-003 → OPP-003 → COT-003-V01 → SOL-003-1 OK-ACEPTADO → PED-003 → ENT-003 → FAC-003 → PAG-002
+Excepción (Los Olivos, tel.):   CAMP-002 → (cliente existente) → CLI-002 → OPP-002 → COT-002-V02 → SOL-002-1 ATP-PARCIAL / SOL-002-2 OK-PROMESA-ALT → PED-002 → ENT-002 → FAC-002
+Complementaria (bodega nueva): CAMP-001 → LEAD-001 → CLI-001 → OPP-001 → COT-001-V01 → SOL-001-1 OK-ACEPTADO → PED-001 → ENT-001 → FAC-001 → PAG-001
+
+7. Indicadores del contrato (datos de prueba, no de ACL)
+Aceptación al primer envío: 7/10 = 70.0%
+Pedidos con promesa alternativa: 1/10 = 10.0%
+Conversión de leads cerrados: 6/9 = 66.7%
+
+8. Mismo contrato, tres canales (las reglas C1–C5 no dependen del canal de origen)
+canal      solicitudes  intentos  conformes  OK 1.er envío  con código de excepción
+TUALI                2         2          2              2                        0
+Preventa             4         5          5              3                        1
+Teléfono             4         5          5              2                        2
+Total               10        12         12              7                        3
+Control: 0 pedidos aceptados por encima del ATP; 0 promesas parciales sin aceptación registrada del cliente.
+Control: 12 de 12 respuestas con código, responsable y siguiente paso.
+
+9. Prueba del EP: resultado esperado vs. resultado observado
+EP-N · Escenario normal · Bodega Don Lucho (pedía por teléfono) acepta su cotización en TUALI
+  Canal de origen                              esperado: TUALI                        observado: TUALI                        Conforme
+  C1–C5 recalculadas                           esperado: V V V V V                    observado: V V V V V                    Conforme
+  Código de respuesta (EV-03)                  esperado: OK-ACEPTADO                  observado: OK-ACEPTADO                  Conforme
+  Pedido creado                                esperado: PED-003                      observado: PED-003                      Conforme
+  Descuento aplicado (sin aprobación)          esperado: 5% ≤ 5% preventista          observado: 5% ≤ 5% preventista          Conforme
+  Responsable / escalamiento                   esperado: Preventista 1 / ninguno      observado: Preventista 1 / ninguno      Conforme
+EP-X · Excepción prioritaria · Comercial Los Olivos (híbrido) pide por teléfono 600 paquetes en promoción
+  Canal de origen                              esperado: Teléfono                     observado: Teléfono                     Conforme
+  Versión con 10% enviada al ERP               esperado: No (C4 preventivo)           observado: No (C4 preventivo)           Conforme
+  Versión enviada                              esperado: COT-002-V02 (8%, Aprobado)   observado: COT-002-V02 (8%, Aprobado)   Conforme
+  ATP recalculado al 07/10 (§4)                esperado: 380                          observado: 380                          Conforme
+  Intento 1: código                            esperado: ATP-PARCIAL                  observado: ATP-PARCIAL                  Conforme
+  Intento 1: pedido creado                     esperado: Ninguno                      observado: Ninguno                      Conforme
+  Intento 2: tipo de mensaje (EV-05)           esperado: Confirmación promesa         observado: Confirmación promesa         Conforme
+  Intento 2: código                            esperado: OK-PROMESA-ALT               observado: OK-PROMESA-ALT               Conforme
+  Pedido y estado                              esperado: PED-002 · Entrega parcial    observado: PED-002 · Entrega parcial    Conforme
+  Entregado / pendiente al corte               esperado: 380 / 220                    observado: 380 / 220                    Conforme
+  Escala a                                     esperado: Planeamiento CD → Preventista 2 observado: Planeamiento CD → Preventista 2 Conforme
+
+==========================================================================
+RESULTADO: todas las verificaciones conformes.

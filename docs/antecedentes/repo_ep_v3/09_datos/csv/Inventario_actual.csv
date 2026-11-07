@@ -1,0 +1,9 @@
+﻿id_producto,id_almacen,fecha_corte,stock_fisico,stock_reservado,stock_disponible,demanda_pendiente,cantidad_en_reposicion,fecha_reposicion_prevista,estado_reposicion,observacion
+PRD-001,ALM-001,2026-10-11,0,0,0,220,220,2026-10-12,Pendiente,"380 entregados a CLI-002 el 09/10; 220 en reposición desde planta, prevista 12/10."
+PRD-002,ALM-001,2026-10-11,438,200,238,200,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-003,ALM-001,2026-10-11,1174,0,1174,0,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-004,ALM-001,2026-10-11,1190,80,1110,80,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-005,ALM-001,2026-10-11,1155,0,1155,0,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-006,ALM-001,2026-10-11,1165,0,1165,0,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-007,ALM-001,2026-10-11,1160,0,1160,0,0,,No aplica,Saldo al corte y reservas por pedidos abiertos
+PRD-008,ALM-001,2026-10-11,1194,0,1194,0,0,,No aplica,Saldo al corte y reservas por pedidos abiertos

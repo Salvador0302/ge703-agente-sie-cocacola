@@ -1,0 +1,24 @@
+﻿Tabla,Granularidad,Clave primaria,Sistema de registro,Filas
+Campanas,Una campaña o fuente comercial,id_campana,CRM (SAP Sales Cloud); condiciones promocionales en ERP,4
+Clientes,Un cliente,id_cliente,ERP (SAP ECC); segmento y contexto comercial en CRM,12
+Contactos,Un contacto de un cliente,id_contacto,CRM (SAP Sales Cloud),16
+Direcciones,Una dirección de un cliente,id_direccion,ERP (SAP ECC),24
+Productos,Un producto terminado (paquete),id_producto,ERP (SAP ECC),8
+Listas_precios,Una lista-producto-vigencia,id_precio,ERP (SAP ECC); cargado desde Anaplan RGM,16
+Reglas_descuento,Una regla por lista y tramo,id_regla_descuento,ERP (SAP ECC); política definida por RGM,4
+Almacenes,Un almacén o centro de distribución,id_almacen,ERP (SAP ECC) / WMS,2
+Leads,Un lead (interés aún no convertido),id_lead,CRM (SAP Sales Cloud); captura en TUALI o AC Móvil,13
+Oportunidades,Una oportunidad,id_oportunidad,CRM (SAP Sales Cloud),14
+Cotizaciones_cab,Una versión de cotización,id_cotizacion,CRM (SAP Sales Cloud); precio y ATP consultados al ERP,13
+Cotizaciones_det,Un ítem de una versión,id_cotizacion + numero_linea,CRM (SAP Sales Cloud),27
+Solicitudes_pedido,Un mensaje de solicitud de creación de pedido (intento),id_solicitud + intento,"Bitácora de integración CRM–ERP (SAP Integration Suite, supuesto)",12
+Prueba_contrato,Una verificación por solicitud,solicitud_intento,Evidencia de prueba (calculada),12
+Pedidos_cab,Un pedido,id_pedido,ERP (SAP ECC),9
+Pedidos_det,Un ítem de pedido,id_pedido + numero_linea,ERP (SAP ECC),22
+Entregas_cab,Una entrega,id_entrega,ERP (SAP ECC) / WMS-TMS,8
+Entregas_det,Un ítem entregado,id_entrega + numero_linea,ERP (SAP ECC),20
+Facturas_cab,Una factura,id_factura,ERP (SAP ECC) + facturación electrónica,8
+Facturas_det,Un ítem de entrega facturado,id_factura + numero_linea,ERP (SAP ECC),20
+Pagos,Un pago aplicado a una factura,id_pago,ERP (SAP ECC),6
+Movimientos_inventario,Un movimiento producto-almacén,id_movimiento_inventario,ERP (SAP ECC) / WMS,31
+Inventario_actual,Una combinación producto-almacén,id_producto + id_almacen,ERP (SAP ECC),8

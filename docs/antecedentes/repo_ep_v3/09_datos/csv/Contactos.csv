@@ -1,0 +1,17 @@
+﻿id_contacto,id_cliente,nombre_completo,rol_contacto,email,telefono,canal_preferido,consentimiento_comunicaciones,finalidad_consentimiento,fecha_consentimiento,fecha_fin_consentimiento,evidencia_consentimiento,estado_contacto,fecha_actualizacion
+CON-001,CLI-001,Contacto ficticio 1-1,Propietario,contacto1.1@example.com,SIM-TEL-00011,TUALI,TRUE,Comercial,2026-10-05,2027-09-30,CONS-001,Activo,2026-10-05
+CON-002,CLI-002,Contacto ficticio 2-1,Compras,contacto2.1@example.com,SIM-TEL-00021,WhatsApp,TRUE,Comercial,2026-10-01,2027-09-30,CONS-002,Activo,2026-10-01
+CON-003,CLI-002,Contacto ficticio 2-2,Finanzas,contacto2.2@example.com,SIM-TEL-00022,Email,TRUE,Transaccional,2026-10-01,2027-09-30,CONS-003,Activo,2026-10-01
+CON-004,CLI-003,Contacto ficticio 3-1,Propietario,contacto3.1@example.com,SIM-TEL-00031,WhatsApp,TRUE,Comercial,2026-10-01,2027-09-30,CONS-004,Activo,2026-10-01
+CON-005,CLI-004,Contacto ficticio 4-1,Propietario,contacto4.1@example.com,SIM-TEL-00041,TUALI,TRUE,Comercial,2026-10-01,2027-09-30,CONS-005,Activo,2026-10-01
+CON-006,CLI-005,Contacto ficticio 5-1,Compras,contacto5.1@example.com,SIM-TEL-00051,WhatsApp,TRUE,Comercial,2026-10-01,2027-09-30,CONS-006,Activo,2026-10-01
+CON-007,CLI-005,Contacto ficticio 5-2,Finanzas,contacto5.2@example.com,SIM-TEL-00052,Email,TRUE,Transaccional,2026-10-01,2027-09-30,CONS-007,Activo,2026-10-01
+CON-008,CLI-006,Contacto ficticio 6-1,Propietario,contacto6.1@example.com,SIM-TEL-00061,TUALI,TRUE,Comercial,2026-10-02,2027-09-30,CONS-008,Activo,2026-10-02
+CON-009,CLI-007,Contacto ficticio 7-1,Propietario,contacto7.1@example.com,SIM-TEL-00071,TUALI,TRUE,Comercial,2026-10-01,2027-09-30,CONS-009,Activo,2026-10-01
+CON-010,CLI-008,Contacto ficticio 8-1,Propietario,contacto8.1@example.com,SIM-TEL-00081,TUALI,TRUE,Comercial,2026-10-06,2027-09-30,CONS-010,Activo,2026-10-06
+CON-011,CLI-009,Contacto ficticio 9-1,Compras,contacto9.1@example.com,SIM-TEL-00091,WhatsApp,TRUE,Comercial,2026-10-01,2027-09-30,CONS-011,Activo,2026-10-01
+CON-012,CLI-009,Contacto ficticio 9-2,Finanzas,contacto9.2@example.com,SIM-TEL-00092,Email,TRUE,Transaccional,2026-10-01,2027-09-30,CONS-012,Activo,2026-10-01
+CON-013,CLI-010,Contacto ficticio 10-1,Propietario,contacto10.1@example.com,SIM-TEL-00101,TUALI,TRUE,Comercial,2026-10-03,2027-09-30,CONS-013,Activo,2026-10-03
+CON-014,CLI-011,Contacto ficticio 11-1,Compras,contacto11.1@example.com,SIM-TEL-00111,WhatsApp,TRUE,Comercial,2026-10-01,2027-09-30,CONS-014,Activo,2026-10-08
+CON-015,CLI-011,Contacto ficticio 11-2,Finanzas,contacto11.2@example.com,SIM-TEL-00112,Email,TRUE,Transaccional,2026-10-01,2027-09-30,CONS-015,Activo,2026-10-08
+CON-016,CLI-012,Contacto ficticio 12-1,Propietario,contacto12.1@example.com,SIM-TEL-00121,TUALI,TRUE,Comercial,2026-10-10,2027-09-30,CONS-016,Activo,2026-10-10

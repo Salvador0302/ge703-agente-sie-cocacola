@@ -1,0 +1,14 @@
+﻿id_cotizacion,numero_cotizacion,version,id_oportunidad,id_direccion_entrega,fecha_emision,vigente_hasta,estado_cotizacion,estado_descuento,aprobador,fecha_aprobacion,acepta_entrega_parcial,condicion_facturacion,moneda,motivo_excepcion,base_imponible,importe_igv,importe_total
+COT-001-V01,COT-001,1,OPP-001,DIR-002,2026-10-05,2026-10-12,Aceptada,No requerido,,,No,Por entrega,PEN,,468.82,84.4,553.22
+COT-002-V01,COT-002,1,OPP-002,DIR-004,2026-10-06,2026-10-15,Rechazada,Rechazado,Supervisor de ventas,,Si,Por entrega,PEN,Descuento 10% rechazado por margen; se propone 8% en versión 2,11016,1982.88,12998.88
+COT-002-V02,COT-002,2,OPP-002,DIR-004,2026-10-07,2026-10-15,Aceptada,Aprobado,Supervisor de ventas,2026-10-07,Si,Por entrega,PEN,Descuento 8% autorizado por Supervisor de ventas,11260.8,2026.94,13287.74
+COT-003-V01,COT-003,1,OPP-003,DIR-006,2026-10-01,2026-10-08,Aceptada,No requerido,,,No,Por entrega,PEN,5% = 3% promoción Fin de Año (CAMP-002) + 2% bono primer pedido por TUALI (CAMP-004); dentro del límite del preventista. Aceptada por el cliente en TUALI,1346.62,242.4,1589.02
+COT-004-V01,COT-004,1,OPP-004,DIR-008,2026-10-02,2026-10-09,Aceptada,No requerido,,,No,Por entrega,PEN,,934.5,168.21,1102.71
+COT-005-V01,COT-005,1,OPP-005,DIR-010,2026-10-08,2026-10-15,Aceptada,No requerido,,,No,Por entrega,PEN,,1173.72,211.27,1384.99
+COT-006-V01,COT-006,1,OPP-006,DIR-012,2026-10-03,2026-10-10,Aceptada,No requerido,,,No,Por entrega,PEN,,808.92,145.61,954.53
+COT-007-V01,COT-007,1,OPP-007,DIR-014,2026-10-04,2026-10-11,Aceptada,No requerido,,,No,Por entrega,PEN,,1212.5,218.25,1430.75
+COT-008-V01,COT-008,1,OPP-008,DIR-016,2026-10-06,2026-10-13,Aceptada,No requerido,,,No,Por entrega,PEN,,627,112.86,739.86
+COT-009-V01,COT-009,1,OPP-009,DIR-018,2026-10-10,2026-10-17,Aceptada,No requerido,,,No,Por entrega,PEN,,5948.04,1070.65,7018.69
+COT-010-V01,COT-010,1,OPP-010,DIR-020,2026-10-10,2026-10-17,Borrador,No requerido,,,No,Por entrega,PEN,,452,81.36,533.36
+COT-011-V01,COT-011,1,OPP-011,DIR-022,2026-10-08,2026-10-15,Aceptada,No requerido,,,No,Por entrega,PEN,Pedido rechazado por el ERP: crédito bloqueado,7752,1395.36,9147.36
+COT-013-V01,COT-013,1,OPP-013,DIR-006,2026-10-03,2026-10-06,Rechazada,No requerido,,,No,Por entrega,PEN,El cliente no aceptó: evento postergado,540,97.2,637.2

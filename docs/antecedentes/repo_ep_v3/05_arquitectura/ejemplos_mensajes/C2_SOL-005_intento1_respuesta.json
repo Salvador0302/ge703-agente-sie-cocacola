@@ -1,0 +1,12 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "id_solicitud": "SOL-005",
+  "intento": 1,
+  "codigo_respuesta": "PRECIO-NO-VIG",
+  "estado_solicitud": "Rechazada",
+  "id_pedido": null,
+  "responsable_siguiente_paso": "Analista de precios RGM",
+  "siguiente_paso": "Cargar la condición de precio de PRE-MAY-007 en ECC y reenviar",
+  "evento": "EV-03 Aceptar o rechazar pedido",
+  "causa": "PRE-MAY-007 vigente recién desde 2026-10-09 (C3)"
+}

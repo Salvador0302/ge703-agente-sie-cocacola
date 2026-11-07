@@ -1,0 +1,36 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "evento": "EV-02 Solicitar creación de pedido",
+  "id_solicitud": "SOL-011",
+  "intento": 1,
+  "tipo_mensaje": "Solicitud inicial",
+  "canal_origen": "Teléfono",
+  "capturado_por": "Preventista registra en el CRM el pedido recibido por teléfono/WhatsApp",
+  "sistema_origen": "SAP Sales Cloud",
+  "fecha_envio": "2026-10-09",
+  "id_cotizacion": "COT-011-V01",
+  "version_cotizacion": 1,
+  "id_oportunidad": "OPP-011",
+  "id_cliente": "CLI-011",
+  "codigo_cliente_erp": "ERPCLI-011",
+  "id_direccion_entrega": "DIR-022",
+  "moneda": "PEN",
+  "condicion_pago_dias": 15,
+  "estado_descuento": "No requerido",
+  "aprobador": null,
+  "fecha_aprobacion": null,
+  "acepta_entrega_parcial": false,
+  "lineas": [
+    {
+      "numero_linea": 1,
+      "id_producto": "PRD-001",
+      "cantidad": 400,
+      "unidad": "CJ",
+      "id_precio": "PRE-MAY-001",
+      "precio_unitario": 20.4,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-MAY-STD"
+    }
+  ],
+  "importe_total_cotizado": 9147.36
+}

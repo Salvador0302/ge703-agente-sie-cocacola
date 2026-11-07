@@ -1,0 +1,17 @@
+﻿id_precio,id_lista_precio,id_producto,segmento_cliente,moneda,precio_unitario,vigente_desde,vigente_hasta,descuento_max_sin_aprobacion,condicion_facturacion,estado_lista
+PRE-BOD-001,LP-BOD-2026,PRD-001,Bodega,PEN,21.5,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-001,LP-MAY-2026,PRD-001,Mayorista,PEN,20.4,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-002,LP-BOD-2026,PRD-002,Bodega,PEN,21.5,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-002,LP-MAY-2026,PRD-002,Mayorista,PEN,20.4,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-003,LP-BOD-2026,PRD-003,Bodega,PEN,24,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-003,LP-MAY-2026,PRD-003,Mayorista,PEN,22.8,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-004,LP-BOD-2026,PRD-004,Bodega,PEN,27,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-004,LP-MAY-2026,PRD-004,Mayorista,PEN,25.65,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-005,LP-BOD-2026,PRD-005,Bodega,PEN,12.7,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-005,LP-MAY-2026,PRD-005,Mayorista,PEN,12.05,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-006,LP-BOD-2026,PRD-006,Bodega,PEN,19.5,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-006,LP-MAY-2026,PRD-006,Mayorista,PEN,18.5,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-007,LP-BOD-2026,PRD-007,Bodega,PEN,23,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-007,LP-MAY-2026,PRD-007,Mayorista,PEN,21.85,2026-10-09,2026-12-31,0.05,Por entrega,Activa
+PRE-BOD-008,LP-BOD-2026,PRD-008,Bodega,PEN,16.5,2026-10-01,2026-12-31,0.05,Por entrega,Activa
+PRE-MAY-008,LP-MAY-2026,PRD-008,Mayorista,PEN,15.7,2026-10-01,2026-12-31,0.05,Por entrega,Activa

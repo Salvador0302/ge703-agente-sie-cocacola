@@ -1,0 +1,32 @@
+﻿id_movimiento_inventario,id_producto,id_almacen,fecha_movimiento,tipo_movimiento,cantidad_entrada,cantidad_salida,id_entrega,numero_linea_entrega,lote,referencia
+MOV-001,PRD-001,ALM-001,2026-10-01,Saldo inicial,492,0,,,LOT-001-10,Saldo inicial didáctico
+MOV-002,PRD-002,ALM-001,2026-10-01,Saldo inicial,300,0,,,LOT-002-10,Saldo inicial didáctico
+MOV-003,PRD-002,ALM-002,2026-10-01,Saldo inicial,800,0,,,LOT-002-11,Saldo de planta (supuesto)
+MOV-004,PRD-003,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-003-10,Saldo inicial didáctico
+MOV-005,PRD-004,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-004-10,Saldo inicial didáctico
+MOV-006,PRD-005,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-005-10,Saldo inicial didáctico
+MOV-007,PRD-006,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-006-10,Saldo inicial didáctico
+MOV-008,PRD-007,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-007-10,Saldo inicial didáctico
+MOV-009,PRD-008,ALM-001,2026-10-01,Saldo inicial,1200,0,,,LOT-008-10,Saldo inicial didáctico
+MOV-010,PRD-001,ALM-001,2026-10-03,Salida entrega,0,30,ENT-003,1,LOT-001-10,Salida por ENT-003
+MOV-011,PRD-002,ALM-001,2026-10-03,Salida entrega,0,25,ENT-004,1,LOT-002-10,Salida por ENT-004
+MOV-012,PRD-003,ALM-001,2026-10-03,Salida entrega,0,20,ENT-003,2,LOT-003-10,Salida por ENT-003
+MOV-013,PRD-004,ALM-001,2026-10-03,Salida entrega,0,10,ENT-004,2,LOT-004-10,Salida por ENT-004
+MOV-014,PRD-005,ALM-001,2026-10-03,Salida entrega,0,10,ENT-004,3,LOT-005-10,Salida por ENT-004
+MOV-015,PRD-006,ALM-001,2026-10-03,Salida entrega,0,15,ENT-003,3,LOT-006-10,Salida por ENT-003
+MOV-016,PRD-001,ALM-001,2026-10-04,Salida entrega,0,20,ENT-006,1,LOT-001-10,Salida por ENT-006
+MOV-017,PRD-002,ALM-001,2026-10-04,Salida entrega,0,15,ENT-006,2,LOT-002-10,Salida por ENT-006
+MOV-018,PRD-008,ALM-001,2026-10-04,Salida entrega,0,6,ENT-006,3,LOT-008-10,Salida por ENT-006
+MOV-019,PRD-001,ALM-001,2026-10-05,Salida entrega,0,40,ENT-007,1,LOT-001-10,Salida por ENT-007
+MOV-020,PRD-006,ALM-001,2026-10-05,Salida entrega,0,20,ENT-007,2,LOT-006-10,Salida por ENT-007
+MOV-021,PRD-001,ALM-001,2026-10-07,Salida entrega,0,10,ENT-001,1,LOT-001-10,Salida por ENT-001
+MOV-022,PRD-002,ALM-001,2026-10-07,Salida entrega,0,10,ENT-001,2,LOT-002-10,Salida por ENT-001
+MOV-023,PRD-005,ALM-001,2026-10-07,Salida entrega,0,5,ENT-001,3,LOT-005-10,Salida por ENT-001
+MOV-024,PRD-001,ALM-001,2026-10-08,Salida entrega,0,12,ENT-008,1,LOT-001-10,Salida por ENT-008
+MOV-025,PRD-002,ALM-001,2026-10-08,Salida entrega,0,12,ENT-008,2,LOT-002-10,Salida por ENT-008
+MOV-026,PRD-003,ALM-001,2026-10-08,Salida entrega,0,6,ENT-008,3,LOT-003-10,Salida por ENT-008
+MOV-027,PRD-001,ALM-001,2026-10-09,Salida entrega,0,380,ENT-002,1,LOT-001-10,Salida por ENT-002
+MOV-028,PRD-002,ALM-001,2026-10-09,Reposicion,200,0,,,LOT-002-11,Reposición desde ALM-002 (supuesto)
+MOV-029,PRD-002,ALM-002,2026-10-09,Salida reposicion,0,200,,,LOT-002-11,Traslado a ALM-001 (supuesto)
+MOV-030,PRD-005,ALM-001,2026-10-10,Salida entrega,0,30,ENT-005,2,LOT-005-10,Salida por ENT-005
+MOV-031,PRD-007,ALM-001,2026-10-10,Salida entrega,0,40,ENT-005,1,LOT-007-10,Salida por ENT-005

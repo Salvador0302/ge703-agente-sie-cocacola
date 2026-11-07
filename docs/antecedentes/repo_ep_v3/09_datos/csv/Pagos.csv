@@ -1,0 +1,7 @@
+﻿id_pago,id_factura,fecha_pago,fecha_aplicacion,medio_pago,moneda,importe_aplicado,referencia_bancaria,estado_pago,responsable_aplicacion
+PAG-001,FAC-001,2026-10-07,2026-10-07,Efectivo contra entrega,PEN,553.22,SIM-CAJA-001,Aplicado,Liquidación de ruta
+PAG-002,FAC-003,2026-10-03,2026-10-03,Efectivo contra entrega,PEN,1589.02,SIM-CAJA-002,Aplicado,Liquidación de ruta
+PAG-003,FAC-004,2026-10-03,2026-10-03,Efectivo contra entrega,PEN,1102.71,SIM-CAJA-003,Aplicado,Liquidación de ruta
+PAG-004,FAC-006,2026-10-04,2026-10-04,Efectivo contra entrega,PEN,954.53,SIM-CAJA-004,Aplicado,Liquidación de ruta
+PAG-005,FAC-007,2026-10-05,2026-10-05,Efectivo contra entrega,PEN,1430.75,SIM-CAJA-005,Aplicado,Liquidación de ruta
+PAG-006,FAC-008,2026-10-08,2026-10-08,Efectivo contra entrega,PEN,739.86,SIM-CAJA-006,Aplicado,Liquidación de ruta
