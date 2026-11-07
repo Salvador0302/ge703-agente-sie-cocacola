@@ -1,9 +1,9 @@
 # Plan del incremento PC3 · Agente SIE · G2 · Coca-Cola / ACL
 
-**Estado:** aprobado por Salvador Barrionuevo el 07/11/2026 · **Versión:** 1.0
+**Estado:** aprobado por Salvador Barrionuevo el 07/11/2026 · **Versión:** 1.1 (cambio de reparto, §2 y §9)
 **Entrega:** viernes 13/11/2026, 17:00 (aula virtual) · **Exposición:** sábado 14/11/2026
 
-Este documento es la referencia común del equipo. Cada bloque tiene además su brief en `arquitectura/bloques/`.
+Este documento es la referencia común del equipo. Los aportes de cada integrante están en `arquitectura/ROLES_EQUIPO.md`.
 
 ## 1. Qué pide la PC3 y qué condiciona
 
@@ -24,7 +24,7 @@ Este documento es la referencia común del equipo. Cada bloque tiene además su 
 
 | # | Decisión | Dónde queda |
 |---|---|---|
-| 1 | Salvador implementa el bloque A. José, Gianmarco y David implementan sus bloques en sus ramas, con su identidad, a partir de un brief con pruebas de aceptación | `arquitectura/bloques/` |
+| 1 | **v1.1 (07/11):** Salvador implementa los cuatro bloques con asistencia de IA declarada; los demás integrantes tienen aportes verificables no técnicos. *(v1.0: cada integrante implementaba su bloque a partir de un brief; se reemplazó para asegurar calidad y plazos.)* | `arquitectura/ROLES_EQUIPO.md` |
 | 2 | Parada sintética: ACT-LLN-01, OT-2026-0107, 96 h, −240 paquetes de PRD-001 | §5.3 |
 | 3 | El agente envía EV-02 y EV-05 por I8; **solo el ERP simulado crea pedidos** | ADR-003 |
 | 4 | Una sola confirmación humana en la demo: Preventista 2 registra la aceptación del cliente (EV-05) | ADR-005 |
@@ -178,7 +178,7 @@ La PC4 seguirá los dos pedidos de la demo hasta la conciliación. Para que eso 
 | Ruta | Contenido | Bloque |
 |---|---|---|
 | `README.md` | Propósito, alcance, integrantes, reproducción | D |
-| `arquitectura/` | Este plan, vistas, interfaces, versiones, ADR, contrato I8 v1.2, briefs | A |
+| `arquitectura/` | Este plan, vistas, interfaces, versiones, ADR, contrato I8 v1.2, roles del equipo | A |
 | `procesos/` | Reglas, tabla de decisiones, eventos, controles, parada → ATP | C |
 | `datos/` | Diccionario, fuentes de datos, datos sensibles, `seed/*.csv` | B |
 | `producto/sie/` | Paquete Python (ver `INTERFACES.md`) | A, B, C, D |
@@ -190,32 +190,31 @@ La PC4 seguirá los dos pedidos de la demo hasta la conciliación. Para que eso 
 
 ## 9. Bloques, ramas y verificación
 
-| Bloque | Integrante | Rama | Contenido | Se verifica con |
-|---|---|---|---|---|
-| A · Núcleo e integración | Salvador | `bloque-a/nucleo` | Esqueleto, contrato tipado, configuración, orquestador, CLI, modo LLM, `sistema.py`, arquitectura y ADR | `pytest pruebas/unitarias` |
-| B · Datos y ERP simulado | Gianmarco | `bloque-b/datos-erp` | Esquema, seed por corte, activos y OT, diccionario, ATP, causas, C1–C5, promesa, capa I8 | `pytest pruebas/aceptacion/test_bloque_b.py` |
-| C · Agente comercial | José | `bloque-c/agente-comercial` | CRM simulado, intérprete por reglas, herramientas de lectura, flujo y escalamiento, bitácora persistente, ficha, `procesos/` | `pytest pruebas/aceptacion/test_bloque_c.py` |
-| D · UI y entrega | David | `bloque-d/ui-entrega` | Streamlit, README, guía con diagnóstico y recuperación, `fuentes/`, declaración de IA, ZIP | `pytest pruebas/aceptacion/test_bloque_d.py` y ZIP verificado desde un clon limpio |
+Todos los bloques los implementa Salvador con asistencia de IA (v1.1). Revisión y aportes del resto del equipo: `arquitectura/ROLES_EQUIPO.md`.
 
-El reparto sigue lo que cada quien defendió en el EP. Las pruebas de aceptación se marcan como **pendientes** (omitidas) mientras el código del bloque lance `NotImplementedError`; cuando el bloque está implementado, deben pasar.
+| Bloque | Rama · PR | Contenido | Se verifica con |
+|---|---|---|---|
+| A · Núcleo e integración | `bloque-a/nucleo` · #1 (fusionado) | Esqueleto, contrato tipado, configuración, orquestador, CLI, modo LLM, `sistema.py`, arquitectura y ADR | `pytest pruebas/unitarias` |
+| B · Datos y ERP simulado | `bloque-b/datos-erp` · #2 (revisión de Gianmarco) | Esquema, seed por corte, activos y OT, diccionario, ATP, causas, C1–C5, promesa, capa I8 | `pytest pruebas/aceptacion/test_bloque_b.py` |
+| C · Agente comercial | `bloque-c/agente-comercial` · #3 (apilado sobre #2) | CRM simulado, intérprete por reglas, herramientas de lectura, flujo y escalamiento, bitácora persistente, ficha, `procesos/` | `pytest pruebas/aceptacion/test_bloque_c.py` |
+| D · UI y entrega | `bloque-d/ui-entrega` · #4 (apilado sobre #3) | Streamlit, README, guía con diagnóstico y recuperación, `fuentes/`, declaración de IA, ZIP | `pytest pruebas/aceptacion/test_bloque_d.py` y ZIP verificado desde un clon limpio |
+
+Las pruebas de aceptación se escribieron antes que el código de cada bloque y se marcan como **pendientes** mientras el código lance `NotImplementedError`.
 
 **Reglas de trabajo:**
 
-- Cada integrante hace sus commits con su propia identidad de git, en su rama. Nadie hace commits a nombre de otro.
-- Si usan IA, la declaran en `fuentes/DECLARACION_IA.md` con la parte y el propósito.
-- No se cambian las firmas de `arquitectura/INTERFACES.md` sin avisar a Salvador; si hace falta, se acuerda y se actualiza el documento.
+- Solo Salvador hace commits de código, con su identidad y la línea `Co-Authored-By` de la IA. Nadie hace commits a nombre de otro; los aportes no técnicos se registran con la identidad de cada integrante.
+- El uso de IA se declara en `fuentes/DECLARACION_IA.md` con la parte y el propósito.
 - Se integra a `main` por pull request, en el orden A → B → C → D.
 
 ## 10. Calendario
 
 | Fecha | Paso | Bloque |
 |---|---|---|
-| Sáb 07/11 | Plan, contrato tipado, interfaces, briefs y pruebas de aceptación; ramas publicadas | A |
-| Dom 08/11 | Seed por corte, activos y OT, ATP | B |
-| Lun 09/11 | Reglas C1–C5, promesa, capa I8; regresión 12 de 12 | B |
-| Mar 10/11 | Agente comercial, escalamiento y bitácora | C |
-| Mié 11/11 | Integración CLI de punta a punta; UI | A, D |
-| Jue 12/11 | Ficha, guía, ZIP, evidencia en `pruebas/`, clon limpio y ensayo cronometrado. **Congelamiento.** | Todos |
+| Sáb 07/11 | Bloques A a D implementados, con sus pruebas, evidencia y ZIP verificado (adelantado por el cambio de reparto) | Salvador |
+| Lun 09/11 – Mar 10/11 | `pruebas/CASOS.csv` calculado a mano y revisión del PR #2 | Gianmarco |
+| Mar 10/11 – Mié 11/11 | Fusión de los PR #2 a #4; informe de la PC3 | Salvador, José |
+| Jue 12/11 | Ensayo cronometrado con todos; ZIP final desde `main`. **Congelamiento.** | Todos |
 | Vie 13/11, 17:00 | Entrega en el aula virtual | Salvador |
 
 ## 11. Incidencias de datos del EP (se registran, no se corrigen en los datos)
@@ -228,12 +227,13 @@ El reparto sigue lo que cada quien defendió en el EP. Las pruebas de aceptació
 | I-04 | Dominios del diccionario frente a datos: adopción con texto libre, CLI-005 con 7 días de pago, CAMP-004 y LEAD-013 con valores fuera de lista, descuento máximo 15 % frente al 12 % de R3 | El seed normaliza la adopción; el diccionario de `datos/` actualiza los dominios |
 | I-05 | El ejemplo de EV-05 no trae la evidencia de aceptación que exige `eventos_contrato.csv` | Se agrega el bloque `aceptacion` (contrato v1.2) |
 | I-06 | El validador del EP falla en Windows al redirigir la salida (`UnicodeEncodeError` por `→`) | La CLI del agente fuerza UTF-8; hay una prueba con salida redirigida |
+| I-07 | El EP redondea como Excel (mitad hacia arriba); `round()` de Python redondea la mitad al par | `erp/importes.py` usa `Decimal` con `ROUND_HALF_UP`; los 9 pedidos coinciden al céntimo |
 
 ## 12. Riesgos y mitigación
 
 | Riesgo | Mitigación |
 |---|---|
-| Un bloque no llega a tiempo | Pruebas de aceptación desde el día 1; congelamiento el jueves 12/11; el bloque A integra lo que esté verde |
+| La revisión del PR #2 se atrasa | Los PR #3 y #4 están apilados y listos; se fusionan en orden apenas se apruebe #2 |
 | La demo falla en la máquina del aula | Modo `reglas` sin dependencias; `python -m sie diagnostico`; guía con recuperación; ensayo desde un clon limpio |
-| El docente pregunta por una parte que el expositor no hizo | Cada brief explica el porqué de su bloque; ensayo cruzado el jueves |
+| El docente elige a un expositor que no programó | La ficha, `procesos/` y la guía explican cada decisión; ensayo cruzado el jueves con todos ejecutando la demo |
 | Se filtra una clave | `.env` ignorado por git; el ZIP se arma con lista de permitidos y búsqueda de `sk-ant-` |

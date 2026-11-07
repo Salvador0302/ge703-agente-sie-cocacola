@@ -1,4 +1,4 @@
-"""Pruebas de aceptación · BLOQUE B (Gianmarco Leandro): datos, seed por corte y ERP simulado.
+"""Pruebas de aceptación · BLOQUE B: datos, seed por corte y ERP simulado.
 
 Terminado = este archivo con 0 pendientes y 0 fallas: `python -m pytest pruebas/aceptacion/test_bloque_b.py`.
 Los valores esperados salen de los datos y mensajes del EP (docs/antecedentes/repo_ep_v3).

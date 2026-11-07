@@ -47,7 +47,7 @@ def test_diagnostico_no_se_cae():
 
 def test_parte_pendiente_devuelve_codigo_2(monkeypatch, capsys):
     def pendiente(*_a, **_k):
-        raise NotImplementedError("Bloque B (Gianmarco): seed por fecha de corte.")
+        raise NotImplementedError("Bloque B: seed por fecha de corte.")
 
     monkeypatch.setattr("sie.sistema.preparar_base", pendiente)
     assert cli.main(["demo", "normal"]) == cli.SALIDA_PENDIENTE
