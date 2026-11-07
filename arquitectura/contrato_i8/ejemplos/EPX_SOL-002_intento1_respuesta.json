@@ -1,0 +1,28 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "id_solicitud": "SOL-002",
+  "intento": 1,
+  "codigo_respuesta": "ATP-PARCIAL",
+  "estado_solicitud": "Promesa alternativa",
+  "id_pedido": null,
+  "responsable_siguiente_paso": "Planeamiento CD → Preventista 2",
+  "siguiente_paso": "Confirmar con el cliente 380 el 09/10 y 220 el 12/10",
+  "evento": "EV-04 Proponer promesa alternativa",
+  "promesa_alternativa": {
+    "cantidad_solicitada": 600,
+    "cantidad_atp_confirmada": 380,
+    "tramos": [
+      {
+        "cantidad": 380,
+        "fecha": "2026-10-09",
+        "origen": "ALM-001 CD Lima Norte"
+      },
+      {
+        "cantidad": 220,
+        "fecha": "2026-10-12",
+        "origen": "Reposición desde ALM-002 (planta) · plan APO (I2)"
+      }
+    ],
+    "requiere_aceptacion_cliente": true
+  }
+}

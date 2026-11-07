@@ -1,0 +1,46 @@
+{
+  "_nota": "Formato ilustrativo del contrato G2 [SUPUESTO]; no reproduce la API de SAP. Datos sintéticos.",
+  "evento": "EV-02 Solicitar creación de pedido",
+  "id_solicitud": "SOL-005",
+  "intento": 1,
+  "tipo_mensaje": "Solicitud inicial",
+  "canal_origen": "Preventa",
+  "capturado_por": "Preventista en AC Móvil",
+  "sistema_origen": "SAP Sales Cloud",
+  "fecha_envio": "2026-10-08",
+  "id_cotizacion": "COT-005-V01",
+  "version_cotizacion": 1,
+  "id_oportunidad": "OPP-005",
+  "id_cliente": "CLI-005",
+  "codigo_cliente_erp": "ERPCLI-005",
+  "id_direccion_entrega": "DIR-010",
+  "moneda": "PEN",
+  "condicion_pago_dias": 7,
+  "estado_descuento": "No requerido",
+  "aprobador": null,
+  "fecha_aprobacion": null,
+  "acepta_entrega_parcial": false,
+  "lineas": [
+    {
+      "numero_linea": 1,
+      "id_producto": "PRD-007",
+      "cantidad": 40,
+      "unidad": "CJ",
+      "id_precio": "PRE-MAY-007",
+      "precio_unitario": 21.85,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-MAY-STD"
+    },
+    {
+      "numero_linea": 2,
+      "id_producto": "PRD-005",
+      "cantidad": 30,
+      "unidad": "CJ",
+      "id_precio": "PRE-MAY-005",
+      "precio_unitario": 12.05,
+      "descuento_pct": 0.05,
+      "id_regla_descuento": "REG-MAY-STD"
+    }
+  ],
+  "importe_total_cotizado": 1384.99
+}
