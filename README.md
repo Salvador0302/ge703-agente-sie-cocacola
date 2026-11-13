@@ -87,7 +87,7 @@ El caso normal sigue el mismo camino sin escalamiento: Bodega Don Lucho (CLI-003
 ```mermaid
 flowchart LR
     E0["EP · 24/10/2026<br/>Contrato I8 y decisión del comité<br/>Hecho"]
-    E1["PC3 · 14/11/2026<br/>Agente comercial<br/>Implementado, por entregar"]
+    E1["PC3 · 14/11/2026<br/>Agente comercial<br/>Entregado el 13/11/2026"]
     E2["Semanas 12 y 13<br/>Cadena de suministro y logística<br/>Previsto"]
     E3["PC4 · 05/12/2026<br/>Finanzas operativas<br/>Previsto"]
     E4["Examen final<br/>Integración de ventas a finanzas operativas<br/>Previsto"]
@@ -102,7 +102,7 @@ flowchart LR
 
 Todos los incrementos usan los mismos datos: los pedidos PED-002 y PED-003 que crea el agente en la PC3 son idénticos a los del EP, de modo que la PC4 los llevará a entrega, factura, cobro y conciliación.
 
-## Estado del avance al 07/11/2026
+## Estado del avance al 13/11/2026 (entrega de la PC3)
 
 | Componente | Estado | Evidencia |
 |---|---|---|
@@ -116,9 +116,10 @@ Todos los incrementos usan los mismos datos: los pedidos PED-002 y PED-003 que c
 | Interfaz (Streamlit) | Hecho | `producto/sie/ui/app.py` · recorrido completo de los dos casos sin errores |
 | Paquete de entrega (guía y ZIP) | Hecho | [`entrega/GUIA_DESPLIEGUE.md`](entrega/GUIA_DESPLIEGUE.md) · ZIP verificado desde una copia extraída · 5 pruebas |
 | Resultados esperados calculados a mano | Pendiente | `pruebas/CASOS.csv` · Gianmarco Leandro |
-| Informe de la PC3 | En curso | `docs/informe_pc3/` · José Cornejo |
+| Informe de la PC3 | Hecho | [`docs/entregables_pc3/GE703_PC3_Informe_G2_CocaCola.pdf`](docs/entregables_pc3/GE703_PC3_Informe_G2_CocaCola.pdf) |
+| Presentación de la PC3 | Hecho | [`docs/entregables_pc3/GE703_PC3_Presentacion_G2_CocaCola.pdf`](docs/entregables_pc3/GE703_PC3_Presentacion_G2_CocaCola.pdf) (el `.pptx` incluye notas del expositor) |
 
-Total: 85 pruebas automáticas pasan. Evidencia de las demos: [`pruebas/evidencia/`](pruebas/evidencia/) y [`pruebas/ESPERADO_VS_OBSERVADO.md`](pruebas/ESPERADO_VS_OBSERVADO.md). Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
+Total: 84 pruebas automáticas pasan y 1 se omite si Streamlit no está instalado (verificado el 13/11/2026). Evidencia de las demos: [`pruebas/evidencia/`](pruebas/evidencia/) y [`pruebas/ESPERADO_VS_OBSERVADO.md`](pruebas/ESPERADO_VS_OBSERVADO.md). Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
 
 ## Principios de diseño
 
@@ -154,7 +155,7 @@ Cada demo termina con una tabla de resultado esperado frente a observado. Prueba
 | `fuentes/` | Bibliografía, licencias y declaración de uso de IA |
 | `agentes/` | Ficha de cada agente: propósito, entradas, salidas, reglas, permisos, escalamiento y bitácora |
 | `entrega/` | Guía de despliegue y script que arma y verifica el ZIP de entrega |
-| `docs/` | Antecedentes del EP, la PC3 y la PC4 (solo lectura) y el esqueleto del informe de la PC3 |
+| `docs/` | Antecedentes del EP, la PC3 y la PC4 (solo lectura), el esqueleto del informe y los entregables de la PC3 (`docs/entregables_pc3/`: informe y presentación) |
 
 ## Datos
 

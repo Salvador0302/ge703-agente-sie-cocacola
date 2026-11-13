@@ -11,13 +11,22 @@
 | Datos entregados a la IA | Solo material del curso, trabajo previo del grupo y datos sintéticos. Ningún dato real de ACL, de clientes ni de personas |
 | Evidencia | Cada commit hecho con asistencia de IA lleva la línea `Co-Authored-By: Claude Opus 5.5` en el historial de git |
 
+## Apoyo de IA en el informe y la presentación de la PC3
+
+| Campo | Registro |
+|---|---|
+| Herramienta | Claude (Anthropic), modelo Claude Opus 5.5 |
+| Fecha | 13/11/2026 |
+| Propósito | Redacción del informe y de la presentación a partir de los datos, la evidencia y las salidas de la demo del repositorio; búsqueda de fuentes públicas sobre ACL (plantas y centros de distribución), citadas con fecha de acceso |
+| Validación humana | Salvador Barrionuevo revisa las cifras contra la salida de la demo y los CSV antes de entregar |
+
 ## Validación humana
 
 | Integrante | Validación |
 |---|---|
 | Barrionuevo Gutierrez, Salvador Jhou | Decidió el plan y las ocho decisiones de diseño, revisó y aprobó cada pull request y ejecutó la demo |
 | Leandro Ochoa, Gianmarco | Calcula a mano los resultados esperados de los casos (`pruebas/CASOS.csv`) y revisa el PR del bloque B (datos y ERP simulado) |
-| Cornejo Palomino, José Julián | Redacta el informe de la PC3 |
+| Cornejo Palomino, José Julián | Autor del recorrido O2C y de los casos EP-N y EP-X del EP que el agente reproduce |
 | Urbano Lara, David Alexis | Ver `arquitectura/ROLES_EQUIPO.md` |
 
 Además de la revisión humana, el código se valida con pruebas independientes de la IA que la produjo:

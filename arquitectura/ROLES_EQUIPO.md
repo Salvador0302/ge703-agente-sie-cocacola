@@ -6,10 +6,10 @@
 
 | Integrante | Aporte verificable | Evidencia | Plazo |
 |---|---|---|---|
-| Barrionuevo Gutierrez, Salvador Jhou | Líder y arquitecto. Plan, decisiones de diseño (ADR), implementación de los bloques A a D, integración, paquete de entrega y demo | Commits y pull requests #1 a #4 | 12/11 |
+| Barrionuevo Gutierrez, Salvador Jhou | Líder y arquitecto. Plan, decisiones de diseño (ADR), implementación de los bloques A a D, integración, paquete de entrega y demo; consolidación del informe y la presentación de la PC3 con asistencia de IA (13/11/2026) | Commits y pull requests #1 a #4 | 12/11 |
 | Leandro Ochoa, Gianmarco | Resultados esperados de los casos calculados a mano y revisión del PR del bloque B | Su commit de `pruebas/CASOS.csv` y su revisión en el PR #2 | 10/11 |
-| Cornejo Palomino, José Julián | Informe de la PC3 (activos y mantenimiento, cadena de suministro I y su relación) | `docs/informe_pc3/` y el PDF `GE703_PC3_Informe_G2_CocaCola.pdf` | 12/11 |
-| Urbano Lara, David Alexis | Por confirmar | — | — |
+| Cornejo Palomino, José Julián | Recorrido O2C y escenario de quiebre del EP: casos EP-N y EP-X que el agente ejecuta en la PC3 | `docs/antecedentes/repo_ep_v3/08_procesos/`, `10_pruebas/` y `11_comite/MATRIZ_INTEGRANTES.md` | EP |
+| Urbano Lara, David Alexis | Recomendación del comité, backlog, fuentes con fecha de acceso y declaración de IA del EP; datos transaccionales de prueba que usa la demo | `docs/antecedentes/repo_ep_v3/04_backlog/`, `02_fuentes/`, `06_ia_etica/`, `09_datos/README.md` | EP |
 
 ## Gianmarco · resultados esperados y revisión del bloque B
 
@@ -35,3 +35,8 @@ Redactar el informe sobre activos y mantenimiento, cadena de suministro parte I 
 ## David · por confirmar
 
 Su aporte está pendiente de definir por Salvador.
+
+
+## Actualización del 13/11/2026
+
+El informe y la presentación de la PC3 los consolidó Salvador con asistencia de IA (declarada en `fuentes/DECLARACION_IA.md`) a partir de los datos y salidas del repositorio; están en `docs/entregables_pc3/`. La tabla de contribuciones del informe (sección 2) registra, para cada integrante, su aporte del EP que la PC3 reutiliza. Todos preparan la defensa completa con las notas del expositor del `.pptx`.
