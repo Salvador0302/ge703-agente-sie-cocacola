@@ -56,7 +56,12 @@ def construir_sistema(config: Config, conn: sqlite3.Connection, bitacora: Bitaco
         from sie.agentes.comercial.interprete_llm import InterpreteLLM, RedactorLLM
         from sie.llm.cliente import ClienteLLM
 
-        cliente = ClienteLLM(config.modelo, config.esfuerzo, config.anthropic_api_key, cliente=cliente_llm)
+        if getattr(config, "proveedor", "anthropic") == "gemini":
+            from sie.llm.gemini import ClienteGemini
+
+            cliente = ClienteGemini(config.modelo, config.gemini_api_key, transporte=cliente_llm)
+        else:
+            cliente = ClienteLLM(config.modelo, config.esfuerzo, config.anthropic_api_key, cliente=cliente_llm)
         interprete = InterpreteLLM(cliente, herramientas_lectura(crm, erp), respaldo=interprete)
         redactor = RedactorLLM(cliente, respaldo=redactor)
     agente = AgenteComercial(erp=erp, crm=crm, interprete=interprete, redactor=redactor,

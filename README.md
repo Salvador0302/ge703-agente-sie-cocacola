@@ -38,7 +38,7 @@ flowchart LR
     O --> B["Bitácora: tabla y JSONL"]
     A --> B
     E --> B
-    A -.->|"solo modo llm"| L["Claude API: interpreta y redacta"]
+    A -.->|"solo modo llm"| L["Gemini o Claude API: interpreta y redacta"]
     O -.-> CS["Agente de cadena de suministro"]
     O -.-> LG["Agente de logística"]
     O -.-> FO["Agente de finanzas operativas"]
@@ -112,14 +112,14 @@ Todos los incrementos usan los mismos datos: los pedidos PED-002 y PED-003 que c
 | CLI y diagnóstico | Hecho | `producto/sie/cli.py` · 8 pruebas · demo normal 4 de 4 conformes, excepción 8 de 8 |
 | Datos y ERP simulado | Hecho | `producto/sie/erp/`, `producto/sie/db/` · 22 pruebas (los 12 intentos del EP y sus 9 pedidos al céntimo) · ADR-004 |
 | Agente comercial y bitácora | Hecho | `producto/sie/agentes/comercial/` · 13 pruebas · ADR-003, ADR-005 · ficha en `agentes/comercial/FICHA.md` |
-| Modo LLM (Claude API) | Hecho, probado con una simulación de la API | `producto/sie/llm/` · 16 pruebas · ADR-001. Pendiente: prueba con la API real (sin API key) |
+| Modo LLM (Gemini gratis o Claude API) | Hecho, probado con dobles de ambas API | `producto/sie/llm/` (`gemini.py`: Google AI Studio, nivel gratuito, sin dependencias) · 21 pruebas · ADR-001. Configuración: [`entrega/GUIA_DESPLIEGUE.md`](entrega/GUIA_DESPLIEGUE.md#modo-ia-con-gemini-gratis-opcional) |
 | Interfaz (Streamlit) | Hecho | `producto/sie/ui/app.py` · recorrido completo de los dos casos sin errores |
 | Paquete de entrega (guía y ZIP) | Hecho | [`entrega/GUIA_DESPLIEGUE.md`](entrega/GUIA_DESPLIEGUE.md) · ZIP verificado desde una copia extraída · 5 pruebas |
 | Resultados esperados calculados a mano | Pendiente | `pruebas/CASOS.csv` · Gianmarco Leandro |
 | Informe de la PC3 | Hecho | [`docs/entregables_pc3/GE703_PC3_Informe_G2_CocaCola.pdf`](docs/entregables_pc3/GE703_PC3_Informe_G2_CocaCola.pdf) |
 | Presentación de la PC3 | Hecho | [`docs/entregables_pc3/GE703_PC3_Presentacion_G2_CocaCola.pdf`](docs/entregables_pc3/GE703_PC3_Presentacion_G2_CocaCola.pdf) (el `.pptx` incluye notas del expositor) |
 
-Total: 84 pruebas automáticas pasan y 1 se omite si Streamlit no está instalado (verificado el 13/11/2026). Evidencia de las demos: [`pruebas/evidencia/`](pruebas/evidencia/) y [`pruebas/ESPERADO_VS_OBSERVADO.md`](pruebas/ESPERADO_VS_OBSERVADO.md). Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
+Total: 90 pruebas automáticas pasan (verificado el 13/11/2026; la de la interfaz se omite si Streamlit no está instalado). Evidencia de las demos: [`pruebas/evidencia/`](pruebas/evidencia/) y [`pruebas/ESPERADO_VS_OBSERVADO.md`](pruebas/ESPERADO_VS_OBSERVADO.md). Plan del incremento: [`arquitectura/PLAN_PC3.md`](arquitectura/PLAN_PC3.md).
 
 ## Principios de diseño
 

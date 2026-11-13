@@ -37,7 +37,7 @@ Además de la revisión humana, el código se valida con pruebas independientes 
 
 ## IA dentro del producto (modo `llm`)
 
-En modo `llm`, el agente usa la Claude API (`claude-opus-5-5`) solo para interpretar el texto del pedido y redactar la explicación. Las decisiones (códigos, cantidades, importes, promesas) las toma un motor de reglas determinista. Una redacción con cifras que no estén en los hechos se descarta (ADR-001). El modo por defecto y de la demo es `reglas`, sin IA. A la fecha, el modo `llm` está probado con una simulación de la API, no contra la API real.
+En modo `llm`, el agente usa Gemini (Google AI Studio, nivel gratuito, `gemini-2.5-flash`) o la Claude API (`claude-opus-5-5`), según `LLM_PROVEEDOR`, solo para interpretar el texto del pedido y redactar la explicación. Las decisiones (códigos, cantidades, importes, promesas) las toma un motor de reglas determinista. Una redacción con cifras que no estén en los hechos se descarta (ADR-001). El modo por defecto y de la demo es `reglas`, sin IA. A la fecha, el modo `llm` está probado con una simulación de la API, no contra la API real.
 
 ## Límites
 

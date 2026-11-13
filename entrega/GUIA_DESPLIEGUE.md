@@ -29,7 +29,10 @@ La configuración por defecto (modo `reglas`) no necesita ningún archivo. Para 
 
 | Variable | Valores | Por defecto |
 |---|---|---|
-| `AGENT_MODE` | `reglas` (sin internet ni API key) o `llm` (Claude interpreta el texto y redacta; las reglas siguen decidiendo) | `reglas` |
+| `AGENT_MODE` | `reglas` (sin internet ni API key) o `llm` (la IA interpreta el texto con herramientas de consulta y redacta; las reglas siguen decidiendo) | `reglas` |
+| `LLM_PROVEEDOR` | `gemini` (Google AI Studio, nivel gratuito) o `anthropic` (Claude API). Si solo hay `GEMINI_API_KEY`, se usa `gemini` | `anthropic` |
+| `GEMINI_API_KEY` | Clave gratuita de https://aistudio.google.com/apikey, solo para `llm` con Gemini | vacía |
+| `GEMINI_MODEL` | Modelo de Gemini (si da HTTP 404, use `gemini-flash-latest`) | `gemini-2.5-flash` |
 | `ANTHROPIC_API_KEY` | Clave de la Claude API, solo para `llm`. Si falta, el agente usa `reglas` y lo avisa | vacía |
 | `ANTHROPIC_MODEL` | Modelo del modo `llm` | `claude-opus-5-5` |
 | `SIE_LLM_ESFUERZO` | `low`, `medium`, `high`, `xhigh` o `max` | `low` |
@@ -58,6 +61,23 @@ Otros comandos:
 - `python -m sie agentes` muestra el estado de los agentes previstos.
 - `python -m sie pedir "texto" --fecha 2026-10-02 --canal TUALI --corte 2026-10-02` envía un pedido en texto libre.
 - `python -m sie --help` lista todos los comandos.
+
+## Modo IA con Gemini (gratis, opcional)
+
+1. Cree una clave gratuita en https://aistudio.google.com/apikey (cuenta de Google, sin tarjeta).
+2. En la carpeta del proyecto (la que contiene `producto`), copie `.env.example` como `.env` y complete solo estas líneas:
+
+```
+AGENT_MODE=llm
+LLM_PROVEEDOR=gemini
+GEMINI_API_KEY=<su clave>
+```
+
+3. Ejecute `python -m sie diagnostico`: debe decir `Modo del agente: llm ... proveedor LLM gemini ... API key configurada`.
+4. Ejecute las mismas demos (`python -m sie demo normal` y `python -m sie demo excepcion`). En la traza aparecen las consultas que decidió hacer la IA (`buscar_cliente`, `listar_cotizaciones`, etc.) y la explicación la redacta Gemini. Los controles C1–C5, los códigos y la promesa siguen saliendo del ERP simulado, por eso el esperado frente a observado es el mismo.
+5. Si Gemini falla (clave inválida, sin internet o límite del nivel gratuito), el agente vuelve solo al modo `reglas` y lo anota como aviso: la demo no se interrumpe. Sin `.env`, todo corre en modo `reglas`.
+
+El cliente de Gemini (`producto/sie/llm/gemini.py`) usa el endpoint compatible con OpenAI de Google y solo la biblioteca estándar de Python: no hay que instalar nada. Está cubierto por `pruebas/unitarias/test_gemini.py` con un doble de la API.
 
 ## Resultados esperados
 
@@ -121,7 +141,7 @@ Detalle de licencias, material del curso y marcas: `fuentes/LICENCIAS.md`.
 ## Accesos seguros
 
 - El paquete **no contiene contraseñas ni API keys**: `.env` no se entrega y el armado del ZIP busca claves antes de cerrarlo.
-- La demo completa funciona **sin clave**. Para el modo `llm`, el docente puede usar su propia clave en un `.env` local, o el equipo puede dar una clave temporal con límite de gasto que se revoca después de la evaluación. Nunca se envía por correo dentro del ZIP.
+- La demo completa funciona **sin clave**. Para el modo `llm`, el docente puede crear su propia clave gratuita de Gemini y ponerla en un `.env` local, o el equipo puede dar una clave temporal con límite de gasto que se revoca después de la evaluación. Nunca se envía por correo dentro del ZIP.
 - La clave solo se lee de `.env` o del entorno. No se imprime, no entra en la bitácora y no aparece en los mensajes de error.
 - Al modo `llm` solo viaja el texto del pedido y resultados de consultas sobre datos sintéticos.
 

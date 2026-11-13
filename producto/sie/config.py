@@ -18,6 +18,8 @@ RAIZ = Path(__file__).resolve().parents[2]
 MODOS = ("reglas", "llm")
 ESFUERZOS = ("low", "medium", "high", "xhigh", "max")
 MODELO_POR_DEFECTO = "claude-opus-5-5"
+PROVEEDORES = ("anthropic", "gemini")
+MODELO_GEMINI_POR_DEFECTO = "gemini-2.5-flash"
 
 
 class ErrorConfiguracion(ValueError):
@@ -30,6 +32,8 @@ class Config:
     modo_solicitado: str = "reglas"
     anthropic_api_key: str | None = field(default=None, repr=False)
     modelo: str = MODELO_POR_DEFECTO
+    proveedor: str = "anthropic"
+    gemini_api_key: str | None = field(default=None, repr=False)
     esfuerzo: str = "low"
     ruta_db: Path = RAIZ / "datos" / "sie.db"
     carpeta_logs: Path = RAIZ / "logs"
@@ -41,7 +45,7 @@ class Config:
 
     @property
     def tiene_api_key(self) -> bool:
-        return bool(self.anthropic_api_key)
+        return bool(self.gemini_api_key if self.proveedor == "gemini" else self.anthropic_api_key)
 
 
 def leer_env(ruta: Path) -> dict[str, str]:
@@ -91,11 +95,17 @@ def cargar(entorno: Mapping[str, str] | None = None, ruta_env: Path | None = Non
         raise ErrorConfiguracion(f"SIE_LLM_ESFUERZO={esfuerzo!r} no es válido. Use uno de {', '.join(ESFUERZOS)}.")
 
     clave_api = valor("ANTHROPIC_API_KEY")
+    clave_gemini = valor("GEMINI_API_KEY")
+    proveedor = (valor("LLM_PROVEEDOR") or ("gemini" if clave_gemini and not clave_api else "anthropic")).strip().lower()
+    if proveedor not in PROVEEDORES:
+        raise ErrorConfiguracion(f"LLM_PROVEEDOR={proveedor!r} no es válido. Use 'anthropic' o 'gemini'.")
     avisos: list[str] = []
     efectivo = solicitado
-    if solicitado == "llm" and not clave_api:
+    clave_requerida = clave_gemini if proveedor == "gemini" else clave_api
+    if solicitado == "llm" and not clave_requerida:
         efectivo = "reglas"
-        avisos.append("AGENT_MODE=llm sin ANTHROPIC_API_KEY: se usa el modo reglas.")
+        nombre = "GEMINI_API_KEY" if proveedor == "gemini" else "ANTHROPIC_API_KEY"
+        avisos.append(f"AGENT_MODE=llm sin {nombre}: se usa el modo reglas.")
 
     def ruta(clave: str, defecto: Path) -> Path:
         texto = valor(clave)
@@ -108,7 +118,10 @@ def cargar(entorno: Mapping[str, str] | None = None, ruta_env: Path | None = Non
         modo=efectivo,
         modo_solicitado=solicitado,
         anthropic_api_key=clave_api,
-        modelo=valor("ANTHROPIC_MODEL", MODELO_POR_DEFECTO),
+        modelo=(valor("GEMINI_MODEL", MODELO_GEMINI_POR_DEFECTO) if proveedor == "gemini"
+                else valor("ANTHROPIC_MODEL", MODELO_POR_DEFECTO)),
+        proveedor=proveedor,
+        gemini_api_key=clave_gemini,
         esfuerzo=esfuerzo,
         ruta_db=ruta("SIE_DB", RAIZ / "datos" / "sie.db"),
         carpeta_logs=ruta("SIE_LOGS", RAIZ / "logs"),

@@ -71,6 +71,13 @@ def _imprimir_traza(entradas: list[EntradaBitacora]) -> None:
         print(f"  {e.agente:<12} {e.paso:<26} {e.resultado}{regla}{codigo}")
         if e.escalado_a:
             print(f"  {'':<12} {'':<26} escala a {e.escalado_a} · límite {_dmy(e.fecha_limite)} · {e.motivo or ''}")
+        if e.paso == "interpretar":
+            herramientas = (e.detalle or {}).get("herramientas") or []
+            if e.modo == "llm":
+                consultas = " → ".join(herramientas) if herramientas else "sin consultas"
+                print(f"  {'':<12} {'':<26} IA generativa: consultó {consultas} y registró la intención")
+            for aviso in (e.detalle or {}).get("avisos") or []:
+                print(f"  {'':<12} {'':<26} aviso: {aviso}")
 
 
 def _imprimir_resultado(r: ResultadoAgente) -> None:
@@ -300,6 +307,7 @@ def cmd_diagnostico(args: argparse.Namespace, config: Config) -> int:
     for modulo, ok in opcionales.items():
         filas.append((True, f"Opcional: {modulo}", "instalado" if ok else "no instalado (pip install -r requirements.txt)"))
     filas.append((True, "Modo del agente", f"{config.modo} (pedido: {config.modo_solicitado}); "
+                                           f"proveedor LLM {config.proveedor} ({config.modelo}); "
                                            f"API key {'configurada' if config.tiene_api_key else 'no configurada'}"))
     for aviso in config.avisos:
         filas.append((True, "Aviso", aviso))
